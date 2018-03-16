@@ -12,10 +12,7 @@ namespace CustomerData
         private Dictionary<int,Customer> CustomerDict = new Dictionary<int, Customer>();
         private string password = "YouCantGuessIT";
 
-        public Company()
-        {
-            
-        }
+       
 
         public void AddCustomer(Customer newCustomer)
         {

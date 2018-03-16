@@ -23,3 +23,6 @@ C:\Users\S1710564022\Documents\CustomerData\CustomerData\obj\Debug\CustomerData.
 C:\Users\S1710564022\Documents\CustomerData\CustomerData\obj\Debug\CustomerData.NewCustomer.resources
 C:\Users\S1710564022\Documents\CustomerData\CustomerData\obj\Debug\CustomerData.Properties.Resources.resources
 C:\Users\S1710564022\Documents\CustomerData\CustomerData\obj\Debug\CustomerData.csproj.GenerateResource.Cache
+C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\bin\Debug\CustomerData.exe.config
+C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\obj\Debug\CustomerData.exe
+C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\obj\Debug\CustomerData.pdb
