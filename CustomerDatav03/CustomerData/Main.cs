@@ -38,7 +38,24 @@ namespace CustomerData
             var result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                SWECompany.AddCustomer(form.newCustomer);
+                if (SWECompany.checkIfEMailUnique(form.newCustomer.EMail))
+                {
+                    try
+                    {
+                        SWECompany.AddCustomer(form.newCustomer);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("ID already used. Customer not added.");
+                        //throw;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Email already exists. Customer not added.");
+                }
+                
+               
             }
 
             CustomerDict = SWECompany.GetCustomers();
@@ -48,13 +65,13 @@ namespace CustomerData
         private void btnShowCustomer_Click(object sender, EventArgs e)
         {
             // Generating Data
-            SWECompany.AddCustomer(new Customer("Andi", "Andi", "Andi", 0, 100));
-            SWECompany.AddCustomer(new Customer("Zuerst", "Zuerst", "Zuerst", 0, 0));
+            SWECompany.AddCustomer(new Customer("Andi", "Andi", "hallo@test.at", 0, 100));
+            SWECompany.AddCustomer(new Customer("Zuerst", "Zuerst", "hallo100@test.at", 0, 0));
             for (int i = 1; i < 12; i++)
             {
                 string vorname = "test" + i;
                 string nachname = "nachtest" + i;
-                string email = "hallo@test";
+                string email = "hallo"+i+"@test.at";
                 int amount = i * 10;
                 int id = i + 5;
                 SWECompany.AddCustomer(new Customer(vorname, nachname, email, amount, id));

@@ -16,6 +16,10 @@ namespace CustomerData
 
         public void AddCustomer(Customer newCustomer)
         {
+            if (!checkIfIDUnique(newCustomer.ID))
+            {
+                throw new IndexOutOfRangeException("ID already used");
+            }
             CustomerDict.Add(newCustomer.ID,newCustomer);
         }
 
@@ -111,7 +115,38 @@ namespace CustomerData
             }
             return new int[0];
         }
-        
+        private bool checkPassword(string password)
+        {
+            if (this.password == password)
+                return true;
+            return false;
+        }
+
+        public void StoreDataTOcsv()
+        {
+            //TODO 
+            //Methode konnte zeitlich noch nicht erstellt werden.
+            //Soll Daten verschlüsselt in eine csv Datei Speichern.
+        }
+        public void GetDataFromcsv()
+        {
+            //TODO 
+            //Methode konnte zeitlich noch nicht erstellt werden.
+            //Soll die Verschlüsselten Daten aus csv Datei nehmen und diese in Klasse laden.
+        }
+        private bool checkIfIDUnique(int customerID)
+        {
+            if (CustomerDict.ContainsKey(customerID)) return false;
+            return true;
+        }
+        public bool checkIfEMailUnique(string eMail)
+        {
+            foreach (var customer in CustomerDict)
+            {
+                if (eMail == customer.Value.EMail) return false;
+            }
+            return true;
+        }
 
     }
 }
