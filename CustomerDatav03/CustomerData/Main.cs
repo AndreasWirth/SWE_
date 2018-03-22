@@ -15,7 +15,7 @@ namespace CustomerData
     {
         private Company SWECompany;
         private Dictionary<int, Customer> CustomerDict = new Dictionary<int, Customer>();
-        private int[] KeyArra;
+        private int[] KeyArray;
         private int sort =0;
         public Main()
         {
@@ -87,7 +87,7 @@ namespace CustomerData
             CustomerDict = SWECompany.GetCustomers();
             // make data visible
             lbCustomer.Items.Clear();
-            KeyArra = SWECompany.GetSortedCustomer(sort);
+            KeyArray = SWECompany.GetSortedCustomer(sort);
 
             showCustomer();
         }
@@ -143,7 +143,7 @@ namespace CustomerData
         private void rbName_CheckedChanged(object sender, EventArgs e)
         {
             lbCustomer.Items.Clear();
-            KeyArra = SWECompany.GetSortedCustomer(1);
+            KeyArray = SWECompany.GetSortedCustomer(1);
             showCustomer();
         }
         /// <summary>
@@ -154,13 +154,13 @@ namespace CustomerData
         private void rbID_CheckedChanged(object sender, EventArgs e)
         {
             lbCustomer.Items.Clear();
-            KeyArra = SWECompany.GetSortedCustomer(0);
+            KeyArray = SWECompany.GetSortedCustomer(0);
             showCustomer();
         }
 
         private void showCustomer()
         {
-            foreach (var key in KeyArra)
+            foreach (var key in KeyArray)
             {
                 lbCustomer.Items.Add(CustomerDict[key].ToString());
             }
@@ -174,6 +174,7 @@ namespace CustomerData
         private void btnLoadData_Click(object sender, EventArgs e)
         {
             SWECompany.GetData();
+            showCustomer();
         }
     }
 }
