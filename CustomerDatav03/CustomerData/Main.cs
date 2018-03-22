@@ -144,5 +144,15 @@ namespace CustomerData
                 lbCustomer.Items.Add(CustomerDict[key].ToString());
             }
         }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            SWECompany.StoreData();
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            SWECompany.GetData();
+        }
     }
 }

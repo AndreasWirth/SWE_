@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace CustomerData
 {
+    [Serializable]
+    
     public class Customer
     {
         public string FirstName { get; set; }
@@ -30,6 +32,10 @@ namespace CustomerData
         public DateTime LastChange { get; set; }
         public int ID { get; set; }
 
+        public Customer()
+        {
+
+        }
         public Customer(string firstName, string lastName, string email, int balance, int ID )
         {
             this.FirstName = firstName;

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CustomerData
 {
@@ -122,17 +124,34 @@ namespace CustomerData
             return false;
         }
 
-        public void StoreDataTOcsv()
+        public void StoreData()
         {
-            //TODO 
-            //Methode konnte zeitlich noch nicht erstellt werden.
-            //Soll Daten verschlüsselt in eine csv Datei Speichern.
+            List<Customer> customer = new List<Customer>();
+            foreach (var cust in CustomerDict)
+            {
+                customer.Add(cust.Value);
+            }
+
+            Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\CustomerData.txt");
+            XmlSerializer xmlSer = new XmlSerializer(typeof(List<Customer>));
+
+            xmlSer.Serialize(stream, customer);
+
+            stream.Close();
         }
-        public void GetDataFromcsv()
+        public void GetData()
         {
-            //TODO 
-            //Methode konnte zeitlich noch nicht erstellt werden.
-            //Soll die Verschlüsselten Daten aus csv Datei nehmen und diese in Klasse laden.
+            List<Customer> customer = new List<Customer>();
+            var myDeserializer = new XmlSerializer(typeof(List<Customer>));
+            using (var myFileStream = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open))
+            {
+                customer = (List<Customer>)myDeserializer.Deserialize(myFileStream);
+            }
+            foreach (var cust in customer)
+            {
+                CustomerDict.Add(cust.ID, cust);
+            }
+
         }
         private bool checkIfIDUnique(int customerID)
         {
