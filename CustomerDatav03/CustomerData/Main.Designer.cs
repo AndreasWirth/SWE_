@@ -65,13 +65,14 @@
             // 
             // btnShowCustomer
             // 
+            this.btnShowCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnShowCustomer.Location = new System.Drawing.Point(47, 140);
             this.btnShowCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowCustomer.Name = "btnShowCustomer";
             this.btnShowCustomer.Size = new System.Drawing.Size(176, 36);
             this.btnShowCustomer.TabIndex = 2;
             this.btnShowCustomer.Text = "add test Customers";
-            this.btnShowCustomer.UseVisualStyleBackColor = true;
+            this.btnShowCustomer.UseVisualStyleBackColor = false;
             this.btnShowCustomer.Click += new System.EventHandler(this.btnShowCustomer_Click);
             // 
             // btnOpenChangeCustomer
@@ -137,10 +138,10 @@
             this.rbName.Location = new System.Drawing.Point(17, 44);
             this.rbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbName.Name = "rbName";
-            this.rbName.Size = new System.Drawing.Size(66, 21);
+            this.rbName.Size = new System.Drawing.Size(97, 21);
             this.rbName.TabIndex = 1;
             this.rbName.TabStop = true;
-            this.rbName.Text = "Name";
+            this.rbName.Text = "Last Name";
             this.rbName.UseVisualStyleBackColor = true;
             this.rbName.CheckedChanged += new System.EventHandler(this.rbName_CheckedChanged);
             // 
@@ -161,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 500);
+            this.ClientSize = new System.Drawing.Size(851, 489);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLoadData);
             this.Controls.Add(this.btnSaveData);
