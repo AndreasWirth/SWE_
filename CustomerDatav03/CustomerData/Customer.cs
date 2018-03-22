@@ -56,7 +56,11 @@ namespace CustomerData
             string s =this.ID+" "+ this.FirstName + " " + this.LastName + " " + this.EMail + " " + this.Balance;
             return s;
         }
-
+        /// <summary>
+        /// checks if Email matches the given standarts
+        /// </summary>
+        /// <param name="eMail">Email of an Customer</param>
+        /// <returns>true if ok, false if incorrect</returns>
         public bool CheckEmail(string eMail)
         {
             // Prüfe, ob der String ein @ enthält bzw. nicht mehr als ein @ und Teile ihn dort in zwei
@@ -73,7 +77,12 @@ namespace CustomerData
             if (!isAllowed(eMail) && !isAlpha(eMail)) return false;
             return true;
         }
-        public static bool isAlpha(String text)
+        /// <summary>
+        /// checks if the given text contains only letters
+        /// </summary>
+        /// <param name="text">text to check</param>
+        /// <returns>treu if only letters</returns>
+        public static bool isAlpha(string text)
         {
             char[] c = text.ToCharArray();
             for (int i = 0; i < c.Length; i++)
@@ -88,7 +97,12 @@ namespace CustomerData
             }
             return true;
         }
-        public static bool isAllowed(String text)
+        /// <summary>
+        /// checks if the given text uses only allowed chars
+        /// </summary>
+        /// <param name="text">text to check</param>
+        /// <returns>true if ok, false if contains forbitten chars</returns>
+        public static bool isAllowed(string text)
         {
             char[] c = text.ToCharArray();
             for (int i = 0; i < c.Length; i++)
