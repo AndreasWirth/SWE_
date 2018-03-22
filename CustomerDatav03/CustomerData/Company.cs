@@ -13,7 +13,10 @@ namespace CustomerData
         private string password = "YouCantGuessIT";
 
        
-
+        /// <summary>
+        /// Adds a new Customer
+        /// </summary>
+        /// <param name="newCustomer">Customer to add</param>
         public void AddCustomer(Customer newCustomer)
         {
             if (!checkIfIDUnique(newCustomer.ID))
@@ -22,12 +25,19 @@ namespace CustomerData
             }
             CustomerDict.Add(newCustomer.ID,newCustomer);
         }
-
+        /// <summary>
+        /// Getting the Dictionry off all Customers
+        /// </summary>
+        /// <returns>returns the Customer Dictionary</returns>
         public Dictionary<int, Customer> GetCustomers()
         {
             return CustomerDict;        
         }
-
+        /// <summary>
+        /// Do a Transition/ Booking for a Customer
+        /// </summary>
+        /// <param name="amount">Amount of money to change</param>
+        /// <param name="CustomerID">ID(Dictionary key) for the Customer</param>
         public void DoATransition(int amount, int CustomerID)
         {
             try
@@ -42,7 +52,11 @@ namespace CustomerData
             }
             
         }
-
+        /// <summary>
+        /// Changing a Customer (Fully overwritting the entry in the Dictionary)
+        /// </summary>
+        /// <param name="CustomerID">key for the Ductionary</param>
+        /// <param name="changedCustomer">Full Customer</param>
         public void ChangeCustomer(int CustomerID,Customer changedCustomer)
         {
             try
@@ -115,6 +129,11 @@ namespace CustomerData
             }
             return new int[0];
         }
+        /// <summary>
+        /// Checks Passwort is correct
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns>True if correct, fasle if not</returns>
         private bool checkPassword(string password)
         {
             if (this.password == password)
@@ -134,11 +153,21 @@ namespace CustomerData
             //Methode konnte zeitlich noch nicht erstellt werden.
             //Soll die Verschlüsselten Daten aus csv Datei nehmen und diese in Klasse laden.
         }
+        /// <summary>
+        /// Checks if input is unique
+        /// </summary>
+        /// <param name="customerID">CustomerID (Dictionary key)</param>
+        /// <returns>false if already in dictionary, true if free</returns>
         private bool checkIfIDUnique(int customerID)
         {
             if (CustomerDict.ContainsKey(customerID)) return false;
             return true;
         }
+        /// <summary>
+        /// checks Email if Email is unique
+        /// </summary>
+        /// <param name="eMail">Email of a Customer</param>
+        /// <returns>false if already in the Dictionary, true if free</returns>
         public bool checkIfEMailUnique(string eMail)
         {
             foreach (var customer in CustomerDict)

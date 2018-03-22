@@ -35,3 +35,16 @@ C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\obj\Debug\
 C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\obj\Debug\CustomerData.NewCustomer.resources
 C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\obj\Debug\CustomerData.Properties.Resources.resources
 C:\Users\Alexander\Documents\GitHub\SWE_\CustomerDatav03\CustomerData\obj\Debug\CustomerData.csproj.GenerateResource.Cache
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\CustomerData.exe.config
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\CustomerData.exe
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\CustomerData.pdb
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.csprojResolveAssemblyReference.cache
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.Booking.resources
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.ChangeCustomer.resources
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.Main.resources
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.NewCustomer.resources
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.Properties.Resources.resources
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.csproj.GenerateResource.cache
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.csproj.CoreCompileInputs.cache
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.exe
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.pdb

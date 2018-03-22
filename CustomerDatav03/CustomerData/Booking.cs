@@ -23,7 +23,11 @@ namespace CustomerData
         {
 
         }
-
+        /// <summary>
+        /// Gives the main Window the amount to pay in for the choosen Customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPayIn_Click(object sender, EventArgs e)
         {
             Int32.TryParse(tbAmount.Text, out Amount);
@@ -31,7 +35,12 @@ namespace CustomerData
             DialogResult = DialogResult.OK;
             Close();
         }
-
+        /// <summary>
+        /// Gives the main Window the amount to pay out for the choosen Customer
+        /// (uses the textbox and makes the value negertiv)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPayOut_Click(object sender, EventArgs e)
         {
             int i;

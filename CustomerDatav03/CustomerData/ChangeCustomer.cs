@@ -24,16 +24,28 @@ namespace CustomerData
         {
             
         }
-
+        /// <summary>
+        /// putts the actuall Data of the choosen Custome in the Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGetCustomer_Click(object sender, EventArgs e)
         {
             int i;
             Int32.TryParse(tbID.Text, out i);
-            AktCustomer = Customers[i];
-            tbBallance.Text = AktCustomer.Balance.ToString();
-            tbEMail.Text = AktCustomer.EMail;
-            tbFirstName.Text = AktCustomer.FirstName;
-            tbLastName.Text = AktCustomer.LastName;
+            Customers.ContainsKey(i);
+            if (Customers.ContainsKey(i))
+            {
+                AktCustomer = Customers[i];
+                tbBallance.Text = AktCustomer.Balance.ToString();
+                tbEMail.Text = AktCustomer.EMail;
+                tbFirstName.Text = AktCustomer.FirstName;
+                tbLastName.Text = AktCustomer.LastName;
+            }
+            else
+            {
+                MessageBox.Show("Customer ID not found.");
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -41,7 +53,11 @@ namespace CustomerData
             DialogResult = DialogResult.Abort;
             Close();
         }
-
+        /// <summary>
+        /// Setting the Parameters and for the changed customer and give it back to the main Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
             AktCustomer.FirstName = tbFirstName.Text;

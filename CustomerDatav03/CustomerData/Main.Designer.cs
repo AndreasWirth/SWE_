@@ -43,10 +43,10 @@
             // 
             // btOpenAddCustomer
             // 
-            this.btOpenAddCustomer.Location = new System.Drawing.Point(35, 34);
-            this.btOpenAddCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btOpenAddCustomer.Location = new System.Drawing.Point(47, 42);
+            this.btOpenAddCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btOpenAddCustomer.Name = "btOpenAddCustomer";
-            this.btOpenAddCustomer.Size = new System.Drawing.Size(132, 29);
+            this.btOpenAddCustomer.Size = new System.Drawing.Size(176, 36);
             this.btOpenAddCustomer.TabIndex = 0;
             this.btOpenAddCustomer.Text = "Add Customer";
             this.btOpenAddCustomer.UseVisualStyleBackColor = true;
@@ -54,10 +54,10 @@
             // 
             // btnOpenBooking
             // 
-            this.btnOpenBooking.Location = new System.Drawing.Point(451, 34);
-            this.btnOpenBooking.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnOpenBooking.Location = new System.Drawing.Point(601, 42);
+            this.btnOpenBooking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenBooking.Name = "btnOpenBooking";
-            this.btnOpenBooking.Size = new System.Drawing.Size(132, 29);
+            this.btnOpenBooking.Size = new System.Drawing.Size(176, 36);
             this.btnOpenBooking.TabIndex = 1;
             this.btnOpenBooking.Text = "Make Booking";
             this.btnOpenBooking.UseVisualStyleBackColor = true;
@@ -65,21 +65,22 @@
             // 
             // btnShowCustomer
             // 
-            this.btnShowCustomer.Location = new System.Drawing.Point(35, 114);
-            this.btnShowCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnShowCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnShowCustomer.Location = new System.Drawing.Point(47, 140);
+            this.btnShowCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowCustomer.Name = "btnShowCustomer";
-            this.btnShowCustomer.Size = new System.Drawing.Size(132, 29);
+            this.btnShowCustomer.Size = new System.Drawing.Size(176, 36);
             this.btnShowCustomer.TabIndex = 2;
             this.btnShowCustomer.Text = "add test Customers";
-            this.btnShowCustomer.UseVisualStyleBackColor = true;
+            this.btnShowCustomer.UseVisualStyleBackColor = false;
             this.btnShowCustomer.Click += new System.EventHandler(this.btnShowCustomer_Click);
             // 
             // btnOpenChangeCustomer
             // 
-            this.btnOpenChangeCustomer.Location = new System.Drawing.Point(218, 34);
-            this.btnOpenChangeCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnOpenChangeCustomer.Location = new System.Drawing.Point(291, 42);
+            this.btnOpenChangeCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenChangeCustomer.Name = "btnOpenChangeCustomer";
-            this.btnOpenChangeCustomer.Size = new System.Drawing.Size(132, 29);
+            this.btnOpenChangeCustomer.Size = new System.Drawing.Size(176, 36);
             this.btnOpenChangeCustomer.TabIndex = 3;
             this.btnOpenChangeCustomer.Text = "Change Customer";
             this.btnOpenChangeCustomer.UseVisualStyleBackColor = true;
@@ -88,28 +89,29 @@
             // lbCustomer
             // 
             this.lbCustomer.FormattingEnabled = true;
-            this.lbCustomer.Location = new System.Drawing.Point(35, 177);
-            this.lbCustomer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.lbCustomer.ItemHeight = 16;
+            this.lbCustomer.Location = new System.Drawing.Point(47, 218);
+            this.lbCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbCustomer.Name = "lbCustomer";
-            this.lbCustomer.Size = new System.Drawing.Size(526, 134);
+            this.lbCustomer.Size = new System.Drawing.Size(700, 164);
             this.lbCustomer.TabIndex = 5;
             // 
             // btnSaveData
             // 
-            this.btnSaveData.Location = new System.Drawing.Point(35, 344);
-            this.btnSaveData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnSaveData.Location = new System.Drawing.Point(47, 423);
+            this.btnSaveData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaveData.Name = "btnSaveData";
-            this.btnSaveData.Size = new System.Drawing.Size(132, 29);
+            this.btnSaveData.Size = new System.Drawing.Size(176, 36);
             this.btnSaveData.TabIndex = 7;
             this.btnSaveData.Text = "Save Data";
             this.btnSaveData.UseVisualStyleBackColor = true;
             // 
             // btnLoadData
             // 
-            this.btnLoadData.Location = new System.Drawing.Point(218, 344);
-            this.btnLoadData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnLoadData.Location = new System.Drawing.Point(291, 423);
+            this.btnLoadData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoadData.Name = "btnLoadData";
-            this.btnLoadData.Size = new System.Drawing.Size(132, 29);
+            this.btnLoadData.Size = new System.Drawing.Size(176, 36);
             this.btnLoadData.TabIndex = 8;
             this.btnLoadData.Text = "Load Data";
             this.btnLoadData.UseVisualStyleBackColor = true;
@@ -118,11 +120,11 @@
             // 
             this.groupBox1.Controls.Add(this.rbName);
             this.groupBox1.Controls.Add(this.rbID);
-            this.groupBox1.Location = new System.Drawing.Point(202, 107);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(269, 132);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(133, 65);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(177, 80);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sort By:";
@@ -131,23 +133,23 @@
             // rbName
             // 
             this.rbName.AutoSize = true;
-            this.rbName.Location = new System.Drawing.Point(13, 36);
-            this.rbName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbName.Location = new System.Drawing.Point(17, 44);
+            this.rbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbName.Name = "rbName";
-            this.rbName.Size = new System.Drawing.Size(53, 17);
+            this.rbName.Size = new System.Drawing.Size(97, 21);
             this.rbName.TabIndex = 1;
             this.rbName.TabStop = true;
-            this.rbName.Text = "Name";
+            this.rbName.Text = "Last Name";
             this.rbName.UseVisualStyleBackColor = true;
             this.rbName.CheckedChanged += new System.EventHandler(this.rbName_CheckedChanged);
             // 
             // rbID
             // 
             this.rbID.AutoSize = true;
-            this.rbID.Location = new System.Drawing.Point(12, 17);
-            this.rbID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbID.Location = new System.Drawing.Point(16, 21);
+            this.rbID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbID.Name = "rbID";
-            this.rbID.Size = new System.Drawing.Size(36, 17);
+            this.rbID.Size = new System.Drawing.Size(42, 21);
             this.rbID.TabIndex = 0;
             this.rbID.TabStop = true;
             this.rbID.Text = "ID";
@@ -156,9 +158,9 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 406);
+            this.ClientSize = new System.Drawing.Size(847, 531);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLoadData);
             this.Controls.Add(this.btnSaveData);
@@ -167,7 +169,7 @@
             this.Controls.Add(this.btnShowCustomer);
             this.Controls.Add(this.btnOpenBooking);
             this.Controls.Add(this.btOpenAddCustomer);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Main_Load);

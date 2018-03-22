@@ -31,7 +31,11 @@ namespace CustomerData
         {
             
         }
-
+        /// <summary>
+        /// opens the Widow to add a new Customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btOpenAddCustomer_Click(object sender, EventArgs e)
         {
             NewCustomer form = new NewCustomer();
@@ -59,9 +63,13 @@ namespace CustomerData
             }
 
             CustomerDict = SWECompany.GetCustomers();
-            
+            showCustomer();
         }
-
+        /// <summary>
+        /// Adds test customers to the Dictionary, and displays them in the ListBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnShowCustomer_Click(object sender, EventArgs e)
         {
             // Generating Data
@@ -80,13 +88,14 @@ namespace CustomerData
             // make data visible
             lbCustomer.Items.Clear();
             KeyArra = SWECompany.GetSortedCustomer(sort);
-            
-            foreach (var key in KeyArra)
-            {               
-                lbCustomer.Items.Add(CustomerDict[key].ToString());
-            }
-        }
 
+            showCustomer();
+        }
+        /// <summary>
+        /// opens the Window for a Transition
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenBooking_Click(object sender, EventArgs e)
         {
             Booking forms = new Booking();
@@ -96,17 +105,23 @@ namespace CustomerData
                 SWECompany.DoATransition(forms.Amount, forms.ID);
                 
             }
-            
-        }
 
+            showCustomer();
+        }
+        /// <summary>
+        /// opens the Window to change teh Data of a Customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenChangeCustomer_Click(object sender, EventArgs e)
         {
             ChangeCustomer forms = new ChangeCustomer(SWECompany.GetCustomers());
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                SWECompany.ChangeCustomer(forms.AktCustomer.ID,forms.AktCustomer);
+                SWECompany.ChangeCustomer(forms.AktCustomer.ID, forms.AktCustomer); 
             }
+            showCustomer();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -120,25 +135,31 @@ namespace CustomerData
                 rbID.Checked = false;  
             }
         }
-
+        /// <summary>
+        /// changes sort algorithem to Last Name if changed in the Group Box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbName_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: Intager Sort wird nicht merh benötigt
-            sort = 1;
             lbCustomer.Items.Clear();
-            KeyArra = SWECompany.GetSortedCustomer(sort);
-            foreach (var key in KeyArra)
-            {
-                lbCustomer.Items.Add(CustomerDict[key].ToString());
-            }
+            KeyArra = SWECompany.GetSortedCustomer(1);
+            showCustomer();
         }
-
+        /// <summary>
+        /// changes sort algorithem to ID if changed in the Group Box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbID_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: Intager Sort wird nicht merh benötigt
-            sort = 0;
             lbCustomer.Items.Clear();
-            KeyArra = SWECompany.GetSortedCustomer(sort);
+            KeyArra = SWECompany.GetSortedCustomer(0);
+            showCustomer();
+        }
+
+        private void showCustomer()
+        {
             foreach (var key in KeyArra)
             {
                 lbCustomer.Items.Add(CustomerDict[key].ToString());

@@ -24,7 +24,11 @@ namespace CustomerData
         {
 
         }
-
+        /// <summary>
+        /// gives the main window the Data for the new Customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
             int i;
