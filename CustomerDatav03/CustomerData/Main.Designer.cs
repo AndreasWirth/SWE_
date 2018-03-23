@@ -38,7 +38,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbName = new System.Windows.Forms.RadioButton();
             this.rbID = new System.Windows.Forms.RadioButton();
+            this.gBFilterBy = new System.Windows.Forms.GroupBox();
+            this.tbFilterby = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.gBFilterBy.SuspendLayout();
             this.SuspendLayout();
             // 
             // btOpenAddCustomer
@@ -158,11 +161,33 @@
             this.rbID.UseVisualStyleBackColor = true;
             this.rbID.CheckedChanged += new System.EventHandler(this.rbID_CheckedChanged);
             // 
+            // gBFilterBy
+            // 
+            this.gBFilterBy.Controls.Add(this.tbFilterby);
+            this.gBFilterBy.Location = new System.Drawing.Point(505, 132);
+            this.gBFilterBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gBFilterBy.Name = "gBFilterBy";
+            this.gBFilterBy.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gBFilterBy.Size = new System.Drawing.Size(177, 80);
+            this.gBFilterBy.TabIndex = 29;
+            this.gBFilterBy.TabStop = false;
+            this.gBFilterBy.Text = "Filter By:";
+            // 
+            // tbFilterby
+            // 
+            this.tbFilterby.Location = new System.Drawing.Point(16, 34);
+            this.tbFilterby.MaxLength = 10;
+            this.tbFilterby.Name = "tbFilterby";
+            this.tbFilterby.Size = new System.Drawing.Size(142, 22);
+            this.tbFilterby.TabIndex = 0;
+            this.tbFilterby.TextChanged += new System.EventHandler(this.tbFilterby_TextChanged);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(851, 489);
+            this.Controls.Add(this.gBFilterBy);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLoadData);
             this.Controls.Add(this.btnSaveData);
@@ -177,6 +202,8 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gBFilterBy.ResumeLayout(false);
+            this.gBFilterBy.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -193,6 +220,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbName;
         private System.Windows.Forms.RadioButton rbID;
+        private System.Windows.Forms.GroupBox gBFilterBy;
+        private System.Windows.Forms.TextBox tbFilterby;
     }
 }
 

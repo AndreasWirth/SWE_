@@ -48,3 +48,4 @@ C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.csproj.CoreCompileInputs.cache
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.exe
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.pdb
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.checkPassword.resources

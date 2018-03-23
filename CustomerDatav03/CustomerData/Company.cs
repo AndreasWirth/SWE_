@@ -24,6 +24,8 @@ namespace CustomerData
             if (!checkIfIDUnique(newCustomer.ID))
             {
                 System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
+                // It would be possible to return an fault, and ask the User to overwritte existing Customer.
+                // Due to the fact that it isn't in the requironment and of time issus it is not implemented.
             }
             else
             {
@@ -50,9 +52,9 @@ namespace CustomerData
             {
                 CustomerDict[CustomerID].DoATransition(amount);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("Customer Id not found. Booking Canceled.");
+                //Console.WriteLine("Customer Id not found. Booking Canceled.");
                 System.Windows.Forms.MessageBox.Show("Customer Id not found. Booking Canceled.");
 
             }
@@ -69,11 +71,10 @@ namespace CustomerData
             {
                 CustomerDict[CustomerID] = changedCustomer;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Console.WriteLine("Customer Id not found.");
                 System.Windows.Forms.MessageBox.Show("Customer Id not found. Change not possible.");
-                throw;
 
             }
         }
@@ -84,7 +85,6 @@ namespace CustomerData
         /// <param name="sortby">on which Data should be sorted</param>
         /// <returns>array of keys for Customers Dictionary</returns>
         public int[] GetSortedCustomer(int sortby)
-        //public int[] GetIndexArray(int sortby)
         {
             int length = CustomerDict.Count;
             int[] indizes = new int[length];
@@ -140,15 +140,22 @@ namespace CustomerData
         /// </summary>
         /// <param name="password"></param>
         /// <returns>True if correct, fasle if not</returns>
-        private bool checkPassword(string password)
+        public bool checkPassword(string password)
         {
             if (this.password == password)
                 return true;
             return false;
         }
-
+        /// <summary>
+        /// stores the encrypted Data in a File
+        /// </summary>
         public void StoreData()
         {
+            if (CustomerDict.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+                return;
+            }
             List<Customer> customer = new List<Customer>();
             foreach (var cust in CustomerDict)
             {
@@ -162,13 +169,29 @@ namespace CustomerData
 
             stream.Close();
         }
+        /// <summary>
+        /// Loades and decrpyt the stored data
+        /// </summary>
         public void GetData()
         {
             List<Customer> customer = new List<Customer>();
             var myDeserializer = new XmlSerializer(typeof(List<Customer>));
-            using (var myFileStream = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open))
+            try
             {
-                customer = (List<Customer>)myDeserializer.Deserialize(myFileStream);
+                using (var myFileStream = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open))
+                {
+                    customer = (List<Customer>)myDeserializer.Deserialize(myFileStream);
+                }
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("No stored Data Found");
+                return;
+            }
+            if (customer.Count==0)
+            {
+                System.Windows.Forms.MessageBox.Show("File was empty! No Customer added.");
+                return;
             }
             foreach (var cust in customer)
             {
