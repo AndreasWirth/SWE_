@@ -24,8 +24,14 @@ namespace CustomerData
             if (!checkIfIDUnique(newCustomer.ID))
             {
                 throw new IndexOutOfRangeException("ID already used");
+                System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
             }
             CustomerDict.Add(newCustomer.ID,newCustomer);
+            else
+            {
+                CustomerDict.Add(newCustomer.ID, newCustomer);
+            }
+            
         }
         /// <summary>
         /// Getting the Dictionry off all Customers
@@ -169,6 +175,7 @@ namespace CustomerData
             foreach (var cust in customer)
             {
                 CustomerDict.Add(cust.ID, cust);
+                AddCustomer(cust);
             }
 
         }

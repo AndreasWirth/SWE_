@@ -16,6 +16,7 @@ namespace CustomerData
         private Company SWECompany;
         private Dictionary<int, Customer> CustomerDict = new Dictionary<int, Customer>();
         private int[] KeyArray;
+        private int[] KeyArray= new int[0];
         private int sort =0;
         public Main()
         {
@@ -87,7 +88,6 @@ namespace CustomerData
             CustomerDict = SWECompany.GetCustomers();
             // make data visible
             lbCustomer.Items.Clear();
-            KeyArray = SWECompany.GetSortedCustomer(sort);
 
             showCustomer();
         }
@@ -161,9 +161,20 @@ namespace CustomerData
         private void showCustomer()
         {
             foreach (var key in KeyArray)
+            try
             {
                 lbCustomer.Items.Add(CustomerDict[key].ToString());
+                lbCustomer.Items.Clear();
+                foreach (var key in KeyArray)
+                {
+                    lbCustomer.Items.Add(CustomerDict[key].ToString());
+                }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show( e.Message);
+            }
+            
         }
 
         private void btnSaveData_Click(object sender, EventArgs e)
@@ -174,6 +185,8 @@ namespace CustomerData
         private void btnLoadData_Click(object sender, EventArgs e)
         {
             SWECompany.GetData();
+            CustomerDict = SWECompany.GetCustomers();
+            KeyArray = SWECompany.GetSortedCustomer(0);
             showCustomer();
         }
     }
