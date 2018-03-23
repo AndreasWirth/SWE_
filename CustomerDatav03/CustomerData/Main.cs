@@ -15,7 +15,6 @@ namespace CustomerData
     {
         private Company SWECompany;
         private Dictionary<int, Customer> CustomerDict = new Dictionary<int, Customer>();
-        private int[] KeyArray;
         private int[] KeyArray= new int[0];
         private int sort =0;
         public Main()
@@ -52,7 +51,6 @@ namespace CustomerData
                     catch (Exception)
                     {
                         MessageBox.Show("ID already used. Customer not added.");
-                        //throw;
                     }
                 }
                 else
@@ -142,7 +140,6 @@ namespace CustomerData
         /// <param name="e"></param>
         private void rbName_CheckedChanged(object sender, EventArgs e)
         {
-            lbCustomer.Items.Clear();
             KeyArray = SWECompany.GetSortedCustomer(1);
             showCustomer();
         }
@@ -153,17 +150,14 @@ namespace CustomerData
         /// <param name="e"></param>
         private void rbID_CheckedChanged(object sender, EventArgs e)
         {
-            lbCustomer.Items.Clear();
             KeyArray = SWECompany.GetSortedCustomer(0);
             showCustomer();
         }
 
         private void showCustomer()
         {
-            foreach (var key in KeyArray)
             try
             {
-                lbCustomer.Items.Add(CustomerDict[key].ToString());
                 lbCustomer.Items.Clear();
                 foreach (var key in KeyArray)
                 {
