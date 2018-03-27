@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -147,7 +150,7 @@ namespace CustomerData
             return false;
         }
         /// <summary>
-        /// stores the encrypted Data in a File
+        /// encrypts and serializes an object
         /// </summary>
         public void StoreData()
         {
@@ -161,26 +164,82 @@ namespace CustomerData
             {
                 customer.Add(cust.Value);
             }
+            // Instances a memory stream object
+            Stream serializedStream = new MemoryStream();
+            //Instantiate n´´binary formatter object
+            IFormatter formatterEn = new BinaryFormatter();
+            //First serialize our data object to memory stream
+            formatterEn.Serialize(serializedStream, customer);
+            //Reset bach out stream to Position 0. This is due to the serialization process, the stream data positions has reached
+            //the last position. This is important because else we migth face the Exception aso 'Binary strea '0' does not contaimn a valid Ninary Header
+            serializedStream.Seek(0, SeekOrigin.Begin);
 
-            Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\CustomerData.txt");
-            XmlSerializer xmlSer = new XmlSerializer(typeof(List<Customer>));
-
-            xmlSer.Serialize(stream, customer);
-
-            stream.Close();
+            //Instantiate a file stream object 
+            FileStream fsWrite = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Create, FileAccess.Write);
+            //Create a byte array with the length of our serialized stream
+            byte[] byteArray = new byte[serializedStream.Length];
+            //Read the serialized stream and store its byte array value to our byteArray variable
+            serializedStream.Read(byteArray, 0, byteArray.Length);
+            //Instantiate a DES descryptor service provider type object
+            des = new DESCryptoServiceProvider();
+            des.Padding = PaddingMode.PKCS7;
+            des.Mode = CipherMode.CBC;
+            des.Key = Key;
+            des.IV = IV;
+            //Create the Encryptor
+            desencrypt = des.CreateEncryptor();
+            //Instantiate a crypto stream object, construct with file stream, encryptor. Note that the mode we use is write.
+            CryptoStream cryptStream = new CryptoStream(fsWrite, desencrypt, CryptoStreamMode.Write);
+            //Write the byteArray to our filestream via crypStream
+            cryptStream.Write(byteArray, 0, byteArray.Length);
+            //flush and close our stream
+            cryptStream.FlushFinalBlock();
+            cryptStream.Close();
+            cryptStream.Flush();
+            cryptStream.Close();
+            fsWrite.Close();
         }
         /// <summary>
-        /// Loades and decrpyt the stored data
+        /// decrypts and deserializes a stored file
         /// </summary>
         public void GetData()
         {
             List<Customer> customer = new List<Customer>();
-            var myDeserializer = new XmlSerializer(typeof(List<Customer>));
             try
             {
-                using (var myFileStream = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open))
+                //Create a file stream to read the encrypted file back
+                using (var fsread = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open, FileAccess.Read))
                 {
-                    customer = (List<Customer>)myDeserializer.Deserialize(myFileStream);
+                    //Create DES crypto service provider object
+                    des = new DESCryptoServiceProvider();
+                    des.Padding = PaddingMode.PKCS7;
+                    des.Mode = CipherMode.CBC;
+                    des.Key = Key;
+                    des.IV = IV;
+                    //Create descryptor
+                    desencrypt = des.CreateDecryptor();
+                    //Construct the cryptpstream with filestream that we used to store data that we read from file
+                    CryptoStream cryptStream = new CryptoStream(fsread, desencrypt, CryptoStreamMode.Read);
+                    //Create byte array object with length of our filestream
+                    byte[] byteArray = new byte[fsread.Length];
+                    //Store the byte in cryptStream to our byteArray
+                    cryptStream.Read(byteArray, 0, byteArray.Length);
+                    //Create a new memory stream
+                    MemoryStream memoryStream = new MemoryStream();
+                    //Write the byteArray to memory stream
+                    memoryStream.Write(byteArray, 0, byteArray.Length);
+                    //Create formatter
+                    IFormatter formatter = new BinaryFormatter();
+                    //Reporsition our memory stream tp position 0
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+                    //assign the deserialization object to our customer object
+                    customer = (List<Customer>)formatter.Deserialize(memoryStream);
+                    //Flush and close all stream
+                    cryptStream.Flush();
+                    cryptStream.Close();
+                    fsread.Close();
+                    memoryStream.Flush();
+                    memoryStream.Close();
                 }
             }
             catch (Exception)
@@ -193,6 +252,7 @@ namespace CustomerData
                 System.Windows.Forms.MessageBox.Show("File was empty! No Customer added.");
                 return;
             }
+
             foreach (var cust in customer)
             {
                 AddCustomer(cust);
@@ -222,6 +282,17 @@ namespace CustomerData
             }
             return true;
         }
+
+        // Secret key string
+        static string secretKey = "YouCantGuessIT";
+        // Byte array key. For encryption and decryption purpose.
+        readonly static byte[] Key = Encoding.UTF8.GetBytes(secretKey);
+        // Byte array iv. For encryption and decryption purpose.
+        readonly static byte[] IV = Encoding.UTF8.GetBytes(secretKey);
+        // DES Crypto Service Provider.
+        static DESCryptoServiceProvider des;
+
+        static ICryptoTransform desencrypt;
 
     }
 }
