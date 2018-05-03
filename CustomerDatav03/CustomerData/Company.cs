@@ -166,7 +166,7 @@ namespace CustomerData
             }
             // Instances a memory stream object
             Stream serializedStream = new MemoryStream();
-            //Instantiate n´´binary formatter object
+            //Instantiate a binary formatter object
             IFormatter formatterEn = new BinaryFormatter();
             //First serialize our data object to memory stream
             formatterEn.Serialize(serializedStream, customer);
@@ -284,7 +284,7 @@ namespace CustomerData
         }
 
         // Secret key string
-        static string secretKey = "YouCantGuessIT";
+        static string secretKey = "YouGuess";
         // Byte array key. For encryption and decryption purpose.
         readonly static byte[] Key = Encoding.UTF8.GetBytes(secretKey);
         // Byte array iv. For encryption and decryption purpose.
