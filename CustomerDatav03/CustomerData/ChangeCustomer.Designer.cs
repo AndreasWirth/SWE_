@@ -31,12 +31,12 @@
             this.tbEMail = new System.Windows.Forms.TextBox();
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.btnCancle = new System.Windows.Forms.Button();
-            this.btAddCustomer = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btChangeCustomer = new System.Windows.Forms.Button();
+            this.labelCustomerNumber = new System.Windows.Forms.Label();
+            this.labelBallance = new System.Windows.Forms.Label();
+            this.labelEMail = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.labelFirstName = new System.Windows.Forms.Label();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.btnGetCustomer = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.MaskedTextBox();
@@ -67,60 +67,60 @@
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
-            // btAddCustomer
+            // btChangeCustomer
             // 
-            this.btAddCustomer.Location = new System.Drawing.Point(88, 274);
-            this.btAddCustomer.Name = "btAddCustomer";
-            this.btAddCustomer.Size = new System.Drawing.Size(100, 35);
-            this.btAddCustomer.TabIndex = 30;
-            this.btAddCustomer.Text = "Change";
-            this.btAddCustomer.UseVisualStyleBackColor = true;
-            this.btAddCustomer.Click += new System.EventHandler(this.btAddCustomer_Click);
+            this.btChangeCustomer.Location = new System.Drawing.Point(88, 274);
+            this.btChangeCustomer.Name = "btChangeCustomer";
+            this.btChangeCustomer.Size = new System.Drawing.Size(100, 35);
+            this.btChangeCustomer.TabIndex = 30;
+            this.btChangeCustomer.Text = "Change";
+            this.btChangeCustomer.UseVisualStyleBackColor = true;
+            this.btChangeCustomer.Click += new System.EventHandler(this.btAddCustomer_Click);
             // 
-            // label6
+            // labelCustomerNumber
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 17);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Customer Number";
+            this.labelCustomerNumber.AutoSize = true;
+            this.labelCustomerNumber.Location = new System.Drawing.Point(34, 26);
+            this.labelCustomerNumber.Name = "labelCustomerNumber";
+            this.labelCustomerNumber.Size = new System.Drawing.Size(122, 17);
+            this.labelCustomerNumber.TabIndex = 29;
+            this.labelCustomerNumber.Text = "Customer Number";
             // 
-            // label4
+            // labelBallance
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 218);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 17);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Ballance";
+            this.labelBallance.AutoSize = true;
+            this.labelBallance.Location = new System.Drawing.Point(34, 218);
+            this.labelBallance.Name = "labelBallance";
+            this.labelBallance.Size = new System.Drawing.Size(62, 17);
+            this.labelBallance.TabIndex = 28;
+            this.labelBallance.Text = "Ballance";
             // 
-            // label3
+            // labelEMail
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 189);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 17);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "E-Mail Adress";
+            this.labelEMail.AutoSize = true;
+            this.labelEMail.Location = new System.Drawing.Point(34, 189);
+            this.labelEMail.Name = "labelEMail";
+            this.labelEMail.Size = new System.Drawing.Size(95, 17);
+            this.labelEMail.TabIndex = 27;
+            this.labelEMail.Text = "E-Mail Adress";
             // 
-            // label2
+            // labelLastName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Last Name";
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(34, 154);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(76, 17);
+            this.labelLastName.TabIndex = 26;
+            this.labelLastName.Text = "Last Name";
             // 
-            // label1
+            // labelFirstName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 121);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "First Name";
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Location = new System.Drawing.Point(34, 121);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(76, 17);
+            this.labelFirstName.TabIndex = 25;
+            this.labelFirstName.Text = "First Name";
             // 
             // tbFirstName
             // 
@@ -166,12 +166,12 @@
             this.Controls.Add(this.tbEMail);
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.btnCancle);
-            this.Controls.Add(this.btAddCustomer);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btChangeCustomer);
+            this.Controls.Add(this.labelCustomerNumber);
+            this.Controls.Add(this.labelBallance);
+            this.Controls.Add(this.labelEMail);
+            this.Controls.Add(this.labelLastName);
+            this.Controls.Add(this.labelFirstName);
             this.Controls.Add(this.tbFirstName);
             this.Name = "ChangeCustomer";
             this.Text = "ChangeCustomer";
@@ -185,12 +185,12 @@
         private System.Windows.Forms.TextBox tbEMail;
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Button btnCancle;
-        private System.Windows.Forms.Button btAddCustomer;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btChangeCustomer;
+        private System.Windows.Forms.Label labelCustomerNumber;
+        private System.Windows.Forms.Label labelBallance;
+        private System.Windows.Forms.Label labelEMail;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label labelFirstName;
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Button btnGetCustomer;
         private System.Windows.Forms.MaskedTextBox tbID;

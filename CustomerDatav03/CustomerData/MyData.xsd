@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MyData" targetNamespace="http://tempuri.org/MyData.xsd" xmlns:mstns="http://tempuri.org/MyData.xsd" xmlns="http://tempuri.org/MyData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MyData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MyData" msprop:Generator_UserDSName="MyData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="speach" msprop:Generator_TableClassName="speachDataTable" msprop:Generator_TableVarName="tablespeach" msprop:Generator_RowChangedName="speachRowChanged" msprop:Generator_TablePropName="speach" msprop:Generator_RowDeletingName="speachRowDeleting" msprop:Generator_RowChangingName="speachRowChanging" msprop:Generator_RowEvHandlerName="speachRowChangeEventHandler" msprop:Generator_RowDeletedName="speachRowDeleted" msprop:Generator_RowClassName="speachRow" msprop:Generator_UserTableName="speach" msprop:Generator_RowEvArgName="speachRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="key" msprop:Generator_ColumnVarNameInTable="columnkey" msprop:Generator_ColumnPropNameInRow="key" msprop:Generator_ColumnPropNameInTable="keyColumn" msprop:Generator_UserColumnName="key" type="xs:string" minOccurs="0" />
+              <xs:element name="English" msprop:Generator_ColumnVarNameInTable="columnEnglish" msprop:Generator_ColumnPropNameInRow="English" msprop:Generator_ColumnPropNameInTable="EnglishColumn" msprop:Generator_UserColumnName="English" type="xs:string" minOccurs="0" />
+              <xs:element name="German" msprop:Generator_ColumnVarNameInTable="columnGerman" msprop:Generator_ColumnPropNameInRow="German" msprop:Generator_ColumnPropNameInTable="GermanColumn" msprop:Generator_UserColumnName="German" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="speachKey1">
+      <xs:selector xpath=".//mstns:speach" />
+      <xs:field xpath="mstns:key" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

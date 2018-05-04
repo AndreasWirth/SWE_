@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btOpenAddCustomer = new System.Windows.Forms.Button();
             this.btnOpenBooking = new System.Windows.Forms.Button();
             this.btnShowCustomer = new System.Windows.Forms.Button();
@@ -35,160 +36,124 @@
             this.lbCustomer = new System.Windows.Forms.ListBox();
             this.btnSaveData = new System.Windows.Forms.Button();
             this.btnLoadData = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbSortby = new System.Windows.Forms.GroupBox();
             this.rbName = new System.Windows.Forms.RadioButton();
             this.rbID = new System.Windows.Forms.RadioButton();
             this.gBFilterBy = new System.Windows.Forms.GroupBox();
             this.tbFilterby = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.myData = new CustomerData.MyData();
+            this.btnChangeLanguage = new System.Windows.Forms.Button();
+            this.gbSortby.SuspendLayout();
             this.gBFilterBy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myData)).BeginInit();
             this.SuspendLayout();
             // 
             // btOpenAddCustomer
             // 
-            this.btOpenAddCustomer.Location = new System.Drawing.Point(47, 42);
-            this.btOpenAddCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btOpenAddCustomer, "btOpenAddCustomer");
             this.btOpenAddCustomer.Name = "btOpenAddCustomer";
-            this.btOpenAddCustomer.Size = new System.Drawing.Size(176, 36);
-            this.btOpenAddCustomer.TabIndex = 0;
-            this.btOpenAddCustomer.Text = "Add Customer";
             this.btOpenAddCustomer.UseVisualStyleBackColor = true;
             this.btOpenAddCustomer.Click += new System.EventHandler(this.btOpenAddCustomer_Click);
             // 
             // btnOpenBooking
             // 
-            this.btnOpenBooking.Location = new System.Drawing.Point(601, 42);
-            this.btnOpenBooking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnOpenBooking, "btnOpenBooking");
             this.btnOpenBooking.Name = "btnOpenBooking";
-            this.btnOpenBooking.Size = new System.Drawing.Size(176, 36);
-            this.btnOpenBooking.TabIndex = 1;
-            this.btnOpenBooking.Text = "Make Booking";
             this.btnOpenBooking.UseVisualStyleBackColor = true;
             this.btnOpenBooking.Click += new System.EventHandler(this.btnOpenBooking_Click);
             // 
             // btnShowCustomer
             // 
             this.btnShowCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnShowCustomer.Location = new System.Drawing.Point(47, 140);
-            this.btnShowCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnShowCustomer, "btnShowCustomer");
             this.btnShowCustomer.Name = "btnShowCustomer";
-            this.btnShowCustomer.Size = new System.Drawing.Size(176, 36);
-            this.btnShowCustomer.TabIndex = 2;
-            this.btnShowCustomer.Text = "add test Customers";
             this.btnShowCustomer.UseVisualStyleBackColor = false;
             this.btnShowCustomer.Click += new System.EventHandler(this.btnShowCustomer_Click);
             // 
             // btnOpenChangeCustomer
             // 
-            this.btnOpenChangeCustomer.Location = new System.Drawing.Point(291, 42);
-            this.btnOpenChangeCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnOpenChangeCustomer, "btnOpenChangeCustomer");
             this.btnOpenChangeCustomer.Name = "btnOpenChangeCustomer";
-            this.btnOpenChangeCustomer.Size = new System.Drawing.Size(176, 36);
-            this.btnOpenChangeCustomer.TabIndex = 3;
-            this.btnOpenChangeCustomer.Text = "Change Customer";
             this.btnOpenChangeCustomer.UseVisualStyleBackColor = true;
             this.btnOpenChangeCustomer.Click += new System.EventHandler(this.btnOpenChangeCustomer_Click);
             // 
             // lbCustomer
             // 
             this.lbCustomer.FormattingEnabled = true;
-            this.lbCustomer.ItemHeight = 16;
-            this.lbCustomer.Location = new System.Drawing.Point(47, 218);
-            this.lbCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.lbCustomer, "lbCustomer");
             this.lbCustomer.Name = "lbCustomer";
-            this.lbCustomer.Size = new System.Drawing.Size(700, 164);
-            this.lbCustomer.TabIndex = 5;
             // 
             // btnSaveData
             // 
-            this.btnSaveData.Location = new System.Drawing.Point(47, 423);
-            this.btnSaveData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnSaveData, "btnSaveData");
             this.btnSaveData.Name = "btnSaveData";
-            this.btnSaveData.Size = new System.Drawing.Size(176, 36);
-            this.btnSaveData.TabIndex = 7;
-            this.btnSaveData.Text = "Save Data";
             this.btnSaveData.UseVisualStyleBackColor = true;
             this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
             // 
             // btnLoadData
             // 
-            this.btnLoadData.Location = new System.Drawing.Point(291, 423);
-            this.btnLoadData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnLoadData, "btnLoadData");
             this.btnLoadData.Name = "btnLoadData";
-            this.btnLoadData.Size = new System.Drawing.Size(176, 36);
-            this.btnLoadData.TabIndex = 8;
-            this.btnLoadData.Text = "Load Data";
             this.btnLoadData.UseVisualStyleBackColor = true;
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
-            // groupBox1
+            // gbSortby
             // 
-            this.groupBox1.Controls.Add(this.rbName);
-            this.groupBox1.Controls.Add(this.rbID);
-            this.groupBox1.Location = new System.Drawing.Point(269, 132);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(177, 80);
-            this.groupBox1.TabIndex = 28;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sort By:";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.gbSortby.Controls.Add(this.rbName);
+            this.gbSortby.Controls.Add(this.rbID);
+            resources.ApplyResources(this.gbSortby, "gbSortby");
+            this.gbSortby.Name = "gbSortby";
+            this.gbSortby.TabStop = false;
+            this.gbSortby.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // rbName
             // 
-            this.rbName.AutoSize = true;
-            this.rbName.Location = new System.Drawing.Point(17, 44);
-            this.rbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.rbName, "rbName");
             this.rbName.Name = "rbName";
-            this.rbName.Size = new System.Drawing.Size(97, 21);
-            this.rbName.TabIndex = 1;
             this.rbName.TabStop = true;
-            this.rbName.Text = "Last Name";
             this.rbName.UseVisualStyleBackColor = true;
             this.rbName.CheckedChanged += new System.EventHandler(this.rbName_CheckedChanged);
             // 
             // rbID
             // 
-            this.rbID.AutoSize = true;
-            this.rbID.Location = new System.Drawing.Point(16, 21);
-            this.rbID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.rbID, "rbID");
             this.rbID.Name = "rbID";
-            this.rbID.Size = new System.Drawing.Size(42, 21);
-            this.rbID.TabIndex = 0;
             this.rbID.TabStop = true;
-            this.rbID.Text = "ID";
             this.rbID.UseVisualStyleBackColor = true;
             this.rbID.CheckedChanged += new System.EventHandler(this.rbID_CheckedChanged);
             // 
             // gBFilterBy
             // 
             this.gBFilterBy.Controls.Add(this.tbFilterby);
-            this.gBFilterBy.Location = new System.Drawing.Point(505, 132);
-            this.gBFilterBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.gBFilterBy, "gBFilterBy");
             this.gBFilterBy.Name = "gBFilterBy";
-            this.gBFilterBy.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gBFilterBy.Size = new System.Drawing.Size(177, 80);
-            this.gBFilterBy.TabIndex = 29;
             this.gBFilterBy.TabStop = false;
-            this.gBFilterBy.Text = "Filter By:";
             // 
             // tbFilterby
             // 
-            this.tbFilterby.Location = new System.Drawing.Point(16, 34);
-            this.tbFilterby.MaxLength = 10;
+            resources.ApplyResources(this.tbFilterby, "tbFilterby");
             this.tbFilterby.Name = "tbFilterby";
-            this.tbFilterby.Size = new System.Drawing.Size(142, 22);
-            this.tbFilterby.TabIndex = 0;
             this.tbFilterby.TextChanged += new System.EventHandler(this.tbFilterby_TextChanged);
+            // 
+            // myData
+            // 
+            this.myData.DataSetName = "MyData";
+            this.myData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnChangeLanguage
+            // 
+            resources.ApplyResources(this.btnChangeLanguage, "btnChangeLanguage");
+            this.btnChangeLanguage.Name = "btnChangeLanguage";
+            this.btnChangeLanguage.UseVisualStyleBackColor = true;
+            this.btnChangeLanguage.Click += new System.EventHandler(this.btnChangeLanguage_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 489);
+            this.Controls.Add(this.btnChangeLanguage);
             this.Controls.Add(this.gBFilterBy);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbSortby);
             this.Controls.Add(this.btnLoadData);
             this.Controls.Add(this.btnSaveData);
             this.Controls.Add(this.lbCustomer);
@@ -196,14 +161,13 @@
             this.Controls.Add(this.btnShowCustomer);
             this.Controls.Add(this.btnOpenBooking);
             this.Controls.Add(this.btOpenAddCustomer);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Main_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbSortby.ResumeLayout(false);
+            this.gbSortby.PerformLayout();
             this.gBFilterBy.ResumeLayout(false);
             this.gBFilterBy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,11 +181,13 @@
         private System.Windows.Forms.ListBox lbCustomer;
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.Button btnLoadData;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbSortby;
         private System.Windows.Forms.RadioButton rbName;
         private System.Windows.Forms.RadioButton rbID;
         private System.Windows.Forms.GroupBox gBFilterBy;
         private System.Windows.Forms.TextBox tbFilterby;
+        private MyData myData;
+        private System.Windows.Forms.Button btnChangeLanguage;
     }
 }
 

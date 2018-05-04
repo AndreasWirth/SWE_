@@ -84,17 +84,34 @@
     </Compile>
     <Compile Include="Company.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="FillLanguageDAtaset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FillLanguageDAtaset.Designer.cs">
+      <DependentUpon>FillLanguageDAtaset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="NewCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NewCustomer.Designer.cs">
       <DependentUpon>NewCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrivateSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrivateSettings.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,21 +124,55 @@
     <EmbeddedResource Include="checkPassword.resx">
       <DependentUpon>checkPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FillLanguageDAtaset.resx">
+      <DependentUpon>FillLanguageDAtaset.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomer.resx">
       <DependentUpon>NewCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Include="English.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>English.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <EmbeddedResource Include="German.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>German.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Compile Include="English.Designer.cs">
+      <DependentUpon>English.resx</DependentUpon>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="German.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>German.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <EmbeddedResource Include="PrivateSettings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrivateSettings.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="MyData.xsc">
+      <DependentUpon>MyData.xsd</DependentUpon>
+    </None>
+    <None Include="MyData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MyData.xss">
+      <DependentUpon>MyData.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,6 +198,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

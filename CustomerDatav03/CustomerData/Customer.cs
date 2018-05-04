@@ -64,7 +64,7 @@ namespace CustomerData
         public bool CheckEmail(string eMail)
         {
             // Prüfe, ob der String ein @ enthält bzw. nicht mehr als ein @ und Teile ihn dort in zwei
-            if (!eMail.Contains('@') && (eMail.Split('@').Count() - 1) >= 2) return false;
+            if (!eMail.Contains('@') || (eMail.Split('@').Count() - 1) >= 2) return false;
             string[] array = eMail.Split('@');
             //Prüfe, ob der zweite Teil nach dem @ mehr als einen Punkt enthält
             if ((array[1].Split('.').Count() - 1) < 1) return false;

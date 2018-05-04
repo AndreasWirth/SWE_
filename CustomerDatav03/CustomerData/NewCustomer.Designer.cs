@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelCustomNumber = new System.Windows.Forms.Label();
+            this.labelBallance = new System.Windows.Forms.Label();
+            this.labelEMail = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.lableFirstName = new System.Windows.Forms.Label();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.btAddCustomer = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -45,50 +45,50 @@
             ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).BeginInit();
             this.SuspendLayout();
             // 
-            // label6
+            // labelCustomNumber
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 183);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 17);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Customer Number";
+            this.labelCustomNumber.AutoSize = true;
+            this.labelCustomNumber.Location = new System.Drawing.Point(51, 183);
+            this.labelCustomNumber.Name = "labelCustomNumber";
+            this.labelCustomNumber.Size = new System.Drawing.Size(122, 17);
+            this.labelCustomNumber.TabIndex = 17;
+            this.labelCustomNumber.Text = "Customer Number";
             // 
-            // label4
+            // labelBallance
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 145);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 17);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Ballance";
+            this.labelBallance.AutoSize = true;
+            this.labelBallance.Location = new System.Drawing.Point(51, 145);
+            this.labelBallance.Name = "labelBallance";
+            this.labelBallance.Size = new System.Drawing.Size(62, 17);
+            this.labelBallance.TabIndex = 15;
+            this.labelBallance.Text = "Ballance";
             // 
-            // label3
+            // labelEMail
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "E-Mail Adress";
+            this.labelEMail.AutoSize = true;
+            this.labelEMail.Location = new System.Drawing.Point(51, 116);
+            this.labelEMail.Name = "labelEMail";
+            this.labelEMail.Size = new System.Drawing.Size(95, 17);
+            this.labelEMail.TabIndex = 14;
+            this.labelEMail.Text = "E-Mail Adress";
             // 
-            // label2
+            // labelLastName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Last Name";
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(51, 81);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(76, 17);
+            this.labelLastName.TabIndex = 13;
+            this.labelLastName.Text = "Last Name";
             // 
-            // label1
+            // lableFirstName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "First Name";
+            this.lableFirstName.AutoSize = true;
+            this.lableFirstName.Location = new System.Drawing.Point(51, 48);
+            this.lableFirstName.Name = "lableFirstName";
+            this.lableFirstName.Size = new System.Drawing.Size(76, 17);
+            this.lableFirstName.TabIndex = 12;
+            this.lableFirstName.Text = "First Name";
             // 
             // tbFirstName
             // 
@@ -163,11 +163,11 @@
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btAddCustomer);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelCustomNumber);
+            this.Controls.Add(this.labelBallance);
+            this.Controls.Add(this.labelEMail);
+            this.Controls.Add(this.labelLastName);
+            this.Controls.Add(this.lableFirstName);
             this.Controls.Add(this.tbFirstName);
             this.Name = "NewCustomer";
             this.Text = "NewCustomer";
@@ -180,11 +180,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCustomNumber;
+        private System.Windows.Forms.Label labelBallance;
+        private System.Windows.Forms.Label labelEMail;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label lableFirstName;
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Button btAddCustomer;
         private System.Windows.Forms.Button btnCancle;

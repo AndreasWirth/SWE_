@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace CustomerData
     public partial class NewCustomer : Form
     {
         public Customer newCustomer { get; set; }
+        public ResXResourceSet resxLanguage { get; set; }
 
         public NewCustomer()
         {
@@ -22,6 +24,13 @@ namespace CustomerData
 
         private void NewCustomer_Load(object sender, EventArgs e)
         {
+            btnCancle.Text = resxLanguage.GetString("cancel");
+            btAddCustomer.Text = resxLanguage.GetString("add");
+            lableFirstName.Text = resxLanguage.GetString("firstName");
+            labelLastName.Text = resxLanguage.GetString("lastName");
+            labelBallance.Text = resxLanguage.GetString("ballance");
+            labelCustomNumber.Text = resxLanguage.GetString("customerNumber");
+            labelEMail.Text = resxLanguage.GetString("email");
 
         }
         /// <summary>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,8 @@ namespace CustomerData
     public partial class ChangeCustomer : Form
     {
         public Customer AktCustomer { get; set; }
+        public ResXResourceSet resxLanguage { get; set; }
+
         private Dictionary<int, Customer> Customers;
         public ChangeCustomer(Dictionary<int, Customer> Customers)
         {
@@ -22,7 +25,15 @@ namespace CustomerData
 
         private void ChangeCustomer_Load(object sender, EventArgs e)
         {
-            
+            btnCancle.Text = resxLanguage.GetString("cancel");
+            btChangeCustomer.Text = resxLanguage.GetString("add");
+
+            labelFirstName.Text = resxLanguage.GetString("firstName");
+            labelLastName.Text = resxLanguage.GetString("lastName");
+            labelBallance.Text = resxLanguage.GetString("ballance");
+            labelCustomerNumber.Text = resxLanguage.GetString("customerNumber");
+            labelEMail.Text = resxLanguage.GetString("email");
+            btnGetCustomer.Text = resxLanguage.GetString("getCustomData");
         }
         /// <summary>
         /// putts the actuall Data of the choosen Custome in the Window
