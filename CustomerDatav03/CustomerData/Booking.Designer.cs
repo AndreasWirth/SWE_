@@ -39,10 +39,10 @@
             // 
             // btnPayIn
             // 
-            this.btnPayIn.Location = new System.Drawing.Point(41, 95);
-            this.btnPayIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPayIn.Location = new System.Drawing.Point(55, 117);
+            this.btnPayIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPayIn.Name = "btnPayIn";
-            this.btnPayIn.Size = new System.Drawing.Size(75, 28);
+            this.btnPayIn.Size = new System.Drawing.Size(100, 34);
             this.btnPayIn.TabIndex = 2;
             this.btnPayIn.Text = "Pay In";
             this.btnPayIn.UseVisualStyleBackColor = true;
@@ -50,10 +50,10 @@
             // 
             // btnPayOut
             // 
-            this.btnPayOut.Location = new System.Drawing.Point(148, 95);
-            this.btnPayOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPayOut.Location = new System.Drawing.Point(197, 117);
+            this.btnPayOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPayOut.Name = "btnPayOut";
-            this.btnPayOut.Size = new System.Drawing.Size(75, 28);
+            this.btnPayOut.Size = new System.Drawing.Size(100, 34);
             this.btnPayOut.TabIndex = 3;
             this.btnPayOut.Text = "Pay Out";
             this.btnPayOut.UseVisualStyleBackColor = true;
@@ -62,19 +62,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(116, 51);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(155, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 13;
             this.label1.Text = "Amount";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(260, 95);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Location = new System.Drawing.Point(347, 117);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 28);
+            this.btnCancel.Size = new System.Drawing.Size(100, 34);
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -82,37 +81,36 @@
             // 
             // tbAmount
             // 
-            this.tbAmount.Location = new System.Drawing.Point(177, 47);
-            this.tbAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tbAmount.Mask = "00000";
+            this.tbAmount.Location = new System.Drawing.Point(236, 58);
+            this.tbAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbAmount.Mask = "00000.00";
             this.tbAmount.Name = "tbAmount";
-            this.tbAmount.Size = new System.Drawing.Size(76, 20);
+            this.tbAmount.Size = new System.Drawing.Size(100, 22);
             this.tbAmount.TabIndex = 15;
             // 
             // tbCustomerNumber
             // 
-            this.tbCustomerNumber.Location = new System.Drawing.Point(177, 12);
-            this.tbCustomerNumber.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tbCustomerNumber.Location = new System.Drawing.Point(236, 15);
+            this.tbCustomerNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbCustomerNumber.Mask = "00000";
             this.tbCustomerNumber.Name = "tbCustomerNumber";
-            this.tbCustomerNumber.Size = new System.Drawing.Size(76, 20);
+            this.tbCustomerNumber.Size = new System.Drawing.Size(100, 22);
             this.tbCustomerNumber.TabIndex = 29;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(73, 14);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(97, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.Size = new System.Drawing.Size(122, 17);
             this.label6.TabIndex = 28;
             this.label6.Text = "Customer Number";
             // 
             // Booking
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 142);
+            this.ClientSize = new System.Drawing.Size(513, 175);
             this.Controls.Add(this.tbCustomerNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbAmount);
@@ -120,7 +118,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPayOut);
             this.Controls.Add(this.btnPayIn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Booking";
             this.Text = "Booking";
             this.Load += new System.EventHandler(this.Booking_Load);

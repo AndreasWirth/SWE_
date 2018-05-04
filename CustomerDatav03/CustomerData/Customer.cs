@@ -24,11 +24,11 @@ namespace CustomerData
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Die eingegeben Email-Adresse entspricht nicht den Richtlinien!");
+                    throw new ArgumentOutOfRangeException("Email Adress not valid!");
                 }
             }
         }
-        public int Balance { get; set; }
+        public decimal Balance { get; set; }
         public DateTime LastChange { get; set; }
         public int ID { get; set; }
 
@@ -36,7 +36,7 @@ namespace CustomerData
         {
 
         }
-        public Customer(string firstName, string lastName, string email, int balance, int ID )
+        public Customer(string firstName, string lastName, string email, decimal balance, int ID )
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -46,7 +46,7 @@ namespace CustomerData
             this.ID = ID;
         }
 
-        public void DoATransition(int amount)
+        public void DoATransition(decimal amount)
         {
             this.Balance += amount;
         }

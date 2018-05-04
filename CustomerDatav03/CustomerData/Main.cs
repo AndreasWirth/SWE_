@@ -79,7 +79,7 @@ namespace CustomerData
                 string vorname = "test" + i;
                 string nachname = "nachtest" + i;
                 string email = "hallo"+i+"@test.at";
-                int amount = i * 10;
+                decimal amount = i * 10;
                 int id = i + 5;
                 SWECompany.AddCustomer(new Customer(vorname, nachname, email, amount, id));
             }
@@ -98,23 +98,40 @@ namespace CustomerData
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                SWECompany.DoATransition(forms.Amount, forms.ID);
+                try
+                {
+                    SWECompany.DoATransition(forms.Amount, forms.ID);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Customer Id not found. Booking Canceled.");
+                }
                 
             }
             showCustomer();
         }
         /// <summary>
-        /// opens the Window to change teh Data of a Customer
+        /// opens the Window to change the Data of a Customer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnOpenChangeCustomer_Click(object sender, EventArgs e)
         {
-            ChangeCustomer forms = new ChangeCustomer(SWECompany.GetCustomers());
+            ChangeCustomer forms = new ChangeCustomer(SWECompany);
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                SWECompany.ChangeCustomer(forms.AktCustomer.ID, forms.AktCustomer); 
+                
+                try
+                {
+                    SWECompany.ChangeCustomer(forms.AktCustomer.ID, forms.AktCustomer);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Customer couldn't changed");
+                }
+                   
+
             }
             showCustomer();
         }
@@ -125,7 +142,14 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnSaveData_Click(object sender, EventArgs e)
         {
-            SWECompany.StoreData();
+            try
+            {
+                SWECompany.StoreData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+            }
         }
         /// <summary>
         /// Loads the Data from the safed file
@@ -140,6 +164,7 @@ namespace CustomerData
             {
                 if (SWECompany.checkPassword(forms.password))
                 {
+                    //TODO catch exeption from load data for dosplay in GUI
                     SWECompany.GetData();
                     CustomerDict = SWECompany.GetCustomers();
                     KeyArray = SWECompany.GetSortedCustomer(0);
@@ -153,10 +178,6 @@ namespace CustomerData
         }
         #endregion
 
-        private void cLBFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
             if (rbID.Checked)

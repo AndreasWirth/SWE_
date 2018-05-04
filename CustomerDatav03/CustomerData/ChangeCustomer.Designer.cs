@@ -33,14 +33,14 @@
             this.btnCancle = new System.Windows.Forms.Button();
             this.btAddCustomer = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.btnGetCustomer = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.MaskedTextBox();
-            this.tbBallance = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbBallance = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tbEMail
@@ -85,15 +85,6 @@
             this.label6.Size = new System.Drawing.Size(122, 17);
             this.label6.TabIndex = 29;
             this.label6.Text = "Customer Number";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 218);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 17);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Ballance";
             // 
             // label3
             // 
@@ -147,13 +138,22 @@
             this.tbID.Size = new System.Drawing.Size(164, 22);
             this.tbID.TabIndex = 37;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 17);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Ballance";
+            // 
             // tbBallance
             // 
-            this.tbBallance.Location = new System.Drawing.Point(226, 218);
-            this.tbBallance.Mask = "00000";
+            this.tbBallance.Location = new System.Drawing.Point(226, 227);
             this.tbBallance.Name = "tbBallance";
+            this.tbBallance.ReadOnly = true;
             this.tbBallance.Size = new System.Drawing.Size(164, 22);
-            this.tbBallance.TabIndex = 38;
+            this.tbBallance.TabIndex = 39;
             // 
             // ChangeCustomer
             // 
@@ -187,13 +187,13 @@
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button btAddCustomer;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Button btnGetCustomer;
         private System.Windows.Forms.MaskedTextBox tbID;
-        private System.Windows.Forms.MaskedTextBox tbBallance;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbBallance;
     }
 }

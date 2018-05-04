@@ -134,7 +134,7 @@
             // tbBallance
             // 
             this.tbBallance.Location = new System.Drawing.Point(243, 145);
-            this.tbBallance.Mask = "00000";
+            this.tbBallance.Mask = "00000.00";
             this.tbBallance.Name = "tbBallance";
             this.tbBallance.Size = new System.Drawing.Size(164, 22);
             this.tbBallance.TabIndex = 24;

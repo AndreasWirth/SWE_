@@ -26,13 +26,15 @@ namespace CustomerData
         {
             if (!checkIfIDUnique(newCustomer.ID))
             {
-                System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
+                //System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
                 // It would be possible to return an fault, and ask the User to overwritte existing Customer.
                 // Due to the fact that it isn't in the requironment and of time issus it is not implemented.
+
+                throw new Exception("Customer ID already used");
             }
             else
             {
-                CustomerDict.Add(newCustomer.ID, newCustomer);
+                CustomerDict.Add(newCustomer.ID, newCustomer);   
             }
             
         }
@@ -49,7 +51,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="amount">Amount of money to change</param>
         /// <param name="CustomerID">ID(Dictionary key) for the Customer</param>
-        public void DoATransition(int amount, int CustomerID)
+        public void DoATransition(decimal amount, int CustomerID)
         {
             try
             {
@@ -57,9 +59,9 @@ namespace CustomerData
             }
             catch (Exception)
             {
-                //Console.WriteLine("Customer Id not found. Booking Canceled.");
-                System.Windows.Forms.MessageBox.Show("Customer Id not found. Booking Canceled.");
-
+                
+                //System.Windows.Forms.MessageBox.Show("Customer Id not found. Booking Canceled.");
+                throw new Exception("Customer Id not found. Booking Canceled.");
             }
             
         }
@@ -76,8 +78,7 @@ namespace CustomerData
             }
             catch (Exception)
             {
-                //Console.WriteLine("Customer Id not found.");
-                System.Windows.Forms.MessageBox.Show("Customer Id not found. Change not possible.");
+                throw new Exception("Customer Id not found. Change not possible.");
 
             }
         }
@@ -156,8 +157,8 @@ namespace CustomerData
         {
             if (CustomerDict.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
-                return;
+                //System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+                throw new Exception("Empty Database! No Customers found. Storeing data canceled");
             }
             List<Customer> customer = new List<Customer>();
             foreach (var cust in CustomerDict)

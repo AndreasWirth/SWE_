@@ -14,10 +14,13 @@ namespace CustomerData
     {
         public Customer AktCustomer { get; set; }
         private Dictionary<int, Customer> Customers;
-        public ChangeCustomer(Dictionary<int, Customer> Customers)
+        private Company Company;
+        public ChangeCustomer(Company Company)
         {
             InitializeComponent();
-            this.Customers = Customers;
+            
+            this.Company = Company;
+            this.Customers = Company.GetCustomers();
         }
 
         private void ChangeCustomer_Load(object sender, EventArgs e)
@@ -31,16 +34,15 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnGetCustomer_Click(object sender, EventArgs e)
         {
-            int i;
-            Int32.TryParse(tbID.Text, out i);
-            Customers.ContainsKey(i);
+            Int32.TryParse(tbID.Text, out int i);
+            //Customers.ContainsKey(i);
             if (Customers.ContainsKey(i))
             {
                 AktCustomer = Customers[i];
-                tbBallance.Text = AktCustomer.Balance.ToString();
                 tbEMail.Text = AktCustomer.EMail;
                 tbFirstName.Text = AktCustomer.FirstName;
                 tbLastName.Text = AktCustomer.LastName;
+                tbBallance.Text = Customers[i].Balance.ToString();
             }
             else
             {
@@ -60,14 +62,39 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
-            AktCustomer.FirstName = tbFirstName.Text;
-            AktCustomer.LastName = tbLastName.Text;
-            AktCustomer.EMail = tbEMail.Text;
-            int i;
-            Int32.TryParse(tbBallance.Text, out i);
-            AktCustomer.Balance = i;
-            DialogResult = DialogResult.OK;
-            Close();
+            Int32.TryParse(tbID.Text, out int ii);
+            if (!Customers.ContainsKey(ii))
+            {
+                MessageBox.Show("Customer ID not found. Change not possible.");
+            }
+            else if (tbEMail.Text != Customers[ii].EMail && !Company.checkIfEMailUnique(tbEMail.Text))
+            {
+                MessageBox.Show("Email already exists.");
+            }
+            else
+            {
+                if (tbFirstName.Text.Length > 2 && tbLastName.Text.Length > 2 && tbEMail.Text.Length > 5)
+                {
+                    
+                    try
+                    {
+                        AktCustomer.EMail = tbEMail.Text;
+                        AktCustomer.FirstName = tbFirstName.Text;
+                        AktCustomer.LastName = tbLastName.Text;
+                        AktCustomer.Balance = Customers[ii].Balance;
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Email Adress not valid!");
+                    }  
+                }
+                else
+                {
+                    MessageBox.Show("To less Input.");
+                }
+            }     
         }
     }
 }

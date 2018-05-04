@@ -12,7 +12,7 @@ namespace CustomerData
 {
     public partial class Booking : Form
     {
-        public int Amount;
+        public decimal Amount;
         public int ID;
         public Booking()
         {
@@ -30,7 +30,7 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnPayIn_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(tbAmount.Text, out Amount);
+            Decimal.TryParse(tbAmount.Text, out Amount);
             Int32.TryParse(tbCustomerNumber.Text, out ID);
             DialogResult = DialogResult.OK;
             Close();
@@ -43,8 +43,7 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnPayOut_Click(object sender, EventArgs e)
         {
-            int i;
-            Int32.TryParse(tbAmount.Text, out i);
+            Decimal.TryParse(tbAmount.Text, out decimal i);
             Amount = 0-i; // make negertiv value
             Int32.TryParse(tbCustomerNumber.Text, out ID);
             DialogResult = DialogResult.OK;
