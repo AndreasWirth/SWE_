@@ -97,6 +97,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(164, 22);
             this.tbFirstName.TabIndex = 11;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // btAddCustomer
             // 
@@ -124,6 +125,7 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(164, 22);
             this.tbLastName.TabIndex = 20;
+            this.tbLastName.TextChanged += new System.EventHandler(this.tbLastName_TextChanged);
             // 
             // tbEMail
             // 

@@ -19,6 +19,9 @@ namespace CustomerData
         private Company Company;
         private Dictionary<int, Customer> Customers;
 
+        ErrorProvider ErrLastName = new ErrorProvider();
+        ErrorProvider ErrFirstName = new ErrorProvider();
+
         public NewCustomer(Company company)
         {
             InitializeComponent();
@@ -28,7 +31,7 @@ namespace CustomerData
         
         private void NewCustomer_Load(object sender, EventArgs e)
         {
-
+            
         }
         /// <summary>
         /// Generates the new Customer, and closes the Window
@@ -37,7 +40,6 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
-
             if (Customer.CheckEmail(tbEMail.Text))
             {
                 if (tbFirstName.Text.Length > 2 && tbLastName.Text.Length > 2 && tbEMail.Text.Length > 5)
@@ -109,6 +111,30 @@ namespace CustomerData
                     ii++;
                 } while (stop == false);
             } 
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text.Length <=2)
+            {
+                ErrFirstName.SetError(tbFirstName,"Name is to short.");
+            }
+            else
+            {
+                ErrFirstName.Clear();
+            }
+        }
+
+        private void tbLastName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbLastName.Text.Length <= 2)
+            {
+                ErrLastName.SetError(tbLastName, "Name is to short.");
+            }
+            else
+            {
+                ErrLastName.Clear();
+            }
         }
     }
 }

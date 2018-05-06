@@ -19,6 +19,9 @@ namespace CustomerData
         public Customer AktCustomer { get; set; }
         private Dictionary<int, Customer> Customers;
         private Company Company;
+
+        ErrorProvider ErrLastName = new ErrorProvider();
+        ErrorProvider ErrFirstName = new ErrorProvider();
         public ChangeCustomer(Company company)
         {
             InitializeComponent();
@@ -114,6 +117,30 @@ namespace CustomerData
             else
             {
                 errProvEmail.Clear();
+            }
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text.Length <= 2)
+            {
+                ErrFirstName.SetError(tbFirstName, "Name is to short.");
+            }
+            else
+            {
+                ErrFirstName.Clear();
+            }
+        }
+
+        private void tbLastName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbLastName.Text.Length <= 2)
+            {
+                ErrLastName.SetError(tbLastName, "Name is to short.");
+            }
+            else
+            {
+                ErrLastName.Clear();
             }
         }
     }
