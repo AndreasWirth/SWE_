@@ -34,7 +34,8 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnGetCustomer_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(tbID.Text, out int i);
+            int i;
+            Int32.TryParse(tbID.Text, out i);
             //Customers.ContainsKey(i);
             if (Customers.ContainsKey(i))
             {
@@ -62,7 +63,8 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(tbID.Text, out int ii);
+            int ii;
+            Int32.TryParse(tbID.Text, out ii);
             if (!Customers.ContainsKey(ii))
             {
                 MessageBox.Show("Customer ID not found. Change not possible.");

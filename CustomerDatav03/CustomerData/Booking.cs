@@ -43,7 +43,8 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnPayOut_Click(object sender, EventArgs e)
         {
-            Decimal.TryParse(tbAmount.Text, out decimal i);
+            decimal i;
+            Decimal.TryParse(tbAmount.Text, out i);
             Amount = 0-i; // make negertiv value
             Int32.TryParse(tbCustomerNumber.Text, out ID);
             DialogResult = DialogResult.OK;
