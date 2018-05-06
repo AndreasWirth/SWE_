@@ -63,6 +63,8 @@ namespace CustomerData
         /// <returns>true if ok, false if incorrect</returns>
         public static bool CheckEmail(string eMail)
         {
+            //Prüfe ob der String lang genug ist
+            if (eMail.Length < 4) return false;
             // Prüfe, ob der String ein @ enthält bzw. nicht mehr als ein @ und Teile ihn dort in zwei
             if (!eMail.Contains('@') || (eMail.Split('@').Count() - 1) >= 2) return false;
             string[] array = eMail.Split('@');
@@ -71,6 +73,8 @@ namespace CustomerData
             //Prüfe, ob sich nach dem letzten '.' 2-4 Zeichen mit lediglich Buchstaben befinden
             string[] second = array[1].Split('.');
             if (((second[second.Length - 1].Length < 2) || (second[second.Length - 1].Length > 4)) || (!isAlpha(second[second.Length - 1]))) return false;
+            // prüfe auf buchstaben vor @
+            if (array[0].Length < 2 || array[1].Length < 2) return false;
             //Prüfe, ob sich nach/vor dem @ oder ganz am Anfang ein Punkt befindet
             if (array[1].Substring(0, 1) == "." || array[0].Substring(array[0].Length - 1, 1) == "." || array[0].Substring(0, 1) == ".") return false;
             //Prüfe, ob der string sonstige ungültigen Zeichen enthält
