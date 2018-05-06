@@ -245,18 +245,18 @@ namespace CustomerData
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("No stored Data Found");
-                return;
+                //System.Windows.Forms.MessageBox.Show("No stored Data Found");
+                throw new FileNotFoundException("No stored Data Found");
             }
             if (customer.Count==0)
             {
-                System.Windows.Forms.MessageBox.Show("File was empty! No Customer added.");
-                return;
+                //System.Windows.Forms.MessageBox.Show("File was empty! No Customer added.");
+                throw new ArgumentNullException("File was empty! No Customer added.");
             }
 
             foreach (var cust in customer)
             {
-                AddCustomer(cust);
+                AddCustomer(cust);   
             }
 
         }

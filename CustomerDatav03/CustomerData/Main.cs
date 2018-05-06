@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -165,10 +166,23 @@ namespace CustomerData
                 if (SWECompany.checkPassword(forms.password))
                 {
                     //TODO catch exeption from load data for display in GUI
-                    SWECompany.GetData();
-                    CustomerDict = SWECompany.GetCustomers();
-                    KeyArray = SWECompany.GetSortedCustomer(0);
-                    showCustomer();
+                    try
+                    {
+                        SWECompany.GetData();
+                        CustomerDict = SWECompany.GetCustomers();
+                        KeyArray = SWECompany.GetSortedCustomer(0);
+                        showCustomer();
+                    }
+                    catch (ArgumentNullException argnull)
+                    {
+                        //"No stored Data Found"
+                        MessageBox.Show(argnull.Message);
+                    }
+                    catch (FileNotFoundException argfile)
+                    {
+                        //"File was empty! No Customer added."
+                        MessageBox.Show(argfile.Message);
+                    }  
                 }
                 else
                 {

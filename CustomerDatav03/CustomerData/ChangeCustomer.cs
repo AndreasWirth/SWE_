@@ -73,24 +73,21 @@ namespace CustomerData
             {
                 MessageBox.Show("Email already exists.");
             }
+            else if (!Customer.CheckEmail(tbEMail.Text))
+            {
+                MessageBox.Show("Email Adress not valid!");
+            }
             else
             {
                 if (tbFirstName.Text.Length > 2 && tbLastName.Text.Length > 2 && tbEMail.Text.Length > 5)
                 {
-                    
-                    try
-                    {
-                        AktCustomer.EMail = tbEMail.Text;
-                        AktCustomer.FirstName = tbFirstName.Text;
-                        AktCustomer.LastName = tbLastName.Text;
-                        AktCustomer.Balance = Customers[ii].Balance;
-                        DialogResult = DialogResult.OK;
-                        Close();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Email Adress not valid!");
-                    }  
+                   
+                   AktCustomer.EMail = tbEMail.Text;
+                   AktCustomer.FirstName = tbFirstName.Text;
+                   AktCustomer.LastName = tbLastName.Text;
+                   AktCustomer.Balance = Customers[ii].Balance;
+                   DialogResult = DialogResult.OK;
+                   Close(); 
                 }
                 else
                 {

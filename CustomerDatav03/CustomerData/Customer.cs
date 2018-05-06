@@ -61,7 +61,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="eMail">Email of an Customer</param>
         /// <returns>true if ok, false if incorrect</returns>
-        public bool CheckEmail(string eMail)
+        public static bool CheckEmail(string eMail)
         {
             // Prüfe, ob der String ein @ enthält bzw. nicht mehr als ein @ und Teile ihn dort in zwei
             if (!eMail.Contains('@') || (eMail.Split('@').Count() - 1) >= 2) return false;

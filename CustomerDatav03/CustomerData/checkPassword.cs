@@ -17,6 +17,7 @@ namespace CustomerData
         public checkPassword()
         {
             InitializeComponent();
+            tbPassword.Text = "YouCantGuessIT";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

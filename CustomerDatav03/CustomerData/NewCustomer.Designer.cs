@@ -130,6 +130,7 @@
             this.tbEMail.Name = "tbEMail";
             this.tbEMail.Size = new System.Drawing.Size(164, 22);
             this.tbEMail.TabIndex = 21;
+            this.tbEMail.TextChanged += new System.EventHandler(this.tbEMail_TextChanged);
             // 
             // tbBallance
             // 
