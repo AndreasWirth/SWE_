@@ -279,7 +279,7 @@ namespace CustomerData
         {
             foreach (var customer in CustomerDict)
             {
-                if (eMail == customer.Value.EMail) return false;
+                if (eMail.ToLower() == customer.Value.EMail.ToLower()) return false;
             }
             return true;
         }
