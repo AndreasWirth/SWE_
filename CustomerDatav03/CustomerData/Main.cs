@@ -68,8 +68,11 @@ namespace CustomerData
         /// <param name="e"></param>
         private void rbName_CheckedChanged(object sender, EventArgs e)
         {
-            Sort = 1;
-            ShowCustomer();
+            if (rbName.Checked)
+            {
+                Sort = 1;
+                ShowCustomer();
+            }
         }
         /// <summary>
         /// if changed in the Group Box, changes Sort algorithem to ID 
@@ -78,8 +81,11 @@ namespace CustomerData
         /// <param name="e"></param>
         private void rbID_CheckedChanged(object sender, EventArgs e)
         {
-            Sort = 0;
-            ShowCustomer();
+            if (rbID.Checked)
+            {
+                Sort = 0;
+                ShowCustomer();
+            }
         }
         private void tbFilterby_TextChanged(object sender, EventArgs e)
         {

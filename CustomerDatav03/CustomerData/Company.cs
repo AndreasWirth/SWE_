@@ -111,44 +111,43 @@ namespace CustomerData
             if (length >0)
             {
                 int k = 0;
+                int[] keyarray = new int[indizes.Length];
                 switch (sortby)
                 {
                     case 1:
+                        // sort by first letter of last name
                         foreach (var custom in CustomerDict)   // create array of first char (int representation) of last name 
                         {
                             chars[k] = custom.Value.LastName.ToLower()[0] - 97;
                             k++;
                         }
-                        break;
-                    default:
-                        foreach (var custom in CustomerDict)
+                        int i = 0;
+                        foreach (var element in CustomerDict)      // iterate over customers
                         {
-                            chars[k] = custom.Value.ID;
-                            k++;
+                            int currentChar = element.Value.LastName.ToLower()[0] - 97;
+                            int count = 0;
+                            for (int j = 0; j < i; j++)     // iterate over already set indizes
+                            {
+                                if (chars[j] > currentChar) indizes[j]++;   // count all higher chars one up
+                                else count++;                               // count current couter one up, for each lower char
+                            }
+                            indizes[i] = count;     // set current index to counter value
+                            i++;
+                        }
+                        //int[] keyarray = new int[indizes.Length];
+                        int count2 = 0;
+                        foreach (var customer in CustomerDict)
+                        {
+                            int place = indizes[count2];
+                            keyarray[place] = customer.Key;
+                            count2++;
                         }
                         break;
-                }
-                int i = 0;
-                foreach (var element in CustomerDict)      // iterate over customers
-                {
-                    int currentChar = element.Value.LastName.ToLower()[0] - 97;
-                    int count = 0;
-                    for (int j = 0; j < i; j++)     // iterate over already set indizes
-                    {
-                        if (chars[j] > currentChar) indizes[j]++;   // count all higher chars one up
-                        else count++;                               // count current couter one up, for each lower char
-                    }
-                    indizes[i] = count;     // set current index to counter value
-                    i++;
-                }
-                //TODO: erstelle dictionary zur ausgabe
-                int[] keyarray = new int[indizes.Length];
-                int count2 = 0;
-                foreach (var customer in CustomerDict)
-                {
-                    int place = indizes[count2];   
-                    keyarray[place]= customer.Key;
-                    count2++;
+                    default:
+                        // sort by index
+                        CustomerDict.Keys.CopyTo(keyarray,0);
+                        Array.Sort(keyarray);
+                        break;
                 }
                 return keyarray;
             }
