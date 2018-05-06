@@ -164,7 +164,7 @@ namespace CustomerData
             {
                 if (SWECompany.checkPassword(forms.password))
                 {
-                    //TODO catch exeption from load data for dosplay in GUI
+                    //TODO catch exeption from load data for display in GUI
                     SWECompany.GetData();
                     CustomerDict = SWECompany.GetCustomers();
                     KeyArray = SWECompany.GetSortedCustomer(0);
