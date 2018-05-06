@@ -56,9 +56,7 @@ namespace CustomerData
                 else
                 {
                     MessageBox.Show("Email already exists. Customer not added.");
-                }
-                
-               
+                } 
             }
 
             CustomerDict = SWECompany.GetCustomers();

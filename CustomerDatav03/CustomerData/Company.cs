@@ -14,7 +14,7 @@ namespace CustomerData
 {
     public class Company
     {
-        private Dictionary<int,Customer> CustomerDict = new Dictionary<int, Customer>();
+        private Dictionary<int,Customer> customerDict = new Dictionary<int, Customer>();
         private string password = "YouCantGuessIT";
 
        
@@ -34,7 +34,7 @@ namespace CustomerData
             }
             else
             {
-                CustomerDict.Add(newCustomer.ID, newCustomer);   
+                customerDict.Add(newCustomer.ID, newCustomer);   
             }
             
         }
@@ -44,7 +44,7 @@ namespace CustomerData
         /// <returns>returns the Customer Dictionary</returns>
         public Dictionary<int, Customer> GetCustomers()
         {
-            return CustomerDict;        
+            return customerDict;        
         }
         /// <summary>
         /// Do a Transition/ Booking for a Customer
@@ -55,7 +55,7 @@ namespace CustomerData
         {
             try
             {
-                CustomerDict[CustomerID].DoATransition(amount);
+                customerDict[CustomerID].DoATransition(amount);
             }
             catch (Exception)
             {
@@ -74,7 +74,7 @@ namespace CustomerData
         {
             try
             {
-                CustomerDict[CustomerID] = changedCustomer;
+                customerDict[CustomerID] = changedCustomer;
             }
             catch (Exception)
             {
@@ -90,7 +90,7 @@ namespace CustomerData
         /// <returns>array of keys for Customers Dictionary</returns>
         public int[] GetSortedCustomer(int sortby)
         {
-            int length = CustomerDict.Count;
+            int length = customerDict.Count;
             int[] indizes = new int[length];
             int[] chars = new int[length];
             if (length >0)
@@ -99,14 +99,14 @@ namespace CustomerData
                 switch (sortby)
                 {
                     case 1:
-                        foreach (var custom in CustomerDict)   // create array of first char (int representation) of last name 
+                        foreach (var custom in customerDict)   // create array of first char (int representation) of last name 
                         {
                             chars[k] = custom.Value.LastName.ToLower()[0] - 97;
                             k++;
                         }
                         break;
                     default:
-                        foreach (var custom in CustomerDict)
+                        foreach (var custom in customerDict)
                         {
                             chars[k] = custom.Value.ID;
                             k++;
@@ -114,7 +114,7 @@ namespace CustomerData
                         break;
                 }
                 int i = 0;
-                foreach (var element in CustomerDict)      // iterate over customers
+                foreach (var element in customerDict)      // iterate over customers
                 {
                     int currentChar = element.Value.LastName.ToLower()[0] - 97;
                     int count = 0;
@@ -129,7 +129,7 @@ namespace CustomerData
                 //TODO: erstelle dictionary zur ausgabe
                 int[] keyarray = new int[indizes.Length];
                 int count2 = 0;
-                foreach (var customer in CustomerDict)
+                foreach (var customer in customerDict)
                 {
                     int place = indizes[count2];   
                     keyarray[place]= customer.Key;
@@ -155,13 +155,13 @@ namespace CustomerData
         /// </summary>
         public void StoreData()
         {
-            if (CustomerDict.Count == 0)
+            if (customerDict.Count == 0)
             {
                 //System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
                 throw new Exception("Empty Database! No Customers found. Storeing data canceled");
             }
             List<Customer> customer = new List<Customer>();
-            foreach (var cust in CustomerDict)
+            foreach (var cust in customerDict)
             {
                 customer.Add(cust.Value);
             }
@@ -254,9 +254,19 @@ namespace CustomerData
                 throw new ArgumentNullException("File was empty! No Customer added.");
             }
 
+            customerDict.Clear();
+
             foreach (var cust in customer)
             {
-                AddCustomer(cust);   
+                try
+                {
+                    AddCustomer(cust);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                    
             }
 
         }
@@ -267,7 +277,7 @@ namespace CustomerData
         /// <returns>false if already in dictionary, true if free</returns>
         private bool checkIfIDUnique(int customerID)
         {
-            if (CustomerDict.ContainsKey(customerID)) return false;
+            if (customerDict.ContainsKey(customerID)) return false;
             return true;
         }
         /// <summary>
@@ -277,7 +287,7 @@ namespace CustomerData
         /// <returns>false if already in the Dictionary, true if free</returns>
         public bool checkIfEMailUnique(string eMail)
         {
-            foreach (var customer in CustomerDict)
+            foreach (var customer in customerDict)
             {
                 if (eMail.ToLower() == customer.Value.EMail.ToLower()) return false;
             }

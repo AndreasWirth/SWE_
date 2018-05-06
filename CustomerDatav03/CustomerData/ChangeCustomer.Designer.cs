@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbEMail = new System.Windows.Forms.TextBox();
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -41,6 +42,8 @@
             this.tbID = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbBallance = new System.Windows.Forms.TextBox();
+            this.errProvEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // tbEMail
@@ -49,6 +52,7 @@
             this.tbEMail.Name = "tbEMail";
             this.tbEMail.Size = new System.Drawing.Size(164, 22);
             this.tbEMail.TabIndex = 33;
+            this.tbEMail.TextChanged += new System.EventHandler(this.tbEMail_TextChanged);
             // 
             // tbLastName
             // 
@@ -155,6 +159,10 @@
             this.tbBallance.Size = new System.Drawing.Size(164, 22);
             this.tbBallance.TabIndex = 39;
             // 
+            // errProvEmail
+            // 
+            this.errProvEmail.ContainerControl = this;
+            // 
             // ChangeCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,6 +184,7 @@
             this.Name = "ChangeCustomer";
             this.Text = "ChangeCustomer";
             this.Load += new System.EventHandler(this.ChangeCustomer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +204,6 @@
         private System.Windows.Forms.MaskedTextBox tbID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbBallance;
+        private System.Windows.Forms.ErrorProvider errProvEmail;
     }
 }

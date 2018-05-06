@@ -79,21 +79,39 @@ namespace CustomerData
             }
             else
             {
-                if (tbFirstName.Text.Length > 2 && tbLastName.Text.Length > 2 && tbEMail.Text.Length > 5)
+                if (Customer.CheckEmail(tbEMail.Text))
                 {
-                   
-                   AktCustomer.EMail = tbEMail.Text;
-                   AktCustomer.FirstName = tbFirstName.Text;
-                   AktCustomer.LastName = tbLastName.Text;
-                   AktCustomer.Balance = Customers[ii].Balance;
-                   DialogResult = DialogResult.OK;
-                   Close(); 
+                    if (tbFirstName.Text.Length > 2 && tbLastName.Text.Length > 2 && tbEMail.Text.Length > 5)
+                    {
+                        AktCustomer.EMail = tbEMail.Text;
+                        AktCustomer.FirstName = tbFirstName.Text;
+                        AktCustomer.LastName = tbLastName.Text;
+                        AktCustomer.Balance = Customers[ii].Balance;
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("To less Input.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("To less Input.");
+                    MessageBox.Show("Email Adress not valid!");
                 }
             }     
+        }
+
+        private void tbEMail_TextChanged(object sender, EventArgs e)
+        {
+            if (!Customer.CheckEmail(tbEMail.Text))
+            {
+                errProvEmail.SetError(tbEMail, "Invalid Email");
+            }
+            else
+            {
+                errProvEmail.Clear();
+            }
         }
     }
 }
