@@ -12,12 +12,33 @@ using System.Windows.Forms.VisualStyles;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Main Class for the CustomerHandler Application
+    /// </summary>
     public partial class Main : Form
     {
+        /// <summary>
+        /// Company which collects and contains the Customers
+        /// </summary>
         private Company SWECompany;
+        /// <summary>
+        /// Copy of the Data from the Company, used for displaying an checking
+        /// MVC based
+        /// </summary>
         private Dictionary<int, Customer> CustomerDict = new Dictionary<int, Customer>();
+        /// <summary>
+        /// Saves the order of the Customer keys to represent them correct in the GUI
+        /// </summary>
         private int[] KeyArray= new int[0];
-        private int sort =0;
+        /// <summary>
+        /// REprecents the order on which the Customers should be displayed in the GUI
+        /// </summary>
+        private int Sort =0;
+
+        #region GUI Elements / GUI Evetns
+        /// <summary>
+        /// Entry point for the Main Window
+        /// </summary>
         public Main()
         {
             InitializeComponent();
@@ -27,26 +48,64 @@ namespace CustomerData
         {
             
         }
-        #region GUI Elements / GUI Evetns
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            if (rbID.Checked)
+            {
+                rbName.Checked = false;
+            }
+            if (rbName.Checked)
+            {
+                rbID.Checked = false;
+            }
+        }
+
+        /// <summary>
+        /// if changed in the Group Box, changes Sort algorithem to Last Name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbName_CheckedChanged(object sender, EventArgs e)
+        {
+            Sort = 1;
+            ShowCustomer();
+        }
+        /// <summary>
+        /// if changed in the Group Box, changes Sort algorithem to ID 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbID_CheckedChanged(object sender, EventArgs e)
+        {
+            Sort = 0;
+            ShowCustomer();
+        }
+        private void tbFilterby_TextChanged(object sender, EventArgs e)
+        {
+            if (this.Text.Length > 2)
+            {
+                ShowCustomer();
+            }
+        }
 
         #region Buttons
         /// <summary>
-        /// opens the Widow to add a new Customer
+        /// Opens the Widow to add a new Customer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btOpenAddCustomer_Click(object sender, EventArgs e)
         {
-            NewCustomer form = new NewCustomer();
+            NewCustomer form = new NewCustomer(SWECompany);
             var result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                if (SWECompany.checkIfEMailUnique(form.newCustomer.EMail))
+                if (SWECompany.CheckIfEMailUnique(form.AddCustomer.EMail))
                 {
                     try
                     {
-                        SWECompany.AddCustomer(form.newCustomer);
+                        SWECompany.AddCustomer(form.AddCustomer);
                     }
                     catch (Exception)
                     {
@@ -60,11 +119,13 @@ namespace CustomerData
             }
 
             CustomerDict = SWECompany.GetCustomers();
-            showCustomer();
+            ShowCustomer();
         }
 
         /// <summary>
         /// Adds test customers to the Dictionary, and displays them in the ListBox
+        /// Not necessary for the Application.
+        /// Addet to simplify the testing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -84,10 +145,10 @@ namespace CustomerData
             }
             CustomerDict = SWECompany.GetCustomers();
             // make data visible
-            showCustomer();
+            ShowCustomer();
         }
         /// <summary>
-        /// opens the Window for a Transition
+        /// Opens the Window for a Transition
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -107,10 +168,10 @@ namespace CustomerData
                 }
                 
             }
-            showCustomer();
+            ShowCustomer();
         }
         /// <summary>
-        /// opens the Window to change the Data of a Customer
+        /// Opens the Window to change the Data of a Customer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -132,7 +193,7 @@ namespace CustomerData
                    
 
             }
-            showCustomer();
+            ShowCustomer();
         }
         /// <summary>
         /// Saved the Data
@@ -161,7 +222,7 @@ namespace CustomerData
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                if (SWECompany.checkPassword(forms.password))
+                if (SWECompany.CheckPassword(forms.Password))
                 {
                     //TODO catch exeption from load data for display in GUI
                     try
@@ -169,7 +230,7 @@ namespace CustomerData
                         SWECompany.GetData();
                         CustomerDict = SWECompany.GetCustomers();
                         KeyArray = SWECompany.GetSortedCustomer(0);
-                        showCustomer();
+                        ShowCustomer();
                     }
                     catch (ArgumentNullException argnull)
                     {
@@ -190,55 +251,17 @@ namespace CustomerData
         }
         #endregion
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-            if (rbID.Checked)
-            {
-                rbName.Checked = false;
-            }
-            if (rbName.Checked)
-            {
-                rbID.Checked = false;
-            }
-        }
-
-        /// <summary>
-        /// changes sort algorithem to Last Name if changed in the Group Box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rbName_CheckedChanged(object sender, EventArgs e)
-        {
-            sort = 1;
-            showCustomer();
-        }
-        /// <summary>
-        /// changes sort algorithem to ID if changed in the Group Box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rbID_CheckedChanged(object sender, EventArgs e)
-        {
-            sort = 0;
-            showCustomer();
-        }
-        private void tbFilterby_TextChanged(object sender, EventArgs e)
-        {
-            if (this.Text.Length > 2)
-            {
-                showCustomer();
-            }
-        }
         #endregion
+
         #region Methodes
 
         /// <summary>
         /// Prints the Data in the Listtextbox on the Main Window
         /// Handles Filter and sorting internaly
         /// </summary>
-        private void showCustomer()
+        private void ShowCustomer()
         {
-            KeyArray = SWECompany.GetSortedCustomer(sort);
+            KeyArray = SWECompany.GetSortedCustomer(Sort);
             if (KeyArray.Length > 0)
             {
                 try
@@ -252,7 +275,7 @@ namespace CustomerData
                         // filtering the ouput
                         if (tbFilterby.Text.Length > 2)
                         {
-                            if (checkFilter(aktCustomer, aktFilter))
+                            if (CheckFilter(aktCustomer, aktFilter))
                             {
                                 lbCustomer.Items.Add(CustomerDict[key].ToString());
                             }
@@ -276,7 +299,7 @@ namespace CustomerData
         /// <param name="aktCustomer">customer to check</param>
         /// <param name="Filter">filter tex which has to be inside</param>
         /// <returns>true if the text maches in First or Last NAme</returns>
-        public bool checkFilter(Customer aktCustomer, string Filter)
+        public bool CheckFilter(Customer aktCustomer, string Filter)
         {
             // ToLower will cost speed, but it is more robust
             if (aktCustomer.FirstName.ToLower().Contains(Filter.ToLower()) || aktCustomer.LastName.ToLower().Contains(Filter.ToLower()))

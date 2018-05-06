@@ -12,21 +12,36 @@ using System.Xml.Serialization;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Company Class which holds all Customers in an Ductionary (key = ID, Value = Customer)
+    /// Also handels Data usage of the Customers (save & load the Data)
+    /// </summary>
     public class Company
     {
-        private Dictionary<int,Customer> customerDict = new Dictionary<int, Customer>();
-        private string password = "YouCantGuessIT";
+        private Dictionary<int,Customer> CustomerDict = new Dictionary<int, Customer>();
+        private string Password = "YouCantGuessIT";
 
-       
+        // Secret key string
+        static string SecretKey = "YouGuess";
+        // Byte array key. For encryption and decryption purpose.
+        readonly static byte[] Key = Encoding.UTF8.GetBytes(SecretKey);
+        // Byte array iv. For encryption and decryption purpose.
+        readonly static byte[] IV = Encoding.UTF8.GetBytes(SecretKey);
+        // DES Crypto Service Provider.
+        static DESCryptoServiceProvider Des;
+
+        static ICryptoTransform Desencrypt;
+
+
         /// <summary>
         /// Adds a new Customer
         /// </summary>
         /// <param name="newCustomer">Customer to add</param>
         public void AddCustomer(Customer newCustomer)
         {
-            if (!checkIfIDUnique(newCustomer.ID))
+            if (!CheckIfIDUnique(newCustomer.ID))
             {
-                //System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
+                //System.Windows.Forms.MessageBox.Show("Customer ID '"+ AddCustomer.ID+ "' already used");
                 // It would be possible to return an fault, and ask the User to overwritte existing Customer.
                 // Due to the fact that it isn't in the requironment and of time issus it is not implemented.
 
@@ -34,7 +49,7 @@ namespace CustomerData
             }
             else
             {
-                customerDict.Add(newCustomer.ID, newCustomer);   
+                CustomerDict.Add(newCustomer.ID, newCustomer);   
             }
             
         }
@@ -44,7 +59,7 @@ namespace CustomerData
         /// <returns>returns the Customer Dictionary</returns>
         public Dictionary<int, Customer> GetCustomers()
         {
-            return customerDict;        
+            return CustomerDict;        
         }
         /// <summary>
         /// Do a Transition/ Booking for a Customer
@@ -55,7 +70,7 @@ namespace CustomerData
         {
             try
             {
-                customerDict[CustomerID].DoATransition(amount);
+                CustomerDict[CustomerID].DoATransition(amount);
             }
             catch (Exception)
             {
@@ -74,7 +89,7 @@ namespace CustomerData
         {
             try
             {
-                customerDict[CustomerID] = changedCustomer;
+                CustomerDict[CustomerID] = changedCustomer;
             }
             catch (Exception)
             {
@@ -90,7 +105,7 @@ namespace CustomerData
         /// <returns>array of keys for Customers Dictionary</returns>
         public int[] GetSortedCustomer(int sortby)
         {
-            int length = customerDict.Count;
+            int length = CustomerDict.Count;
             int[] indizes = new int[length];
             int[] chars = new int[length];
             if (length >0)
@@ -99,14 +114,14 @@ namespace CustomerData
                 switch (sortby)
                 {
                     case 1:
-                        foreach (var custom in customerDict)   // create array of first char (int representation) of last name 
+                        foreach (var custom in CustomerDict)   // create array of first char (int representation) of last name 
                         {
                             chars[k] = custom.Value.LastName.ToLower()[0] - 97;
                             k++;
                         }
                         break;
                     default:
-                        foreach (var custom in customerDict)
+                        foreach (var custom in CustomerDict)
                         {
                             chars[k] = custom.Value.ID;
                             k++;
@@ -114,7 +129,7 @@ namespace CustomerData
                         break;
                 }
                 int i = 0;
-                foreach (var element in customerDict)      // iterate over customers
+                foreach (var element in CustomerDict)      // iterate over customers
                 {
                     int currentChar = element.Value.LastName.ToLower()[0] - 97;
                     int count = 0;
@@ -129,7 +144,7 @@ namespace CustomerData
                 //TODO: erstelle dictionary zur ausgabe
                 int[] keyarray = new int[indizes.Length];
                 int count2 = 0;
-                foreach (var customer in customerDict)
+                foreach (var customer in CustomerDict)
                 {
                     int place = indizes[count2];   
                     keyarray[place]= customer.Key;
@@ -144,9 +159,9 @@ namespace CustomerData
         /// </summary>
         /// <param name="password"></param>
         /// <returns>True if correct, fasle if not</returns>
-        public bool checkPassword(string password)
+        public bool CheckPassword(string password)
         {
-            if (this.password == password)
+            if (this.Password == password)
                 return true;
             return false;
         }
@@ -155,13 +170,13 @@ namespace CustomerData
         /// </summary>
         public void StoreData()
         {
-            if (customerDict.Count == 0)
+            if (CustomerDict.Count == 0)
             {
                 //System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
                 throw new Exception("Empty Database! No Customers found. Storeing data canceled");
             }
             List<Customer> customer = new List<Customer>();
-            foreach (var cust in customerDict)
+            foreach (var cust in CustomerDict)
             {
                 customer.Add(cust.Value);
             }
@@ -182,15 +197,15 @@ namespace CustomerData
             //Read the serialized stream and store its byte array value to our byteArray variable
             serializedStream.Read(byteArray, 0, byteArray.Length);
             //Instantiate a DES descryptor service provider type object
-            des = new DESCryptoServiceProvider();
-            des.Padding = PaddingMode.PKCS7;
-            des.Mode = CipherMode.CBC;
-            des.Key = Key;
-            des.IV = IV;
+            Des = new DESCryptoServiceProvider();
+            Des.Padding = PaddingMode.PKCS7;
+            Des.Mode = CipherMode.CBC;
+            Des.Key = Key;
+            Des.IV = IV;
             //Create the Encryptor
-            desencrypt = des.CreateEncryptor();
+            Desencrypt = Des.CreateEncryptor();
             //Instantiate a crypto stream object, construct with file stream, encryptor. Note that the mode we use is write.
-            CryptoStream cryptStream = new CryptoStream(fsWrite, desencrypt, CryptoStreamMode.Write);
+            CryptoStream cryptStream = new CryptoStream(fsWrite, Desencrypt, CryptoStreamMode.Write);
             //Write the byteArray to our filestream via crypStream
             cryptStream.Write(byteArray, 0, byteArray.Length);
             //flush and close our stream
@@ -212,15 +227,15 @@ namespace CustomerData
                 using (var fsread = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open, FileAccess.Read))
                 {
                     //Create DES crypto service provider object
-                    des = new DESCryptoServiceProvider();
-                    des.Padding = PaddingMode.PKCS7;
-                    des.Mode = CipherMode.CBC;
-                    des.Key = Key;
-                    des.IV = IV;
+                    Des = new DESCryptoServiceProvider();
+                    Des.Padding = PaddingMode.PKCS7;
+                    Des.Mode = CipherMode.CBC;
+                    Des.Key = Key;
+                    Des.IV = IV;
                     //Create descryptor
-                    desencrypt = des.CreateDecryptor();
+                    Desencrypt = Des.CreateDecryptor();
                     //Construct the cryptpstream with filestream that we used to store data that we read from file
-                    CryptoStream cryptStream = new CryptoStream(fsread, desencrypt, CryptoStreamMode.Read);
+                    CryptoStream cryptStream = new CryptoStream(fsread, Desencrypt, CryptoStreamMode.Read);
                     //Create byte array object with length of our filestream
                     byte[] byteArray = new byte[fsread.Length];
                     //Store the byte in cryptStream to our byteArray
@@ -254,7 +269,7 @@ namespace CustomerData
                 throw new ArgumentNullException("File was empty! No Customer added.");
             }
 
-            customerDict.Clear();
+            CustomerDict.Clear();
 
             foreach (var cust in customer)
             {
@@ -275,9 +290,9 @@ namespace CustomerData
         /// </summary>
         /// <param name="customerID">CustomerID (Dictionary key)</param>
         /// <returns>false if already in dictionary, true if free</returns>
-        private bool checkIfIDUnique(int customerID)
+        private bool CheckIfIDUnique(int customerID)
         {
-            if (customerDict.ContainsKey(customerID)) return false;
+            if (CustomerDict.ContainsKey(customerID)) return false;
             return true;
         }
         /// <summary>
@@ -285,25 +300,14 @@ namespace CustomerData
         /// </summary>
         /// <param name="eMail">Email of a Customer</param>
         /// <returns>false if already in the Dictionary, true if free</returns>
-        public bool checkIfEMailUnique(string eMail)
+        public bool CheckIfEMailUnique(string eMail)
         {
-            foreach (var customer in customerDict)
+            foreach (var customer in CustomerDict)
             {
                 if (eMail.ToLower() == customer.Value.EMail.ToLower()) return false;
             }
             return true;
         }
-
-        // Secret key string
-        static string secretKey = "YouGuess";
-        // Byte array key. For encryption and decryption purpose.
-        readonly static byte[] Key = Encoding.UTF8.GetBytes(secretKey);
-        // Byte array iv. For encryption and decryption purpose.
-        readonly static byte[] IV = Encoding.UTF8.GetBytes(secretKey);
-        // DES Crypto Service Provider.
-        static DESCryptoServiceProvider des;
-
-        static ICryptoTransform desencrypt;
 
     }
 }

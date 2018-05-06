@@ -10,17 +10,21 @@ using System.Windows.Forms;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Forms to change the information of a Customer.
+    /// Provides a show Customer to collect and show the Data of a given ID
+    /// </summary>
     public partial class ChangeCustomer : Form
     {
         public Customer AktCustomer { get; set; }
         private Dictionary<int, Customer> Customers;
         private Company Company;
-        public ChangeCustomer(Company Company)
+        public ChangeCustomer(Company company)
         {
             InitializeComponent();
             
-            this.Company = Company;
-            this.Customers = Company.GetCustomers();
+            this.Company = company;
+            this.Customers = company.GetCustomers();
         }
 
         private void ChangeCustomer_Load(object sender, EventArgs e)
@@ -28,7 +32,7 @@ namespace CustomerData
             
         }
         /// <summary>
-        /// putts the actuall Data of the choosen Custome in the Window
+        /// Uses the Customer ID and displayes the Customer Data
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -36,7 +40,6 @@ namespace CustomerData
         {
             int i;
             Int32.TryParse(tbID.Text, out i);
-            //Customers.ContainsKey(i);
             if (Customers.ContainsKey(i))
             {
                 AktCustomer = Customers[i];
@@ -57,7 +60,7 @@ namespace CustomerData
             Close();
         }
         /// <summary>
-        /// Setting the Parameters and for the changed customer and give it back to the main Window
+        /// Setting the Parameters for the changed customer, and give it back to the main Window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -69,7 +72,7 @@ namespace CustomerData
             {
                 MessageBox.Show("Customer ID not found. Change not possible.");
             }
-            else if (tbEMail.Text != Customers[ii].EMail && !Company.checkIfEMailUnique(tbEMail.Text))
+            else if (tbEMail.Text != Customers[ii].EMail && !Company.CheckIfEMailUnique(tbEMail.Text))
             {
                 MessageBox.Show("Email already exists.");
             }

@@ -50,7 +50,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Please enter password";
+            this.label1.Text = "Please enter Password";
             // 
             // btnConfirm
             // 
@@ -74,7 +74,7 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // checkPassword
+            // CheckPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbPassword);
             this.Name = "checkPassword";
-            this.Text = "checkPassword";
+            this.Text = "CheckPassword";
             this.ResumeLayout(false);
             this.PerformLayout();
 

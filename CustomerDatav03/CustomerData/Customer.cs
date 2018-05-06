@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Customer Class to hold all necessary Data of a Customer, and gives Methodes to check standarts
+    /// </summary>
     [Serializable]
-    
     public class Customer
     {
         public string FirstName { get; set; }
@@ -31,11 +33,14 @@ namespace CustomerData
         public decimal Balance { get; set; }
         public DateTime LastChange { get; set; }
         public int ID { get; set; }
-
-        public Customer()
-        {
-
-        }
+        /// <summary>
+        /// Constructor for a new Customer
+        /// </summary>
+        /// <param name="firstName">first name of the new Customer</param>
+        /// <param name="lastName">last name of the new Customer</param>
+        /// <param name="email">email adress of the new Customer</param>
+        /// <param name="balance">start ballance of the new Customer</param>
+        /// <param name="ID">ID of the new Customer</param>
         public Customer(string firstName, string lastName, string email, decimal balance, int ID )
         {
             this.FirstName = firstName;
@@ -45,19 +50,25 @@ namespace CustomerData
             this.LastChange = DateTime.Now;;
             this.ID = ID;
         }
-
+        /// <summary>
+        /// Adds the given amount
+        /// </summary>
+        /// <param name="amount">amount do add</param>
         public void DoATransition(decimal amount)
         {
             this.Balance += amount;
         }
-
+        /// <summary>
+        /// overwritten To string method, prepared to show in GUI
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string s =this.ID+" "+ this.FirstName + " " + this.LastName + " " + this.EMail + " " + this.Balance;
             return s;
         }
         /// <summary>
-        /// checks if Email matches the given standarts
+        /// checks if the Email string matches the given standarts
         /// </summary>
         /// <param name="eMail">Email of an Customer</param>
         /// <returns>true if ok, false if incorrect</returns>
@@ -72,13 +83,13 @@ namespace CustomerData
             if ((array[1].Split('.').Count() - 1) < 1) return false;
             //Prüfe, ob sich nach dem letzten '.' 2-4 Zeichen mit lediglich Buchstaben befinden
             string[] second = array[1].Split('.');
-            if (((second[second.Length - 1].Length < 2) || (second[second.Length - 1].Length > 4)) || (!isAlpha(second[second.Length - 1]))) return false;
+            if (((second[second.Length - 1].Length < 2) || (second[second.Length - 1].Length > 4)) || (!IsAlpha(second[second.Length - 1]))) return false;
             // prüfe auf buchstaben vor @
             if (array[0].Length < 2 || array[1].Length < 2) return false;
             //Prüfe, ob sich nach/vor dem @ oder ganz am Anfang ein Punkt befindet
             if (array[1].Substring(0, 1) == "." || array[0].Substring(array[0].Length - 1, 1) == "." || array[0].Substring(0, 1) == ".") return false;
             //Prüfe, ob der string sonstige ungültigen Zeichen enthält
-            if (!isAllowed(eMail) && !isAlpha(eMail)) return false;
+            if (!IsAllowed(eMail) && !IsAlpha(eMail)) return false;
             return true;
         }
         /// <summary>
@@ -86,7 +97,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="text">text to check</param>
         /// <returns>treu if only letters</returns>
-        public static bool isAlpha(string text)
+        public static bool IsAlpha(string text)
         {
             char[] c = text.ToCharArray();
             for (int i = 0; i < c.Length; i++)
@@ -106,7 +117,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="text">text to check</param>
         /// <returns>true if ok, false if contains forbitten chars</returns>
-        public static bool isAllowed(string text)
+        public static bool IsAllowed(string text)
         {
             char[] c = text.ToCharArray();
             for (int i = 0; i < c.Length; i++)

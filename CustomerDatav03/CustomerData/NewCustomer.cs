@@ -10,14 +10,20 @@ using System.Windows.Forms;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Forms for collecting the necessary Data to greate a new Customer
+    /// </summary>
     public partial class NewCustomer : Form
     {
-        public Customer newCustomer { get; set; }
+        public Customer AddCustomer { get; set; }
+        private Company Company;
+        private Dictionary<int, Customer> Customers;
 
-        public NewCustomer()
+        public NewCustomer(Company company)
         {
             InitializeComponent();
-           
+            this.Company = company;
+            this.Customers = Company.GetCustomers();
         }
         
         private void NewCustomer_Load(object sender, EventArgs e)
@@ -25,7 +31,7 @@ namespace CustomerData
 
         }
         /// <summary>
-        /// gives the main window the Data for the new Customer
+        /// Generates the new Customer, and closes the Window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -40,7 +46,7 @@ namespace CustomerData
                     Int32.TryParse(tbBallance.Text, out i);
                     int u;
                     Int32.TryParse(tbCustomerNumber.Text, out u);
-                    newCustomer = new Customer(tbFirstName.Text, tbLastName.Text, tbEMail.Text, i, u);
+                    AddCustomer = new Customer(tbFirstName.Text, tbLastName.Text, tbEMail.Text, i, u);
                     DialogResult = DialogResult.OK;
                     Close();
                 }
@@ -76,6 +82,33 @@ namespace CustomerData
             {
                 errProvEmail.Clear();
             }
+        }
+
+        private void btnGenerateID_Click(object sender, EventArgs e)
+        {
+            bool stop = false;
+            int ii = 0;
+            if (Customers.Count == 0)
+            {
+                tbCustomerNumber.Text = ii.ToString();
+            }
+            else
+            {
+                do
+                {
+                    if (!Customers.ContainsKey(ii))
+                    {
+                        tbCustomerNumber.Text = ii.ToString();
+                        stop = true;
+                    }
+                    if (ii > Customers.Keys.Max())
+                    {
+                        stop = true;
+                        tbCustomerNumber.Text = (Customers.Keys.Max() + 1).ToString();
+                    }
+                    ii++;
+                } while (stop == false);
+            } 
         }
     }
 }
