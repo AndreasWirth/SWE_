@@ -32,5 +32,10 @@ namespace CustomerData
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void checkPassword_Load(object sender, EventArgs e)
+        {
+            Text = "Entry Password";
+        }
     }
 }

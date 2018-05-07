@@ -21,7 +21,7 @@ namespace CustomerData
 
         private void Booking_Load(object sender, EventArgs e)
         {
-
+            Text = "Book Amount to Customer";
         }
         /// <summary>
         /// Gives the main Window the amount to pay in for the choosen Customer

@@ -46,7 +46,7 @@ namespace CustomerData
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            
+            Text = "Customer Handler";
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

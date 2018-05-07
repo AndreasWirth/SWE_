@@ -31,7 +31,7 @@ namespace CustomerData
         
         private void NewCustomer_Load(object sender, EventArgs e)
         {
-            
+            Text = "Add Customer";
         }
         /// <summary>
         /// Generates the new Customer, and closes the Window

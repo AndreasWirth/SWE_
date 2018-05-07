@@ -32,7 +32,7 @@ namespace CustomerData
 
         private void ChangeCustomer_Load(object sender, EventArgs e)
         {
-            
+            Text = "Change Customer";
         }
         /// <summary>
         /// Uses the Customer ID and displayes the Customer Data
