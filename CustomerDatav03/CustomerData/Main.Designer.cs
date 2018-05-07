@@ -96,7 +96,7 @@
             this.lbCustomer.Location = new System.Drawing.Point(47, 218);
             this.lbCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbCustomer.Name = "lbCustomer";
-            this.lbCustomer.Size = new System.Drawing.Size(700, 164);
+            this.lbCustomer.Size = new System.Drawing.Size(730, 164);
             this.lbCustomer.TabIndex = 5;
             // 
             // btnSaveData
@@ -186,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 489);
+            this.ClientSize = new System.Drawing.Size(825, 489);
             this.Controls.Add(this.gBFilterBy);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLoadData);

@@ -33,6 +33,7 @@ namespace CustomerData
         public decimal Balance { get; set; }
         public DateTime LastChange { get; set; }
         public int ID { get; set; }
+
         /// <summary>
         /// Constructor for a new Customer
         /// </summary>
@@ -47,7 +48,25 @@ namespace CustomerData
             this.LastName = lastName;
             this.EMail = email;
             this.Balance = balance;
-            this.LastChange = DateTime.Now;;
+            this.LastChange = DateTime.Now;
+            this.ID = ID;
+        }
+        /// <summary>
+        /// Constructor for a already existing Customer with Lastcahnge
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="email"></param>
+        /// <param name="balance"></param>
+        /// <param name="ID"></param>
+        /// <param name="lastChange"></param>
+        public Customer(string firstName, string lastName, string email, decimal balance, int ID, DateTime lastChange)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.EMail = email;
+            this.Balance = balance;
+            this.LastChange = lastChange;
             this.ID = ID;
         }
         /// <summary>
@@ -57,6 +76,7 @@ namespace CustomerData
         public void DoATransition(decimal amount)
         {
             this.Balance += amount;
+            this.LastChange = DateTime.Now;
         }
         /// <summary>
         /// overwritten To string method, prepared to show in GUI
@@ -64,8 +84,54 @@ namespace CustomerData
         /// <returns></returns>
         public override string ToString()
         {
-            string s =this.ID+" "+ this.FirstName + " " + this.LastName + " " + this.EMail + " " + this.Balance;
+            string s =this.ID+" | "+ this.FirstName + " | " + this.LastName + " | " + this.EMail + " | " + this.Balance + " | " + LastChange;
             return s;
+        }
+        /// <summary>
+        /// Builds a GUI string so that the Data can be Displayed in Rows.
+        /// Fills the String with Blances to show den below each other.
+        /// </summary>
+        /// <returns>Blanc filled String to Display in GUI</returns>
+        public string GetClusteredString()
+        {
+            /*
+            StringBuilder s = new StringBuilder();
+            
+            const int LENGTID = 10;
+            const int LENGTFIRSTNAME = 20;
+            const int LENGTLASTNAME = 40;
+            const int LENGTEMAIL = 60;
+            const int LENGTBALLANCE = 70;
+            const int LENGTLASTCHANGE = 90;
+            
+            s.Append(MakeClusteredStringPart(ID.ToString(), LENGTID));
+            s.Append(MakeClusteredStringPart(FirstName, LENGTFIRSTNAME));
+            s.Append(MakeClusteredStringPart(LastName, LENGTLASTNAME));
+            s.Append(MakeClusteredStringPart(Balance.ToString(), LENGTBALLANCE));
+            s.Append(MakeClusteredStringPart(EMail, LENGTEMAIL));
+            s.Append(MakeClusteredStringPart(LastChange.ToString(), LENGTLASTCHANGE));
+            //s.Append(LastChange);
+
+            return s.ToString();
+            */
+            // c# build in Method
+            string s = String.Format("{0,5} {1,15} {2,15} {3,10} {4,20} {5,20}",
+                this.ID, this.FirstName, this.LastName, this.Balance, this.EMail, this.LastChange.ToString());
+            return s;
+        }
+
+        private string MakeClusteredStringPart(string addString,int maxlength)
+        {
+            //check if the stin gshould be filled with blancs
+            if (addString.Length < maxlength)
+            {
+                StringBuilder part = new StringBuilder();
+                part.Append(new string(' ', maxlength-addString.Length));
+                part.Append(addString);
+                return part.ToString();
+            }
+
+            return addString;
         }
         /// <summary>
         /// checks if the Email string matches the given standarts

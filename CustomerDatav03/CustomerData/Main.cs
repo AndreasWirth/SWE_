@@ -140,6 +140,7 @@ namespace CustomerData
             // Generating Data
             SWECompany.AddCustomer(new Customer("Andi", "Andi", "hallo@test.at", 0, 100));
             SWECompany.AddCustomer(new Customer("Zuerst", "Zuerst", "hallo100@test.at", 0, 0));
+            SWECompany.AddCustomer(new Customer("123456789012345", "123456789012345", "hallo@test.at", 0, 101));
             for (int i = 1; i < 30; i++)
             {
                 string vorname = "test" + i;
@@ -230,7 +231,6 @@ namespace CustomerData
             {
                 if (SWECompany.CheckPassword(forms.Password))
                 {
-                    //TODO catch exeption from load data for display in GUI
                     try
                     {
                         SWECompany.GetData();
@@ -273,6 +273,9 @@ namespace CustomerData
                 try
                 {
                     lbCustomer.Items.Clear();
+                    
+                    lbCustomer.Items.Add(String.Format("{0,5}|{1,15}|{2,15}|{3,10}|{4,20}|{5,20}"
+                        , "ID", "First Name", "Last Name", "EMail", "Ballance", "Last Change"));
                     Customer aktCustomer = CustomerDict.First().Value;
                     string aktFilter = tbFilterby.Text; // copy filter, to prefent an chaning filter while printing
                     foreach (var key in KeyArray)
@@ -283,12 +286,16 @@ namespace CustomerData
                         {
                             if (CheckFilter(aktCustomer, aktFilter))
                             {
-                                lbCustomer.Items.Add(CustomerDict[key].ToString());
+                                //lbCustomer.Items.Add(CustomerDict[key].ToString());
+                                lbCustomer.Items.Add(CustomerDict[key].GetClusteredString());
                             }
                         }
                         else // length <2 is handelt as no filter
                         {
-                            lbCustomer.Items.Add(CustomerDict[key].ToString());
+                            //lbCustomer.Items.Add(CustomerDict[key].ToString());
+                            lbCustomer.Items.Add(CustomerDict[key].GetClusteredString());
+                            string s1 = String.Format("{0,15}", "ID");
+                            string s2 = String.Format("{0,15}", CustomerDict[0].LastName);
                         }
                     }
                 }

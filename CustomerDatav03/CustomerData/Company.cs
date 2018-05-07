@@ -89,6 +89,7 @@ namespace CustomerData
         {
             try
             {
+                changedCustomer.LastChange = DateTime.Now;
                 CustomerDict[CustomerID] = changedCustomer;
             }
             catch (Exception)

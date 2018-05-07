@@ -93,6 +93,7 @@ namespace CustomerData
                         AktCustomer.FirstName = tbFirstName.Text;
                         AktCustomer.LastName = tbLastName.Text;
                         AktCustomer.Balance = Customers[ii].Balance;
+                        //AktCustomer.LastChange = DateTime.Now;  //chainged in changeCustomer() in Company
                         DialogResult = DialogResult.OK;
                         Close();
                     }
