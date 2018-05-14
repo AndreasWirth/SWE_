@@ -212,6 +212,7 @@ namespace CustomerData
             try
             {
                 SWECompany.StoreData();
+                MessageBox.Show("Data stored");
             }
             catch (Exception)
             {
