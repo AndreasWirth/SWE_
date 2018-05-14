@@ -356,7 +356,7 @@ namespace CustomerData
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //MessageBox.Show(e.Message);
                     MessageBox.Show(resxLanguage.GetString("showCustomer"));
