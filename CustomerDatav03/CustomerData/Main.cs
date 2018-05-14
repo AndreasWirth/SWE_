@@ -131,7 +131,7 @@ namespace CustomerData
         /// <summary>
         /// Adds test customers to the Dictionary, and displays them in the ListBox
         /// Not necessary for the Application.
-        /// Addet to simplify the testing
+        /// Addet to simplify testing & Developing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -275,7 +275,7 @@ namespace CustomerData
                     lbCustomer.Items.Clear();
                     
                     lbCustomer.Items.Add(String.Format("{0,5}|{1,15}|{2,15}|{3,10}|{4,20}|{5,20}"
-                        , "ID", "First Name", "Last Name", "EMail", "Ballance", "Last Change"));
+                        , "ID", "First Name", "Last Name", "Ballance", "EMail", "Last Change"));
                     Customer aktCustomer = CustomerDict.First().Value;
                     string aktFilter = tbFilterby.Text; // copy filter, to prefent an chaning filter while printing
                     foreach (var key in KeyArray)
