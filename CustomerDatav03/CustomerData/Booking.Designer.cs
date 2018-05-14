@@ -83,7 +83,7 @@
             // 
             this.tbAmount.Location = new System.Drawing.Point(236, 58);
             this.tbAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbAmount.Mask = "00000";
+            this.tbAmount.Mask = "00000.00";
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(100, 22);
             this.tbAmount.TabIndex = 15;

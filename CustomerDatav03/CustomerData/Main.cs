@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -18,10 +19,25 @@ namespace CustomerData
 {
     public partial class Main : Form
     {
+        /// <summary>
+        /// Company which collects and contains the Customers
+        /// </summary>
         private Company SWECompany;
+        /// <summary>
+        /// Copy of the Data from the Company, used for displaying an checking
+        /// MVC based
+        /// </summary>
         private Dictionary<int, Customer> CustomerDict = new Dictionary<int, Customer>();
-        private int[] KeyArray= new int[0];
-        private int sort =0;
+        /// <summary>
+        /// Saves the order of the Customer keys to represent them correct in the GUI
+        /// </summary>
+        private int[] KeyArray = new int[0];
+        /// <summary>
+        /// REprecents the order on which the Customers should be displayed in the GUI
+        /// </summary>
+        private int Sort = 0;
+
+
         private string resxFilePrivateSettings = @".\PrivateSettings.resx";
         private ResXResourceSet resxPrivateSettings;
         private string resxFileLanguag;
@@ -94,17 +110,17 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btOpenAddCustomer_Click(object sender, EventArgs e)
         {
-            NewCustomer form = new NewCustomer();
+            NewCustomer form = new NewCustomer(SWECompany);
             form.resxLanguage = resxLanguage;
             form.Text = resxLanguage.GetString("titleAdd");
             var result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                if (SWECompany.checkIfEMailUnique(form.newCustomer.EMail))
+                if (SWECompany.CheckIfEMailUnique(form.AddCustomer.EMail))
                 {
                     try
                     {
-                        SWECompany.AddCustomer(form.newCustomer);
+                        SWECompany.AddCustomer(form.AddCustomer);
                     }
                     catch (Exception)
                     {
@@ -122,7 +138,7 @@ namespace CustomerData
             }
 
             CustomerDict = SWECompany.GetCustomers();
-            showCustomer();
+            ShowCustomer();
         }
 
         /// <summary>
@@ -135,18 +151,19 @@ namespace CustomerData
             // Generating Data
             SWECompany.AddCustomer(new Customer("Andi", "Andi", "hallo@test.at", 0, 100));
             SWECompany.AddCustomer(new Customer("Zuerst", "Zuerst", "hallo100@test.at", 0, 0));
+            SWECompany.AddCustomer(new Customer("123456789012345", "123456789012345", "hallo123456@test.at", 0, 101));
             for (int i = 1; i < 30; i++)
             {
                 string vorname = "test" + i;
                 string nachname = "nachtest" + i;
-                string email = "hallo"+i+"@test.at";
-                int amount = i * 10;
+                string email = "hallo" + i + "@test.at";
+                decimal amount = i * 10;
                 int id = i + 5;
                 SWECompany.AddCustomer(new Customer(vorname, nachname, email, amount, id));
             }
             CustomerDict = SWECompany.GetCustomers();
             // make data visible
-            showCustomer();
+            ShowCustomer();
         }
         /// <summary>
         /// opens the Window for a Transition
@@ -156,14 +173,21 @@ namespace CustomerData
         private void btnOpenBooking_Click(object sender, EventArgs e)
         {
             Booking forms = new Booking();
-            forms.resxLanguage = resxLanguage;
             forms.Text = resxLanguage.GetString("titleBooking");
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                SWECompany.DoATransition(forms.Amount, forms.ID);
+                try
+                {
+                    SWECompany.DoATransition(forms.Amount, forms.ID);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Customer Id not found. Booking Canceled.");
+                }
+
             }
-            showCustomer();
+            ShowCustomer();
         }
         /// <summary>
         /// opens the Window to change teh Data of a Customer
@@ -172,15 +196,25 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnOpenChangeCustomer_Click(object sender, EventArgs e)
         {
-            ChangeCustomer forms = new ChangeCustomer(SWECompany.GetCustomers());
+            ChangeCustomer forms = new ChangeCustomer(SWECompany);
             forms.resxLanguage = resxLanguage;
             forms.Text = resxLanguage.GetString("titleChange");
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                SWECompany.ChangeCustomer(forms.AktCustomer.ID, forms.AktCustomer); 
+
+                try
+                {
+                    SWECompany.ChangeCustomer(forms.AktCustomer.ID, forms.AktCustomer);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Customer couldn't changed");
+                }
+
+
             }
-            showCustomer();
+            ShowCustomer();
         }
         /// <summary>
         /// Saved the Data
@@ -189,7 +223,15 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnSaveData_Click(object sender, EventArgs e)
         {
-            SWECompany.StoreData();
+            try
+            {
+                SWECompany.StoreData();
+                MessageBox.Show("Data stored.");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+            }
         }
         /// <summary>
         /// Loads the Data from the safed file
@@ -202,12 +244,25 @@ namespace CustomerData
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
-                if (SWECompany.checkPassword(forms.password))
+                if (SWECompany.CheckPassword(forms.Password))
                 {
-                    SWECompany.GetData();
-                    CustomerDict = SWECompany.GetCustomers();
-                    KeyArray = SWECompany.GetSortedCustomer(0);
-                    showCustomer();
+                    try
+                    {
+                        SWECompany.GetData();
+                        CustomerDict = SWECompany.GetCustomers();
+                        KeyArray = SWECompany.GetSortedCustomer(0);
+                        ShowCustomer();
+                    }
+                    catch (ArgumentNullException argnull)
+                    {
+                        //"No stored Data Found"
+                        MessageBox.Show(argnull.Message);
+                    }
+                    catch (FileNotFoundException argfile)
+                    {
+                        //"File was empty! No Customer added."
+                        MessageBox.Show(argfile.Message);
+                    }
                 }
                 else
                 {
@@ -237,8 +292,11 @@ namespace CustomerData
         /// <param name="e"></param>
         private void rbName_CheckedChanged(object sender, EventArgs e)
         {
-            sort = 1;
-            showCustomer();
+            if (rbName.Checked)
+            {
+                Sort = 1;
+                ShowCustomer();
+            }
         }
         /// <summary>
         /// changes sort algorithem to ID if changed in the Group Box
@@ -247,14 +305,17 @@ namespace CustomerData
         /// <param name="e"></param>
         private void rbID_CheckedChanged(object sender, EventArgs e)
         {
-            sort = 0;
-            showCustomer();
+            if (rbID.Checked)
+            {
+                Sort = 0;
+                ShowCustomer();
+            }
         }
         private void tbFilterby_TextChanged(object sender, EventArgs e)
         {
             if (this.Text.Length > 2)
             {
-                showCustomer();
+                ShowCustomer();
             }
         }
         #endregion
@@ -264,14 +325,17 @@ namespace CustomerData
         /// Prints the Data in the Listtextbox on the Main Window
         /// Handles Filter and sorting internaly
         /// </summary>
-        private void showCustomer()
+        private void ShowCustomer()
         {
-            KeyArray = SWECompany.GetSortedCustomer(sort);
+            KeyArray = SWECompany.GetSortedCustomer(Sort);
             if (KeyArray.Length > 0)
             {
                 try
                 {
                     lbCustomer.Items.Clear();
+
+                    lbCustomer.Items.Add(String.Format("{0,5}|{1,15}|{2,15}|{3,10}|{4,20}|{5,20}"
+                        , "ID", "First Name", "Last Name", "Ballance", "EMail", "Last Change"));
                     Customer aktCustomer = CustomerDict.First().Value;
                     string aktFilter = tbFilterby.Text; // copy filter, to prefent an chaning filter while printing
                     foreach (var key in KeyArray)
@@ -282,12 +346,16 @@ namespace CustomerData
                         {
                             if (checkFilter(aktCustomer, aktFilter))
                             {
-                                lbCustomer.Items.Add(CustomerDict[key].ToString());
+                                //lbCustomer.Items.Add(CustomerDict[key].ToString());
+                                lbCustomer.Items.Add(CustomerDict[key].GetClusteredString());
                             }
                         }
                         else // length <2 is handelt as no filter
                         {
-                            lbCustomer.Items.Add(CustomerDict[key].ToString());
+                            //lbCustomer.Items.Add(CustomerDict[key].ToString());
+                            lbCustomer.Items.Add(CustomerDict[key].GetClusteredString());
+                            string s1 = String.Format("{0,15}", "ID");
+                            string s2 = String.Format("{0,15}", CustomerDict[0].LastName);
                         }
                     }
                 }

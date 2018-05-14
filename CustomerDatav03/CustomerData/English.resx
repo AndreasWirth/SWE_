@@ -147,6 +147,9 @@
   <data name="emailExists" xml:space="preserve">
     <value>Email already exists. Customer not added.</value>
   </data>
+  <data name="erNoID" xml:space="preserve">
+    <value>No ID inserted</value>
+  </data>
   <data name="filterby" xml:space="preserve">
     <value>Filter By</value>
   </data>

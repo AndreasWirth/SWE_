@@ -13,13 +13,20 @@ namespace CustomerData
 {
     public partial class NewCustomer : Form
     {
-        public Customer newCustomer { get; set; }
+        public Customer AddCustomer { get; set; }
+        private Company Company;
+        private Dictionary<int, Customer> Customers;
+
+        ErrorProvider ErrLastName = new ErrorProvider();
+        ErrorProvider ErrFirstName = new ErrorProvider();
+
         public ResXResourceSet resxLanguage { get; set; }
 
-        public NewCustomer()
+        public NewCustomer(Company company)
         {
             InitializeComponent();
-           
+            this.Company = company;
+            this.Customers = Company.GetCustomers();
         }
 
         private void NewCustomer_Load(object sender, EventArgs e)
@@ -40,13 +47,36 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btAddCustomer_Click(object sender, EventArgs e)
         {
-            int i;
-            Int32.TryParse(tbBallance.Text, out i);
-            int u;
-            Int32.TryParse(tbCustomerNumber.Text, out u);
-            newCustomer= new Customer(tbFirstName.Text,tbLastName.Text,tbEMail.Text,i,u);
-            DialogResult = DialogResult.OK;
-            Close();
+            if (Customer.CheckEmail(tbEMail.Text))
+            {
+                if (tbFirstName.Text.Length > 2 && tbLastName.Text.Length > 2 && tbEMail.Text.Length > 5)
+                {
+                    int i;
+                    Int32.TryParse(tbBallance.Text, out i);
+                    int u;
+                    var id = tbCustomerNumber.Text;
+                    if (id.Length > 0)
+                    {
+                        Int32.TryParse(tbCustomerNumber.Text, out u);
+                        AddCustomer = new Customer(tbFirstName.Text, tbLastName.Text, tbEMail.Text, i, u);
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ID inserted");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("To less Input.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Email Adress not valid!");
+            }
         }
 
         private void btnCancle_Click(object sender, EventArgs e)

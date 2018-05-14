@@ -13,7 +13,7 @@ namespace CustomerData
 {
     public partial class Booking : Form
     {
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public int ID { get; set; }
         public ResXResourceSet resxLanguage { get; set; }
         public Booking()
@@ -37,14 +37,22 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnPayIn_Click(object sender, EventArgs e)
         {
-            int ii1;
-            int ii2;
-            Int32.TryParse(tbAmount.Text, out ii1);
-            Amount = ii1;
-            Int32.TryParse(tbCustomerNumber.Text, out ii2);
-            ID = ii2;
-            DialogResult = DialogResult.OK;
-            Close();
+            decimal amount;
+            Decimal.TryParse(tbAmount.Text, out amount);
+            var id = tbCustomerNumber.Text;
+            if (id.Length > 0)
+            {
+                int ii;
+                Int32.TryParse(id, out ii);
+                ID = ii;
+                Amount = amount;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(resxLanguage.GetString("erNoID"));
+            }
         }
         /// <summary>
         /// Gives the main Window the amount to pay out for the choosen Customer
@@ -54,14 +62,22 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnPayOut_Click(object sender, EventArgs e)
         {
-            int ii1;
-            int ii2;
-            Int32.TryParse(tbAmount.Text, out ii1);
-            Amount = 0-ii1; // make negertiv value
-            Int32.TryParse(tbCustomerNumber.Text, out ii2);
-            ID = ii2;
-            DialogResult = DialogResult.OK;
-            Close();
+            decimal i;
+            Decimal.TryParse(tbAmount.Text, out i);
+            Amount = 0 - i; // make negertiv value
+            var id = tbCustomerNumber.Text;
+            if (id.Length > 0)
+            {
+                int ii;
+                Int32.TryParse(id, out ii);
+                ID = ii;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(resxLanguage.GetString("erNoID"));
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

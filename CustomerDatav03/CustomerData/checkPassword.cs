@@ -13,7 +13,7 @@ namespace CustomerData
     public partial class checkPassword : Form
     {
 
-        public string password { get; set; }
+        public string Password { get; set; }
         public checkPassword()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace CustomerData
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            this.password = tbPassword.Text;
+            this.Password = tbPassword.Text;
             DialogResult = DialogResult.OK;
             Close();
         }

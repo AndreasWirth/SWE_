@@ -21,7 +21,7 @@ namespace CustomerData
         /// <param name="newCustomer">Customer to add</param>
         public void AddCustomer(Customer newCustomer)
         {
-            if (!checkIfIDUnique(newCustomer.ID))
+            if (!CheckIfIDUnique(newCustomer.ID))
             {
                 System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
                 // It would be possible to return an fault, and ask the User to overwritte existing Customer.
@@ -46,7 +46,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="amount">Amount of money to change</param>
         /// <param name="CustomerID">ID(Dictionary key) for the Customer</param>
-        public void DoATransition(int amount, int CustomerID)
+        public void DoATransition(decimal amount, int CustomerID)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="password"></param>
         /// <returns>True if correct, fasle if not</returns>
-        public bool checkPassword(string password)
+        public bool CheckPassword(string password)
         {
             if (this.password == password)
                 return true;
@@ -204,7 +204,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="customerID">CustomerID (Dictionary key)</param>
         /// <returns>false if already in dictionary, true if free</returns>
-        private bool checkIfIDUnique(int customerID)
+        private bool CheckIfIDUnique(int customerID)
         {
             if (CustomerDict.ContainsKey(customerID)) return false;
             return true;
@@ -214,7 +214,7 @@ namespace CustomerData
         /// </summary>
         /// <param name="eMail">Email of a Customer</param>
         /// <returns>false if already in the Dictionary, true if free</returns>
-        public bool checkIfEMailUnique(string eMail)
+        public bool CheckIfEMailUnique(string eMail)
         {
             foreach (var customer in CustomerDict)
             {

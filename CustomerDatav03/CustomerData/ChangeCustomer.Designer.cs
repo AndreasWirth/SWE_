@@ -40,12 +40,12 @@
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.btnGetCustomer = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.MaskedTextBox();
-            this.tbBallance = new System.Windows.Forms.MaskedTextBox();
+            this.tbBallance = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tbEMail
             // 
-            this.tbEMail.Location = new System.Drawing.Point(226, 189);
+            this.tbEMail.Location = new System.Drawing.Point(226, 184);
             this.tbEMail.Name = "tbEMail";
             this.tbEMail.Size = new System.Drawing.Size(164, 22);
             this.tbEMail.TabIndex = 33;
@@ -150,10 +150,10 @@
             // tbBallance
             // 
             this.tbBallance.Location = new System.Drawing.Point(226, 218);
-            this.tbBallance.Mask = "00000";
             this.tbBallance.Name = "tbBallance";
+            this.tbBallance.ReadOnly = true;
             this.tbBallance.Size = new System.Drawing.Size(164, 22);
-            this.tbBallance.TabIndex = 38;
+            this.tbBallance.TabIndex = 40;
             // 
             // ChangeCustomer
             // 
@@ -194,6 +194,6 @@
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Button btnGetCustomer;
         private System.Windows.Forms.MaskedTextBox tbID;
-        private System.Windows.Forms.MaskedTextBox tbBallance;
+        private System.Windows.Forms.TextBox tbBallance;
     }
 }

@@ -28,25 +28,47 @@ namespace CustomerData
                 }
             }
         }
-        public int Balance { get; set; }
+        public decimal Balance { get; set; }
         public DateTime LastChange { get; set; }
         public int ID { get; set; }
 
-        public Customer()
-        {
-
-        }
-        public Customer(string firstName, string lastName, string email, int balance, int ID )
+        /// <summary>
+        /// Constructor for a new Customer
+        /// </summary>
+        /// <param name="firstName">first name of the new Customer</param>
+        /// <param name="lastName">last name of the new Customer</param>
+        /// <param name="email">email adress of the new Customer</param>
+        /// <param name="balance">start ballance of the new Customer</param>
+        /// <param name="ID">ID of the new Customer</param>
+        public Customer(string firstName, string lastName, string email, decimal balance, int ID)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.EMail = email;
             this.Balance = balance;
-            this.LastChange = DateTime.Now;;
+            this.LastChange = DateTime.Now;
+            this.ID = ID;
+        }
+        /// <summary>
+        /// Constructor for a already existing Customer with Lastcahnge
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="email"></param>
+        /// <param name="balance"></param>
+        /// <param name="ID"></param>
+        /// <param name="lastChange"></param>
+        public Customer(string firstName, string lastName, string email, decimal balance, int ID, DateTime lastChange)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.EMail = email;
+            this.Balance = balance;
+            this.LastChange = lastChange;
             this.ID = ID;
         }
 
-        public void DoATransition(int amount)
+        public void DoATransition(decimal amount)
         {
             this.Balance += amount;
         }
@@ -56,12 +78,46 @@ namespace CustomerData
             string s =this.ID+" "+ this.FirstName + " " + this.LastName + " " + this.EMail + " " + this.Balance;
             return s;
         }
+
+        /// <summary>
+        /// Builds a GUI string so that the Data can be Displayed in Rows.
+        /// Fills the String with Blances to show den below each other.
+        /// </summary>
+        /// <returns>Blanc filled String to Display in GUI</returns>
+        public string GetClusteredString()
+        {
+            /*
+            StringBuilder s = new StringBuilder();
+            
+            const int LENGTID = 10;
+            const int LENGTFIRSTNAME = 20;
+            const int LENGTLASTNAME = 40;
+            const int LENGTEMAIL = 60;
+            const int LENGTBALLANCE = 70;
+            const int LENGTLASTCHANGE = 90;
+            
+            s.Append(MakeClusteredStringPart(ID.ToString(), LENGTID));
+            s.Append(MakeClusteredStringPart(FirstName, LENGTFIRSTNAME));
+            s.Append(MakeClusteredStringPart(LastName, LENGTLASTNAME));
+            s.Append(MakeClusteredStringPart(Balance.ToString(), LENGTBALLANCE));
+            s.Append(MakeClusteredStringPart(EMail, LENGTEMAIL));
+            s.Append(MakeClusteredStringPart(LastChange.ToString(), LENGTLASTCHANGE));
+            //s.Append(LastChange);
+
+            return s.ToString();
+            */
+            // c# build in Method
+            string s = String.Format("{0,5} {1,15} {2,15} {3,10} {4,20} {5,20}",
+                this.ID, this.FirstName, this.LastName, this.Balance, this.EMail, this.LastChange.ToString());
+            return s;
+        }
+
         /// <summary>
         /// checks if Email matches the given standarts
         /// </summary>
         /// <param name="eMail">Email of an Customer</param>
         /// <returns>true if ok, false if incorrect</returns>
-        public bool CheckEmail(string eMail)
+        public static bool CheckEmail(string eMail)
         {
             // Prüfe, ob der String ein @ enthält bzw. nicht mehr als ein @ und Teile ihn dort in zwei
             if (!eMail.Contains('@') || (eMail.Split('@').Count() - 1) >= 2) return false;

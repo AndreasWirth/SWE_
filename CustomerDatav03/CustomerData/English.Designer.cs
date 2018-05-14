@@ -151,6 +151,15 @@ namespace CustomerData {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No ID inserted ähnelt.
+        /// </summary>
+        internal static string erNoID {
+            get {
+                return ResourceManager.GetString("erNoID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Filter By ähnelt.
         /// </summary>
         internal static string filterby {
