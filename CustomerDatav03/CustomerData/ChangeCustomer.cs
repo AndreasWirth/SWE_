@@ -65,7 +65,8 @@ namespace CustomerData
             }
             else
             {
-                MessageBox.Show("Customer ID not found.");
+                //MessageBox.Show("Customer ID not found.");
+                MessageBox.Show(resxLanguage.GetString("erIDNotFound"));
             }
         }
 
@@ -85,15 +86,18 @@ namespace CustomerData
             Int32.TryParse(tbID.Text, out ii);
             if (!Customers.ContainsKey(ii))
             {
-                MessageBox.Show("Customer ID not found. Change not possible.");
+                //MessageBox.Show("Customer ID not found. Change not possible.");
+                MessageBox.Show(resxLanguage.GetString("erNoID_nochange"));
             }
             else if (tbEMail.Text != Customers[ii].EMail && !Company.CheckIfEMailUnique(tbEMail.Text))
             {
-                MessageBox.Show("Email already exists.");
+                //MessageBox.Show("Email already exists.");
+                MessageBox.Show(resxLanguage.GetString("erEmailexists"));
             }
             else if (!Customer.CheckEmail(tbEMail.Text))
             {
-                MessageBox.Show("Email Adress not valid!");
+                //MessageBox.Show("Email Adress not valid!");
+                MessageBox.Show(resxLanguage.GetString("erEmialNotValid"));
             }
             else
             {
@@ -111,12 +115,14 @@ namespace CustomerData
                     }
                     else
                     {
-                        MessageBox.Show("To less Input.");
+                        //MessageBox.Show("To less Input.");
+                        MessageBox.Show(resxLanguage.GetString("erLessInput"));
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Email Adress not valid!");
+                    //MessageBox.Show("Email Adress not valid!");
+                    MessageBox.Show(resxLanguage.GetString("erEmialNotValid"));
                 }
             }     
         }
@@ -125,7 +131,7 @@ namespace CustomerData
         {
             if (!Customer.CheckEmail(tbEMail.Text))
             {
-                errProvEmail.SetError(tbEMail, "Invalid Email");
+                errProvEmail.SetError(tbEMail, resxLanguage.GetString("textInvalidEmail"));
             }
             else
             {
@@ -137,7 +143,7 @@ namespace CustomerData
         {
             if (tbFirstName.Text.Length <= 2)
             {
-                ErrFirstName.SetError(tbFirstName, "Name is to short.");
+                ErrFirstName.SetError(tbFirstName, resxLanguage.GetString("tesxtNameToshort"));
             }
             else
             {
@@ -149,7 +155,7 @@ namespace CustomerData
         {
             if (tbLastName.Text.Length <= 2)
             {
-                ErrLastName.SetError(tbLastName, "Name is to short.");
+                ErrLastName.SetError(tbLastName, resxLanguage.GetString("tesxtNameToshort"));
             }
             else
             {

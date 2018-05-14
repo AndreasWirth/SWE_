@@ -76,6 +76,8 @@ namespace CustomerData
             // setting ResousrceSet
             resxLanguage = new ResXResourceSet(resxFileLanguag);
 
+            Text = resxLanguage.GetString("titleMain");
+
             /*
             //Nachschlagewerk
             using (ResXResourceSet resxSet = new ResXResourceSet(resxFileLanguag))
@@ -96,14 +98,8 @@ namespace CustomerData
             */
         }
 
-        private void btnStorelanguage_Click(object sender, EventArgs e)
-        {
-            FillLanguageDAtaset forms = new FillLanguageDAtaset();
-            forms.Show();
-        }
-
         #region GUI Elements / GUI Evetns
-
+        /*
         /// <summary>
         /// if changed in the Group Box, changes Sort algorithem to Last Name
         /// </summary>
@@ -137,7 +133,7 @@ namespace CustomerData
                 ShowCustomer();
             }
         }
-
+        */
         #region Buttons
         /// <summary>
         /// Opens the Widow to add a new Customer
@@ -212,6 +208,7 @@ namespace CustomerData
         {
             Booking forms = new Booking();
             forms.Text = resxLanguage.GetString("titleBooking");
+            forms.resxLanguage = resxLanguage;
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -221,7 +218,8 @@ namespace CustomerData
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Customer Id not found. Booking Canceled.");
+                    //MessageBox.Show("Customer Id not found. Booking Canceled.");
+                    MessageBox.Show(resxLanguage.GetString("erIDNotFound_ButOpen"));
                 }
 
             }
@@ -248,6 +246,7 @@ namespace CustomerData
                 catch (Exception)
                 {
                     MessageBox.Show("Customer couldn't changed");
+                    MessageBox.Show(resxLanguage.GetString("erCustNotChanged"));
                 }
 
 
@@ -264,11 +263,13 @@ namespace CustomerData
             try
             {
                 SWECompany.StoreData();
-                MessageBox.Show("Data stored.");
+                //MessageBox.Show("Data stored.");
+                MessageBox.Show(resxLanguage.GetString("dadaSaved"));
             }
             catch (Exception)
             {
-                MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+                //MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+                MessageBox.Show(resxLanguage.GetString("emptyDatabase"));
             }
         }
         /// <summary>
@@ -279,6 +280,7 @@ namespace CustomerData
         private void btnLoadData_Click(object sender, EventArgs e)
         {
             checkPassword forms = new checkPassword();
+            forms.resxLanguage = resxLanguage;
             var result = forms.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -291,15 +293,17 @@ namespace CustomerData
                         KeyArray = SWECompany.GetSortedCustomer(0);
                         ShowCustomer();
                     }
-                    catch (ArgumentNullException argnull)
+                    catch (ArgumentNullException)
                     {
                         //"No stored Data Found"
-                        MessageBox.Show(argnull.Message);
+                        //MessageBox.Show(argnull.Message);
+                        MessageBox.Show(resxLanguage.GetString("noStoredData"));
                     }
-                    catch (FileNotFoundException argfile)
+                    catch (FileNotFoundException)
                     {
                         //"File was empty! No Customer added."
-                        MessageBox.Show(argfile.Message);
+                        //MessageBox.Show(argfile.Message);
+                        MessageBox.Show(resxLanguage.GetString("emptemptyFileyDatabase"));
                     }
                 }
                 else
@@ -324,24 +328,11 @@ namespace CustomerData
         }
 
         /// <summary>
-        /// changes sort algorithem to Last Name if changed in the Group Box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rbName_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbName.Checked)
-            {
-                Sort = 1;
-                ShowCustomer();
-            }
-        }
-        /// <summary>
         /// changes sort algorithem to ID if changed in the Group Box
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rbID_CheckedChanged(object sender, EventArgs e)
+        private void rbID_CheckedChanged_1(object sender, EventArgs e)
         {
             if (rbID.Checked)
             {
@@ -349,16 +340,32 @@ namespace CustomerData
                 ShowCustomer();
             }
         }
-        private void tbFilterby_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// changes sort algorithem to Last Name if changed in the Group Box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbName_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (this.Text.Length > 2)
+            {
+                Sort = 1;
+                ShowCustomer();
+            }
+        }
+
+        private void tbFilterby_TextChanged_1(object sender, EventArgs e)
         {
             if (this.Text.Length > 2)
             {
                 ShowCustomer();
             }
         }
-        #endregion
+
+
 
         #endregion
+
 
         #region Methodes
 
@@ -402,8 +409,8 @@ namespace CustomerData
                 }
                 catch (Exception e)
                 {
-                    //TODO: generate Message
-                    MessageBox.Show(e.Message);
+                    //MessageBox.Show(e.Message);
+                    MessageBox.Show(resxLanguage.GetString("showCustomer"));
                 }
             }
             
@@ -441,6 +448,7 @@ namespace CustomerData
             gBFilterBy.Text = resxLanguage.GetString("filterby");
             btnSaveData.Text = resxLanguage.GetString("saveData");
             btnLoadData.Text = resxLanguage.GetString("loadData");
+            Text = resxLanguage.GetString("titleMain");
         }
         private void ChangeLanguage()
         {
@@ -469,5 +477,6 @@ namespace CustomerData
             // setting ResousrceSet
             resxLanguage = new ResXResourceSet(resxFileLanguag);
         }
+
     }
 }

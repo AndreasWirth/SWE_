@@ -138,8 +138,14 @@
   <data name="changeLanguage" xml:space="preserve">
     <value>Change Language</value>
   </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="customerNumber" xml:space="preserve">
     <value>Customer Number</value>
+  </data>
+  <data name="dadaSaved" xml:space="preserve">
+    <value>Data stored</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>E-Mail Adress</value>
@@ -147,8 +153,35 @@
   <data name="emailExists" xml:space="preserve">
     <value>Email already exists. Customer not added.</value>
   </data>
+  <data name="emptyDatabase" xml:space="preserve">
+    <value>Empty Database! No Customers found. Storeing data canceled</value>
+  </data>
+  <data name="emptyFile" xml:space="preserve">
+    <value>File was empty! No Customer added.</value>
+  </data>
+  <data name="erCustNotChanged" xml:space="preserve">
+    <value>Customer couldn't changed</value>
+  </data>
+  <data name="erEmailexists" xml:space="preserve">
+    <value>Email already exists.</value>
+  </data>
+  <data name="erEmialNotValid" xml:space="preserve">
+    <value>Email Adress not valid!</value>
+  </data>
+  <data name="erIDNotFound" xml:space="preserve">
+    <value>Customer ID not found.</value>
+  </data>
+  <data name="erIDNotFound_ButOpen" xml:space="preserve">
+    <value>Customer Id not found. Booking Canceled.</value>
+  </data>
+  <data name="erLessInput" xml:space="preserve">
+    <value>To less Input.</value>
+  </data>
   <data name="erNoID" xml:space="preserve">
     <value>No ID inserted</value>
+  </data>
+  <data name="erNoID_nochange" xml:space="preserve">
+    <value>Customer ID not found. Change not possible.</value>
   </data>
   <data name="filterby" xml:space="preserve">
     <value>Filter By</value>
@@ -171,6 +204,9 @@
   <data name="makeBooking" xml:space="preserve">
     <value>Make Booking</value>
   </data>
+  <data name="noStoredData" xml:space="preserve">
+    <value>No stored Data Found</value>
+  </data>
   <data name="passwordWrong" xml:space="preserve">
     <value>Password was not correct.</value>
   </data>
@@ -183,8 +219,20 @@
   <data name="saveData" xml:space="preserve">
     <value>Save Data</value>
   </data>
+  <data name="showCustomer" xml:space="preserve">
+    <value>corrupt Database, can't display data</value>
+  </data>
   <data name="sortby" xml:space="preserve">
     <value>Sort By</value>
+  </data>
+  <data name="tesxtNameToshort" xml:space="preserve">
+    <value>Name is to short.</value>
+  </data>
+  <data name="textEnterPassword" xml:space="preserve">
+    <value>Please enter Password</value>
+  </data>
+  <data name="textInvalidEmail" xml:space="preserve">
+    <value>Invalid Email</value>
   </data>
   <data name="titleAdd" xml:space="preserve">
     <value>Add Customer</value>
@@ -197,5 +245,8 @@
   </data>
   <data name="titleMain" xml:space="preserve">
     <value>Customer handler</value>
+  </data>
+  <data name="titlePassword" xml:space="preserve">
+    <value>Entry Password</value>
   </data>
 </root>

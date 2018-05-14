@@ -49,7 +49,7 @@
             // labelCustomNumber
             // 
             this.labelCustomNumber.AutoSize = true;
-            this.labelCustomNumber.Location = new System.Drawing.Point(51, 183);
+            this.labelCustomNumber.Location = new System.Drawing.Point(55, 74);
             this.labelCustomNumber.Name = "labelCustomNumber";
             this.labelCustomNumber.Size = new System.Drawing.Size(122, 17);
             this.labelCustomNumber.TabIndex = 17;
@@ -58,7 +58,7 @@
             // labelBallance
             // 
             this.labelBallance.AutoSize = true;
-            this.labelBallance.Location = new System.Drawing.Point(51, 145);
+            this.labelBallance.Location = new System.Drawing.Point(55, 214);
             this.labelBallance.Name = "labelBallance";
             this.labelBallance.Size = new System.Drawing.Size(62, 17);
             this.labelBallance.TabIndex = 15;
@@ -67,7 +67,7 @@
             // labelEMail
             // 
             this.labelEMail.AutoSize = true;
-            this.labelEMail.Location = new System.Drawing.Point(51, 116);
+            this.labelEMail.Location = new System.Drawing.Point(55, 178);
             this.labelEMail.Name = "labelEMail";
             this.labelEMail.Size = new System.Drawing.Size(95, 17);
             this.labelEMail.TabIndex = 14;
@@ -76,7 +76,7 @@
             // labelLastName
             // 
             this.labelLastName.AutoSize = true;
-            this.labelLastName.Location = new System.Drawing.Point(51, 81);
+            this.labelLastName.Location = new System.Drawing.Point(55, 143);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(76, 17);
             this.labelLastName.TabIndex = 13;
@@ -85,7 +85,7 @@
             // lableFirstName
             // 
             this.lableFirstName.AutoSize = true;
-            this.lableFirstName.Location = new System.Drawing.Point(51, 48);
+            this.lableFirstName.Location = new System.Drawing.Point(55, 110);
             this.lableFirstName.Name = "lableFirstName";
             this.lableFirstName.Size = new System.Drawing.Size(76, 17);
             this.lableFirstName.TabIndex = 12;
@@ -101,7 +101,7 @@
             // 
             // btAddCustomer
             // 
-            this.btAddCustomer.Location = new System.Drawing.Point(38, 247);
+            this.btAddCustomer.Location = new System.Drawing.Point(47, 247);
             this.btAddCustomer.Name = "btAddCustomer";
             this.btAddCustomer.Size = new System.Drawing.Size(100, 35);
             this.btAddCustomer.TabIndex = 18;
@@ -111,7 +111,7 @@
             // 
             // btnCancle
             // 
-            this.btnCancle.Location = new System.Drawing.Point(185, 247);
+            this.btnCancle.Location = new System.Drawing.Point(204, 247);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(100, 35);
             this.btnCancle.TabIndex = 19;
@@ -158,7 +158,7 @@
             // 
             // btnGenerateID
             // 
-            this.btnGenerateID.Location = new System.Drawing.Point(220, 33);
+            this.btnGenerateID.Location = new System.Drawing.Point(204, 24);
             this.btnGenerateID.Name = "btnGenerateID";
             this.btnGenerateID.Size = new System.Drawing.Size(100, 35);
             this.btnGenerateID.TabIndex = 26;

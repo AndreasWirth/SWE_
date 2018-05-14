@@ -138,14 +138,50 @@
   <data name="changeLanguage" xml:space="preserve">
     <value>Sprache ändern</value>
   </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
   <data name="customerNumber" xml:space="preserve">
     <value>Kunden Nummer</value>
+  </data>
+  <data name="dadaSaved" xml:space="preserve">
+    <value>Daten gesichert.</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>E-Mail Adresse</value>
   </data>
   <data name="emailExists" xml:space="preserve">
     <value>Email existiert bereits. Kunde nicht hinzugefügt.</value>
+  </data>
+  <data name="emptyDatabase" xml:space="preserve">
+    <value>Leere Datenbank! Kein Kunde gefunden. Datensicherung abgebrochen.</value>
+  </data>
+  <data name="emptyFile" xml:space="preserve">
+    <value>Leeres File!keinKunde hinzugefügt.</value>
+  </data>
+  <data name="erCustNotChanged" xml:space="preserve">
+    <value>Kunde konnte nicht geändert werden.</value>
+  </data>
+  <data name="erEmailexists" xml:space="preserve">
+    <value>Email exisitert bereits.</value>
+  </data>
+  <data name="erEmialNotValid" xml:space="preserve">
+    <value>Email nicht gültig.</value>
+  </data>
+  <data name="erIDNotFound" xml:space="preserve">
+    <value>Kunden ID nicht gefunden</value>
+  </data>
+  <data name="erIDNotFound_ButOpen" xml:space="preserve">
+    <value>Kunden ID nicht gefunden. Zahlung abgebrochen.</value>
+  </data>
+  <data name="erLessInput" xml:space="preserve">
+    <value>Eingabe zu kurz.</value>
+  </data>
+  <data name="erNoID" xml:space="preserve">
+    <value>keine ID eingegeben</value>
+  </data>
+  <data name="erNoID_nochange" xml:space="preserve">
+    <value>Kunden ID nicht gefunden. Änderung  nicht möglich.</value>
   </data>
   <data name="filterby" xml:space="preserve">
     <value>Filter nach:</value>
@@ -154,7 +190,7 @@
     <value>Vorname</value>
   </data>
   <data name="getCustomData" xml:space="preserve">
-    <value>Mitarbeiter anzeigen</value>
+    <value>Kunde anzeigen</value>
   </data>
   <data name="idUsed" xml:space="preserve">
     <value>ID existiert bereits. Kunde nicht hinzugefügt.</value>
@@ -168,6 +204,9 @@
   <data name="makeBooking" xml:space="preserve">
     <value>Buchung durchführen</value>
   </data>
+  <data name="noStoredData" xml:space="preserve">
+    <value>Keine gespeichertenDaten gefunden.</value>
+  </data>
   <data name="passwordWrong" xml:space="preserve">
     <value>Passwort falsch.</value>
   </data>
@@ -180,8 +219,20 @@
   <data name="saveData" xml:space="preserve">
     <value>Daten Sichern</value>
   </data>
+  <data name="showCustomer" xml:space="preserve">
+    <value>Fehlerhafte Datenbank, Kunden können nicht angezeigt werden.</value>
+  </data>
   <data name="sortby" xml:space="preserve">
     <value>Sortiere nach:</value>
+  </data>
+  <data name="tesxtNameToshort" xml:space="preserve">
+    <value>Name ist zu kurz.</value>
+  </data>
+  <data name="textEnterPassword" xml:space="preserve">
+    <value>Bitte geben sie das Passwort ein</value>
+  </data>
+  <data name="textInvalidEmail" xml:space="preserve">
+    <value>Ungültige Email.</value>
   </data>
   <data name="titleAdd" xml:space="preserve">
     <value>Kunde hinzufügen</value>
@@ -194,5 +245,8 @@
   </data>
   <data name="titleMain" xml:space="preserve">
     <value>Kunden Verwaltung</value>
+  </data>
+  <data name="titlePassword" xml:space="preserve">
+    <value>Passwort eingeben</value>
   </data>
 </root>

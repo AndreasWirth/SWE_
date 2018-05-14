@@ -43,7 +43,6 @@
             this.tbID = new System.Windows.Forms.MaskedTextBox();
             this.tbBallance = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tbBallance = new System.Windows.Forms.TextBox();
             this.errProvEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).BeginInit();
             this.SuspendLayout();

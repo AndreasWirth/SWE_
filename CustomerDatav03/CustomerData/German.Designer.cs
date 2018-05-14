@@ -124,11 +124,29 @@ namespace CustomerData {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bestätigen ähnelt.
+        /// </summary>
+        internal static string confirm {
+            get {
+                return ResourceManager.GetString("confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Kunden Nummer ähnelt.
         /// </summary>
         internal static string customerNumber {
             get {
                 return ResourceManager.GetString("customerNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Daten gesichert. ähnelt.
+        /// </summary>
+        internal static string dadaSaved {
+            get {
+                return ResourceManager.GetString("dadaSaved", resourceCulture);
             }
         }
         
@@ -151,6 +169,96 @@ namespace CustomerData {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Leere Datenbank! Kein Kunde gefunden. Datensicherung abgebrochen. ähnelt.
+        /// </summary>
+        internal static string emptyDatabase {
+            get {
+                return ResourceManager.GetString("emptyDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Leeres File!keinKunde hinzugefügt. ähnelt.
+        /// </summary>
+        internal static string emptyFile {
+            get {
+                return ResourceManager.GetString("emptyFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kunde konnte nicht geändert werden. ähnelt.
+        /// </summary>
+        internal static string erCustNotChanged {
+            get {
+                return ResourceManager.GetString("erCustNotChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Email exisitert bereits. ähnelt.
+        /// </summary>
+        internal static string erEmailexists {
+            get {
+                return ResourceManager.GetString("erEmailexists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Email nicht gültig. ähnelt.
+        /// </summary>
+        internal static string erEmialNotValid {
+            get {
+                return ResourceManager.GetString("erEmialNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kunden ID nicht gefunden ähnelt.
+        /// </summary>
+        internal static string erIDNotFound {
+            get {
+                return ResourceManager.GetString("erIDNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kunden ID nicht gefunden. Zahlung abgebrochen. ähnelt.
+        /// </summary>
+        internal static string erIDNotFound_ButOpen {
+            get {
+                return ResourceManager.GetString("erIDNotFound_ButOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabe zu kurz. ähnelt.
+        /// </summary>
+        internal static string erLessInput {
+            get {
+                return ResourceManager.GetString("erLessInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die keine ID eingegeben ähnelt.
+        /// </summary>
+        internal static string erNoID {
+            get {
+                return ResourceManager.GetString("erNoID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kunden ID nicht gefunden. Änderung  nicht möglich. ähnelt.
+        /// </summary>
+        internal static string erNoID_nochange {
+            get {
+                return ResourceManager.GetString("erNoID_nochange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Filter nach: ähnelt.
         /// </summary>
         internal static string filterby {
@@ -169,7 +277,7 @@ namespace CustomerData {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Mitarbeiter anzeigen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kunde anzeigen ähnelt.
         /// </summary>
         internal static string getCustomData {
             get {
@@ -214,6 +322,15 @@ namespace CustomerData {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Keine gespeichertenDaten gefunden. ähnelt.
+        /// </summary>
+        internal static string noStoredData {
+            get {
+                return ResourceManager.GetString("noStoredData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Passwort falsch. ähnelt.
         /// </summary>
         internal static string passwordWrong {
@@ -250,11 +367,47 @@ namespace CustomerData {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fehlerhafte Datenbank, Kunden können nicht angezeigt werden. ähnelt.
+        /// </summary>
+        internal static string showCustomer {
+            get {
+                return ResourceManager.GetString("showCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sortiere nach: ähnelt.
         /// </summary>
         internal static string sortby {
             get {
                 return ResourceManager.GetString("sortby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Name ist zu kurz. ähnelt.
+        /// </summary>
+        internal static string tesxtNameToshort {
+            get {
+                return ResourceManager.GetString("tesxtNameToshort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bitte geben sie das Passwort ein ähnelt.
+        /// </summary>
+        internal static string textEnterPassword {
+            get {
+                return ResourceManager.GetString("textEnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ungültige Email. ähnelt.
+        /// </summary>
+        internal static string textInvalidEmail {
+            get {
+                return ResourceManager.GetString("textInvalidEmail", resourceCulture);
             }
         }
         
@@ -291,6 +444,15 @@ namespace CustomerData {
         internal static string titleMain {
             get {
                 return ResourceManager.GetString("titleMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Passwort eingeben ähnelt.
+        /// </summary>
+        internal static string titlePassword {
+            get {
+                return ResourceManager.GetString("titlePassword", resourceCulture);
             }
         }
     }

@@ -148,7 +148,7 @@
     <value>9</value>
   </data>
   <data name="btnOpenBooking.Location" type="System.Drawing.Point, System.Drawing">
-    <value>601, 42</value>
+    <value>506, 42</value>
   </data>
   <data name="btnOpenBooking.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -175,7 +175,7 @@
     <value>8</value>
   </data>
   <data name="btnShowCustomer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 152</value>
+    <value>506, 153</value>
   </data>
   <data name="btnShowCustomer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -202,7 +202,7 @@
     <value>7</value>
   </data>
   <data name="btnOpenChangeCustomer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 42</value>
+    <value>282, 42</value>
   </data>
   <data name="btnOpenChangeCustomer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -228,8 +228,11 @@
   <data name="&gt;&gt;btnOpenChangeCustomer.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="lbCustomer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 9pt</value>
+  </data>
   <data name="lbCustomer.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="lbCustomer.Location" type="System.Drawing.Point, System.Drawing">
     <value>47, 218</value>
@@ -238,7 +241,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="lbCustomer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>700, 164</value>
+    <value>901, 148</value>
   </data>
   <data name="lbCustomer.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -309,6 +312,60 @@
   <data name="&gt;&gt;btnLoadData.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;rbName.Name" xml:space="preserve">
+    <value>rbName</value>
+  </data>
+  <data name="&gt;&gt;rbName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbName.Parent" xml:space="preserve">
+    <value>gbSortby</value>
+  </data>
+  <data name="&gt;&gt;rbName.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rbID.Name" xml:space="preserve">
+    <value>rbID</value>
+  </data>
+  <data name="&gt;&gt;rbID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbID.Parent" xml:space="preserve">
+    <value>gbSortby</value>
+  </data>
+  <data name="&gt;&gt;rbID.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbSortby.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 132</value>
+  </data>
+  <data name="gbSortby.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="gbSortby.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="gbSortby.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 80</value>
+  </data>
+  <data name="gbSortby.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="gbSortby.Text" xml:space="preserve">
+    <value>Sort By:</value>
+  </data>
+  <data name="&gt;&gt;gbSortby.Name" xml:space="preserve">
+    <value>gbSortby</value>
+  </data>
+  <data name="&gt;&gt;gbSortby.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbSortby.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gbSortby.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="rbName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -369,36 +426,6 @@
   <data name="&gt;&gt;rbID.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="gbSortby.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 132</value>
-  </data>
-  <data name="gbSortby.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="gbSortby.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="gbSortby.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 80</value>
-  </data>
-  <data name="gbSortby.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="gbSortby.Text" xml:space="preserve">
-    <value>Sort By:</value>
-  </data>
-  <data name="&gt;&gt;gbSortby.Name" xml:space="preserve">
-    <value>gbSortby</value>
-  </data>
-  <data name="&gt;&gt;gbSortby.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbSortby.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gbSortby.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="tbFilterby.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 34</value>
   </data>
@@ -424,7 +451,7 @@
     <value>0</value>
   </data>
   <data name="gBFilterBy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>505, 132</value>
+    <value>282, 132</value>
   </data>
   <data name="gBFilterBy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -493,7 +520,7 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1175, 489</value>
+    <value>1253, 489</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

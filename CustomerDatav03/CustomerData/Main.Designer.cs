@@ -58,8 +58,6 @@
             // btnOpenBooking
             // 
             resources.ApplyResources(this.btnOpenBooking, "btnOpenBooking");
-            this.btnOpenBooking.Location = new System.Drawing.Point(506, 42);
-            this.btnOpenBooking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenBooking.Name = "btnOpenBooking";
             this.btnOpenBooking.UseVisualStyleBackColor = true;
             this.btnOpenBooking.Click += new System.EventHandler(this.btnOpenBooking_Click);
@@ -68,8 +66,6 @@
             // 
             this.btnShowCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             resources.ApplyResources(this.btnShowCustomer, "btnShowCustomer");
-            this.btnShowCustomer.Location = new System.Drawing.Point(506, 153);
-            this.btnShowCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowCustomer.Name = "btnShowCustomer";
             this.btnShowCustomer.UseVisualStyleBackColor = false;
             this.btnShowCustomer.Click += new System.EventHandler(this.btnShowCustomer_Click);
@@ -77,23 +73,15 @@
             // btnOpenChangeCustomer
             // 
             resources.ApplyResources(this.btnOpenChangeCustomer, "btnOpenChangeCustomer");
-            this.btnOpenChangeCustomer.Location = new System.Drawing.Point(282, 42);
-            this.btnOpenChangeCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenChangeCustomer.Name = "btnOpenChangeCustomer";
             this.btnOpenChangeCustomer.UseVisualStyleBackColor = true;
             this.btnOpenChangeCustomer.Click += new System.EventHandler(this.btnOpenChangeCustomer_Click);
             // 
             // lbCustomer
             // 
-            this.lbCustomer.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCustomer.FormattingEnabled = true;
-            this.lbCustomer.ItemHeight = 18;
-            this.lbCustomer.Location = new System.Drawing.Point(47, 218);
-            this.lbCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             resources.ApplyResources(this.lbCustomer, "lbCustomer");
+            this.lbCustomer.FormattingEnabled = true;
             this.lbCustomer.Name = "lbCustomer";
-            this.lbCustomer.Size = new System.Drawing.Size(901, 148);
-            this.lbCustomer.TabIndex = 5;
             // 
             // btnSaveData
             // 
@@ -117,17 +105,6 @@
             this.gbSortby.Name = "gbSortby";
             this.gbSortby.TabStop = false;
             this.gbSortby.Enter += new System.EventHandler(this.groupBox1_Enter);
-            this.groupBox1.Controls.Add(this.rbName);
-            this.groupBox1.Controls.Add(this.rbID);
-            this.groupBox1.Location = new System.Drawing.Point(47, 132);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(177, 80);
-            this.groupBox1.TabIndex = 28;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sort By:";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // rbName
             // 
@@ -135,7 +112,7 @@
             this.rbName.Name = "rbName";
             this.rbName.TabStop = true;
             this.rbName.UseVisualStyleBackColor = true;
-            this.rbName.CheckedChanged += new System.EventHandler(this.rbName_CheckedChanged);
+            this.rbName.CheckedChanged += new System.EventHandler(this.rbName_CheckedChanged_1);
             // 
             // rbID
             // 
@@ -143,14 +120,12 @@
             this.rbID.Name = "rbID";
             this.rbID.TabStop = true;
             this.rbID.UseVisualStyleBackColor = true;
-            this.rbID.CheckedChanged += new System.EventHandler(this.rbID_CheckedChanged);
+            this.rbID.CheckedChanged += new System.EventHandler(this.rbID_CheckedChanged_1);
             // 
             // gBFilterBy
             // 
             this.gBFilterBy.Controls.Add(this.tbFilterby);
             resources.ApplyResources(this.gBFilterBy, "gBFilterBy");
-            this.gBFilterBy.Location = new System.Drawing.Point(282, 132);
-            this.gBFilterBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gBFilterBy.Name = "gBFilterBy";
             this.gBFilterBy.TabStop = false;
             // 
@@ -158,7 +133,7 @@
             // 
             resources.ApplyResources(this.tbFilterby, "tbFilterby");
             this.tbFilterby.Name = "tbFilterby";
-            this.tbFilterby.TextChanged += new System.EventHandler(this.tbFilterby_TextChanged);
+            this.tbFilterby.TextChanged += new System.EventHandler(this.tbFilterby_TextChanged_1);
             // 
             // myData
             // 
@@ -177,7 +152,6 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnChangeLanguage);
-            this.ClientSize = new System.Drawing.Size(1253, 489);
             this.Controls.Add(this.gBFilterBy);
             this.Controls.Add(this.gbSortby);
             this.Controls.Add(this.btnLoadData);

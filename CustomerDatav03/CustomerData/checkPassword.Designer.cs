@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tbPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelEnterPasswort = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -43,14 +43,14 @@
             this.tbPassword.TabIndex = 1;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
-            // label1
+            // labelEnterPasswort
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Please enter Password";
+            this.labelEnterPasswort.AutoSize = true;
+            this.labelEnterPasswort.Location = new System.Drawing.Point(126, 31);
+            this.labelEnterPasswort.Name = "labelEnterPasswort";
+            this.labelEnterPasswort.Size = new System.Drawing.Size(153, 17);
+            this.labelEnterPasswort.TabIndex = 2;
+            this.labelEnterPasswort.Text = "Please enter Password";
             // 
             // btnConfirm
             // 
@@ -81,7 +81,7 @@
             this.ClientSize = new System.Drawing.Size(446, 198);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelEnterPasswort);
             this.Controls.Add(this.tbPassword);
             this.Name = "checkPassword";
             this.Text = "CheckPassword";
@@ -94,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelEnterPasswort;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnCancel;
     }

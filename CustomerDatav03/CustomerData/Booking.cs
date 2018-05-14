@@ -51,6 +51,7 @@ namespace CustomerData
             }
             else
             {
+                //MessageBox.Show("No ID inserted");
                 MessageBox.Show(resxLanguage.GetString("erNoID"));
             }
         }
