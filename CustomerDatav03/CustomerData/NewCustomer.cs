@@ -47,10 +47,19 @@ namespace CustomerData
                     int i;
                     Int32.TryParse(tbBallance.Text, out i);
                     int u;
-                    Int32.TryParse(tbCustomerNumber.Text, out u);
-                    AddCustomer = new Customer(tbFirstName.Text, tbLastName.Text, tbEMail.Text, i, u);
-                    DialogResult = DialogResult.OK;
-                    Close();
+                    var id = tbCustomerNumber.Text;
+                    if (id.Length >0)
+                    {
+                        Int32.TryParse(tbCustomerNumber.Text, out u);
+                        AddCustomer = new Customer(tbFirstName.Text, tbLastName.Text, tbEMail.Text, i, u);
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ID inserted");
+                    }
+                    
                 }
                 else
                 {

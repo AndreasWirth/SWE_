@@ -140,7 +140,7 @@ namespace CustomerData
             // Generating Data
             SWECompany.AddCustomer(new Customer("Andi", "Andi", "hallo@test.at", 0, 100));
             SWECompany.AddCustomer(new Customer("Zuerst", "Zuerst", "hallo100@test.at", 0, 0));
-            SWECompany.AddCustomer(new Customer("123456789012345", "123456789012345", "hallo@test.at", 0, 101));
+            SWECompany.AddCustomer(new Customer("123456789012345", "123456789012345", "hallo123456@test.at", 0, 101));
             for (int i = 1; i < 30; i++)
             {
                 string vorname = "test" + i;

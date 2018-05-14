@@ -31,9 +31,18 @@ namespace CustomerData
         private void btnPayIn_Click(object sender, EventArgs e)
         {
             Decimal.TryParse(tbAmount.Text, out Amount);
-            Int32.TryParse(tbCustomerNumber.Text, out ID);
-            DialogResult = DialogResult.OK;
-            Close();
+            var id = tbCustomerNumber.Text;
+            if (id.Length >0)
+            {
+                Int32.TryParse(id, out ID);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("No ID inserted");
+            }
+            
         }
         /// <summary>
         /// Gives the main Window the amount to pay out for the choosen Customer
@@ -46,9 +55,18 @@ namespace CustomerData
             decimal i;
             Decimal.TryParse(tbAmount.Text, out i);
             Amount = 0-i; // make negertiv value
-            Int32.TryParse(tbCustomerNumber.Text, out ID);
-            DialogResult = DialogResult.OK;
-            Close();
+            var id = tbCustomerNumber.Text;
+            if (id.Length > 0)
+            {
+                Int32.TryParse(id, out ID);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("No ID inserted");
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

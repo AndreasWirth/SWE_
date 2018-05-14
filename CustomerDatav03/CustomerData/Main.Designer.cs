@@ -57,7 +57,7 @@
             // 
             // btnOpenBooking
             // 
-            this.btnOpenBooking.Location = new System.Drawing.Point(601, 42);
+            this.btnOpenBooking.Location = new System.Drawing.Point(506, 42);
             this.btnOpenBooking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenBooking.Name = "btnOpenBooking";
             this.btnOpenBooking.Size = new System.Drawing.Size(176, 36);
@@ -69,7 +69,7 @@
             // btnShowCustomer
             // 
             this.btnShowCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnShowCustomer.Location = new System.Drawing.Point(47, 140);
+            this.btnShowCustomer.Location = new System.Drawing.Point(506, 153);
             this.btnShowCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnShowCustomer.Name = "btnShowCustomer";
             this.btnShowCustomer.Size = new System.Drawing.Size(176, 36);
@@ -80,7 +80,7 @@
             // 
             // btnOpenChangeCustomer
             // 
-            this.btnOpenChangeCustomer.Location = new System.Drawing.Point(291, 42);
+            this.btnOpenChangeCustomer.Location = new System.Drawing.Point(282, 42);
             this.btnOpenChangeCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOpenChangeCustomer.Name = "btnOpenChangeCustomer";
             this.btnOpenChangeCustomer.Size = new System.Drawing.Size(176, 36);
@@ -91,12 +91,13 @@
             // 
             // lbCustomer
             // 
+            this.lbCustomer.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCustomer.FormattingEnabled = true;
-            this.lbCustomer.ItemHeight = 16;
+            this.lbCustomer.ItemHeight = 18;
             this.lbCustomer.Location = new System.Drawing.Point(47, 218);
             this.lbCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbCustomer.Name = "lbCustomer";
-            this.lbCustomer.Size = new System.Drawing.Size(730, 164);
+            this.lbCustomer.Size = new System.Drawing.Size(901, 148);
             this.lbCustomer.TabIndex = 5;
             // 
             // btnSaveData
@@ -125,7 +126,7 @@
             // 
             this.groupBox1.Controls.Add(this.rbName);
             this.groupBox1.Controls.Add(this.rbID);
-            this.groupBox1.Location = new System.Drawing.Point(269, 132);
+            this.groupBox1.Location = new System.Drawing.Point(47, 132);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -164,7 +165,7 @@
             // gBFilterBy
             // 
             this.gBFilterBy.Controls.Add(this.tbFilterby);
-            this.gBFilterBy.Location = new System.Drawing.Point(505, 132);
+            this.gBFilterBy.Location = new System.Drawing.Point(282, 132);
             this.gBFilterBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gBFilterBy.Name = "gBFilterBy";
             this.gBFilterBy.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -186,7 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 489);
+            this.ClientSize = new System.Drawing.Size(1253, 489);
             this.Controls.Add(this.gBFilterBy);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLoadData);
