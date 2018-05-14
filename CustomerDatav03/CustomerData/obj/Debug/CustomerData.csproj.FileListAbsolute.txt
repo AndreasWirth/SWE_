@@ -52,12 +52,9 @@ C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\German.resx
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\English.Designer.cs
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\German.Designer.cs
-C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.English.resources
-C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.German.resources
-C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.PrivateSettings.resources
-C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\PrivateSettings.resx
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\PrivateSettings.Designer.cs
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\CustomerData.exe.manifest
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\CustomerData.application
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.exe.manifest
 C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\obj\Debug\CustomerData.application
+C:\Users\Andre\Source\Repos\SWE_CustomerProject\CustomerDatav03\CustomerData\bin\Debug\PrivateSettings.resx
