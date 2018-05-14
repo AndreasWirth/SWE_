@@ -143,6 +143,7 @@
             this.tbID.Name = "tbID";
             this.tbID.Size = new System.Drawing.Size(164, 22);
             this.tbID.TabIndex = 37;
+            this.tbID.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.tbID_MaskInputRejected);
             // 
             // label4
             // 

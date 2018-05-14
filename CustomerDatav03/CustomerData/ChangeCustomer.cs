@@ -144,5 +144,10 @@ namespace CustomerData
                 ErrLastName.Clear();
             }
         }
+
+        private void tbID_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

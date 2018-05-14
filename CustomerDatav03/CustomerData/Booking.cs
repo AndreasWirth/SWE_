@@ -12,8 +12,9 @@ namespace CustomerData
 {
     public partial class Booking : Form
     {
-        public decimal Amount;
-        public int ID;
+        public decimal Amount { get; set; }
+        public int ID { get; set; }
+
         public Booking()
         {
             InitializeComponent();
@@ -30,11 +31,15 @@ namespace CustomerData
         /// <param name="e"></param>
         private void btnPayIn_Click(object sender, EventArgs e)
         {
-            Decimal.TryParse(tbAmount.Text, out Amount);
+            decimal amount;
+            Decimal.TryParse(tbAmount.Text, out amount);
             var id = tbCustomerNumber.Text;
             if (id.Length >0)
             {
-                Int32.TryParse(id, out ID);
+                int ii;
+                Int32.TryParse(id, out ii);
+                ID = ii;
+                Amount = amount;
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -58,7 +63,9 @@ namespace CustomerData
             var id = tbCustomerNumber.Text;
             if (id.Length > 0)
             {
-                Int32.TryParse(id, out ID);
+                int ii;
+                Int32.TryParse(id, out ii);
+                ID = ii;
                 DialogResult = DialogResult.OK;
                 Close();
             }
