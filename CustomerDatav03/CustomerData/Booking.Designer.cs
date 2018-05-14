@@ -96,6 +96,7 @@
             this.tbCustomerNumber.Name = "tbCustomerNumber";
             this.tbCustomerNumber.Size = new System.Drawing.Size(100, 22);
             this.tbCustomerNumber.TabIndex = 29;
+            this.tbCustomerNumber.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.tbCustomerNumber_MaskInputRejected);
             // 
             // labelCustomerNumber
             // 

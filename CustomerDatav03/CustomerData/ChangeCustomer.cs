@@ -11,6 +11,10 @@ using System.Windows.Forms;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Forms to change the information of a Customer.
+    /// Provides a show Customer to collect and show the Data of a given ID
+    /// </summary>
     public partial class ChangeCustomer : Form
     {
         public Customer AktCustomer { get; set; }
@@ -43,7 +47,7 @@ namespace CustomerData
             btnGetCustomer.Text = resxLanguage.GetString("getCustomData");
         }
         /// <summary>
-        /// putts the actuall Data of the choosen Custome in the Window
+        /// Uses the Customer ID and displayes the Customer Data
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -71,7 +75,7 @@ namespace CustomerData
             Close();
         }
         /// <summary>
-        /// Setting the Parameters and for the changed customer and give it back to the main Window
+        /// Setting the Parameters for the changed customer, and give it back to the main Window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -114,7 +118,48 @@ namespace CustomerData
                 {
                     MessageBox.Show("Email Adress not valid!");
                 }
+            }     
+        }
+
+        private void tbEMail_TextChanged(object sender, EventArgs e)
+        {
+            if (!Customer.CheckEmail(tbEMail.Text))
+            {
+                errProvEmail.SetError(tbEMail, "Invalid Email");
             }
+            else
+            {
+                errProvEmail.Clear();
+            }
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text.Length <= 2)
+            {
+                ErrFirstName.SetError(tbFirstName, "Name is to short.");
+            }
+            else
+            {
+                ErrFirstName.Clear();
+            }
+        }
+
+        private void tbLastName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbLastName.Text.Length <= 2)
+            {
+                ErrLastName.SetError(tbLastName, "Name is to short.");
+            }
+            else
+            {
+                ErrLastName.Clear();
+            }
+        }
+
+        private void tbID_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

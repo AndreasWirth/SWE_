@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbEMail = new System.Windows.Forms.TextBox();
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.btnCancle = new System.Windows.Forms.Button();
@@ -41,6 +42,10 @@
             this.btnGetCustomer = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.MaskedTextBox();
             this.tbBallance = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbBallance = new System.Windows.Forms.TextBox();
+            this.errProvEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // tbEMail
@@ -49,6 +54,7 @@
             this.tbEMail.Name = "tbEMail";
             this.tbEMail.Size = new System.Drawing.Size(164, 22);
             this.tbEMail.TabIndex = 33;
+            this.tbEMail.TextChanged += new System.EventHandler(this.tbEMail_TextChanged);
             // 
             // tbLastName
             // 
@@ -56,6 +62,7 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(164, 22);
             this.tbLastName.TabIndex = 32;
+            this.tbLastName.TextChanged += new System.EventHandler(this.tbLastName_TextChanged);
             // 
             // btnCancle
             // 
@@ -128,6 +135,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(164, 22);
             this.tbFirstName.TabIndex = 24;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // btnGetCustomer
             // 
@@ -146,6 +154,16 @@
             this.tbID.Name = "tbID";
             this.tbID.Size = new System.Drawing.Size(164, 22);
             this.tbID.TabIndex = 37;
+            this.tbID.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.tbID_MaskInputRejected);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 17);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Ballance";
             // 
             // tbBallance
             // 
@@ -153,7 +171,11 @@
             this.tbBallance.Name = "tbBallance";
             this.tbBallance.ReadOnly = true;
             this.tbBallance.Size = new System.Drawing.Size(164, 22);
-            this.tbBallance.TabIndex = 40;
+            this.tbBallance.TabIndex = 39;
+            // 
+            // errProvEmail
+            // 
+            this.errProvEmail.ContainerControl = this;
             // 
             // ChangeCustomer
             // 
@@ -176,6 +198,7 @@
             this.Name = "ChangeCustomer";
             this.Text = "ChangeCustomer";
             this.Load += new System.EventHandler(this.ChangeCustomer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +217,8 @@
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Button btnGetCustomer;
         private System.Windows.Forms.MaskedTextBox tbID;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbBallance;
+        private System.Windows.Forms.ErrorProvider errProvEmail;
     }
 }

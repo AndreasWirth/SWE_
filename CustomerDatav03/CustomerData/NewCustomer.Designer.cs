@@ -42,6 +42,7 @@
             this.tbBallance = new System.Windows.Forms.MaskedTextBox();
             this.tbCustomerNumber = new System.Windows.Forms.MaskedTextBox();
             this.errProvEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnGenerateID = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,14 +93,15 @@
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(243, 48);
+            this.tbFirstName.Location = new System.Drawing.Point(185, 110);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(164, 22);
             this.tbFirstName.TabIndex = 11;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // btAddCustomer
             // 
-            this.btAddCustomer.Location = new System.Drawing.Point(105, 226);
+            this.btAddCustomer.Location = new System.Drawing.Point(38, 247);
             this.btAddCustomer.Name = "btAddCustomer";
             this.btAddCustomer.Size = new System.Drawing.Size(100, 35);
             this.btAddCustomer.TabIndex = 18;
@@ -109,7 +111,7 @@
             // 
             // btnCancle
             // 
-            this.btnCancle.Location = new System.Drawing.Point(252, 226);
+            this.btnCancle.Location = new System.Drawing.Point(185, 247);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(100, 35);
             this.btnCancle.TabIndex = 19;
@@ -119,22 +121,24 @@
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(243, 81);
+            this.tbLastName.Location = new System.Drawing.Point(185, 143);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(164, 22);
             this.tbLastName.TabIndex = 20;
+            this.tbLastName.TextChanged += new System.EventHandler(this.tbLastName_TextChanged);
             // 
             // tbEMail
             // 
-            this.tbEMail.Location = new System.Drawing.Point(243, 116);
+            this.tbEMail.Location = new System.Drawing.Point(185, 178);
             this.tbEMail.Name = "tbEMail";
             this.tbEMail.Size = new System.Drawing.Size(164, 22);
             this.tbEMail.TabIndex = 21;
+            this.tbEMail.TextChanged += new System.EventHandler(this.tbEMail_TextChanged);
             // 
             // tbBallance
             // 
-            this.tbBallance.Location = new System.Drawing.Point(243, 145);
-            this.tbBallance.Mask = "00000";
+            this.tbBallance.Location = new System.Drawing.Point(185, 207);
+            this.tbBallance.Mask = "00000.00";
             this.tbBallance.Name = "tbBallance";
             this.tbBallance.Size = new System.Drawing.Size(164, 22);
             this.tbBallance.TabIndex = 24;
@@ -142,7 +146,7 @@
             // 
             // tbCustomerNumber
             // 
-            this.tbCustomerNumber.Location = new System.Drawing.Point(243, 180);
+            this.tbCustomerNumber.Location = new System.Drawing.Point(185, 74);
             this.tbCustomerNumber.Mask = "00000";
             this.tbCustomerNumber.Name = "tbCustomerNumber";
             this.tbCustomerNumber.Size = new System.Drawing.Size(164, 22);
@@ -152,11 +156,22 @@
             // 
             this.errProvEmail.ContainerControl = this;
             // 
+            // btnGenerateID
+            // 
+            this.btnGenerateID.Location = new System.Drawing.Point(220, 33);
+            this.btnGenerateID.Name = "btnGenerateID";
+            this.btnGenerateID.Size = new System.Drawing.Size(100, 35);
+            this.btnGenerateID.TabIndex = 26;
+            this.btnGenerateID.Text = "Generate ID";
+            this.btnGenerateID.UseVisualStyleBackColor = true;
+            this.btnGenerateID.Click += new System.EventHandler(this.btnGenerateID_Click);
+            // 
             // NewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 301);
+            this.ClientSize = new System.Drawing.Size(402, 301);
+            this.Controls.Add(this.btnGenerateID);
             this.Controls.Add(this.tbCustomerNumber);
             this.Controls.Add(this.tbBallance);
             this.Controls.Add(this.tbEMail);
@@ -170,7 +185,7 @@
             this.Controls.Add(this.lableFirstName);
             this.Controls.Add(this.tbFirstName);
             this.Name = "NewCustomer";
-            this.Text = "NewCustomer";
+            this.Text = "AddCustomer";
             this.Load += new System.EventHandler(this.NewCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProvEmail)).EndInit();
             this.ResumeLayout(false);
@@ -193,5 +208,6 @@
         private System.Windows.Forms.MaskedTextBox tbBallance;
         private System.Windows.Forms.MaskedTextBox tbCustomerNumber;
         private System.Windows.Forms.ErrorProvider errProvEmail;
+        private System.Windows.Forms.Button btnGenerateID;
     }
 }

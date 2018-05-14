@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Forms for collecting the necessary Data to greate a new Customer
+    /// </summary>
     public partial class NewCustomer : Form
     {
         public Customer AddCustomer { get; set; }
@@ -28,7 +31,7 @@ namespace CustomerData
             this.Company = company;
             this.Customers = Company.GetCustomers();
         }
-
+        
         private void NewCustomer_Load(object sender, EventArgs e)
         {
             btnCancle.Text = resxLanguage.GetString("cancel");
@@ -41,7 +44,7 @@ namespace CustomerData
 
         }
         /// <summary>
-        /// gives the main window the Data for the new Customer
+        /// Generates the new Customer, and closes the Window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -88,6 +91,69 @@ namespace CustomerData
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+
+        private void tbEMail_TextChanged(object sender, EventArgs e)
+        {
+            if (!Customer.CheckEmail(tbEMail.Text))
+            {
+                errProvEmail.SetError(tbEMail,"Invalid Email");
+            }
+            else
+            {
+                errProvEmail.Clear();
+            }
+        }
+
+        private void btnGenerateID_Click(object sender, EventArgs e)
+        {
+            bool stop = false;
+            int ii = 0;
+            if (Customers.Count == 0)
+            {
+                tbCustomerNumber.Text = ii.ToString();
+            }
+            else
+            {
+                do
+                {
+                    if (!Customers.ContainsKey(ii))
+                    {
+                        tbCustomerNumber.Text = ii.ToString();
+                        stop = true;
+                    }
+                    if (ii > Customers.Keys.Max())
+                    {
+                        stop = true;
+                        tbCustomerNumber.Text = (Customers.Keys.Max() + 1).ToString();
+                    }
+                    ii++;
+                } while (stop == false);
+            } 
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbFirstName.Text.Length <=2)
+            {
+                ErrFirstName.SetError(tbFirstName,"Name is to short.");
+            }
+            else
+            {
+                ErrFirstName.Clear();
+            }
+        }
+
+        private void tbLastName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbLastName.Text.Length <= 2)
+            {
+                ErrLastName.SetError(tbLastName, "Name is to short.");
+            }
+            else
+            {
+                ErrLastName.Clear();
+            }
         }
     }
 }

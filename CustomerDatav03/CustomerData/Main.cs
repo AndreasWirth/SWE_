@@ -17,6 +17,9 @@ using CustomerData.Properties;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Main Class for the CustomerHandler Application
+    /// </summary>
     public partial class Main : Form
     {
         /// <summary>
@@ -101,10 +104,43 @@ namespace CustomerData
 
         #region GUI Elements / GUI Evetns
 
+        /// <summary>
+        /// if changed in the Group Box, changes Sort algorithem to Last Name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbName_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbName.Checked)
+            {
+                Sort = 1;
+                ShowCustomer();
+            }
+        }
+        /// <summary>
+        /// if changed in the Group Box, changes Sort algorithem to ID 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void rbID_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbID.Checked)
+            {
+                Sort = 0;
+                ShowCustomer();
+            }
+        }
+        private void tbFilterby_TextChanged(object sender, EventArgs e)
+        {
+            if (this.Text.Length > 2)
+            {
+                ShowCustomer();
+            }
+        }
 
         #region Buttons
         /// <summary>
-        /// opens the Widow to add a new Customer
+        /// Opens the Widow to add a new Customer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -143,6 +179,8 @@ namespace CustomerData
 
         /// <summary>
         /// Adds test customers to the Dictionary, and displays them in the ListBox
+        /// Not necessary for the Application.
+        /// Addet to simplify testing & Developing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -166,7 +204,7 @@ namespace CustomerData
             ShowCustomer();
         }
         /// <summary>
-        /// opens the Window for a Transition
+        /// Opens the Window for a Transition
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -190,7 +228,7 @@ namespace CustomerData
             ShowCustomer();
         }
         /// <summary>
-        /// opens the Window to change teh Data of a Customer
+        /// Opens the Window to change the Data of a Customer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -319,6 +357,9 @@ namespace CustomerData
             }
         }
         #endregion
+
+        #endregion
+
         #region Methodes
 
         /// <summary>
@@ -344,7 +385,7 @@ namespace CustomerData
                         // filtering the ouput
                         if (tbFilterby.Text.Length > 2)
                         {
-                            if (checkFilter(aktCustomer, aktFilter))
+                            if (CheckFilter(aktCustomer, aktFilter))
                             {
                                 //lbCustomer.Items.Add(CustomerDict[key].ToString());
                                 lbCustomer.Items.Add(CustomerDict[key].GetClusteredString());
@@ -373,7 +414,7 @@ namespace CustomerData
         /// <param name="aktCustomer">customer to check</param>
         /// <param name="Filter">filter tex which has to be inside</param>
         /// <returns>true if the text maches in First or Last NAme</returns>
-        public bool checkFilter(Customer aktCustomer, string Filter)
+        public bool CheckFilter(Customer aktCustomer, string Filter)
         {
             // ToLower will cost speed, but it is more robust
             if (aktCustomer.FirstName.ToLower().Contains(Filter.ToLower()) || aktCustomer.LastName.ToLower().Contains(Filter.ToLower()))

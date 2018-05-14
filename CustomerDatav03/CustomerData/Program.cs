@@ -9,7 +9,7 @@ namespace CustomerData
     static class Program
     {
         /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
+        /// Main starting Point of the Application
         /// </summary>
         [STAThread]
         static void Main()

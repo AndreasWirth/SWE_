@@ -48,9 +48,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(126, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 17);
+            this.label1.Size = new System.Drawing.Size(153, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Please enter password";
+            this.label1.Text = "Please enter Password";
             // 
             // btnConfirm
             // 
@@ -84,7 +84,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbPassword);
             this.Name = "checkPassword";
-            this.Text = "checkPassword";
+            this.Text = "CheckPassword";
+            this.Load += new System.EventHandler(this.checkPassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -56,7 +56,7 @@ namespace CustomerData
         }
         /// <summary>
         /// Gives the main Window the amount to pay out for the choosen Customer
-        /// (uses the textbox and makes the value negertiv)
+        /// (uses the textbox and makes the value negativ)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -84,6 +84,11 @@ namespace CustomerData
         {
             DialogResult = DialogResult.Abort;
             Close();
+        }
+
+        private void tbCustomerNumber_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

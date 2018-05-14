@@ -3,18 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace CustomerData
 {
+    /// <summary>
+    /// Company Class which holds all Customers in an Ductionary (key = ID, Value = Customer)
+    /// Also handels Data usage of the Customers (save & load the Data)
+    /// </summary>
     public class Company
     {
         private Dictionary<int,Customer> CustomerDict = new Dictionary<int, Customer>();
-        private string password = "YouCantGuessIT";
+        private string Password = "YouCantGuessIT";
 
-       
+        // Secret key string
+        static string SecretKey = "YouGuess";
+        // Byte array key. For encryption and decryption purpose.
+        readonly static byte[] Key = Encoding.UTF8.GetBytes(SecretKey);
+        // Byte array iv. For encryption and decryption purpose.
+        readonly static byte[] IV = Encoding.UTF8.GetBytes(SecretKey);
+        // DES Crypto Service Provider.
+        static DESCryptoServiceProvider Des;
+
+        static ICryptoTransform Desencrypt;
+
+
         /// <summary>
         /// Adds a new Customer
         /// </summary>
@@ -23,13 +41,15 @@ namespace CustomerData
         {
             if (!CheckIfIDUnique(newCustomer.ID))
             {
-                System.Windows.Forms.MessageBox.Show("Customer ID '"+ newCustomer.ID+ "' already used");
+                //System.Windows.Forms.MessageBox.Show("Customer ID '"+ AddCustomer.ID+ "' already used");
                 // It would be possible to return an fault, and ask the User to overwritte existing Customer.
                 // Due to the fact that it isn't in the requironment and of time issus it is not implemented.
+
+                throw new Exception("Customer ID already used");
             }
             else
             {
-                CustomerDict.Add(newCustomer.ID, newCustomer);
+                CustomerDict.Add(newCustomer.ID, newCustomer);   
             }
             
         }
@@ -54,9 +74,9 @@ namespace CustomerData
             }
             catch (Exception)
             {
-                //Console.WriteLine("Customer Id not found. Booking Canceled.");
-                System.Windows.Forms.MessageBox.Show("Customer Id not found. Booking Canceled.");
-
+                
+                //System.Windows.Forms.MessageBox.Show("Customer Id not found. Booking Canceled.");
+                throw new Exception("Customer Id not found. Booking Canceled.");
             }
             
         }
@@ -69,12 +89,12 @@ namespace CustomerData
         {
             try
             {
+                changedCustomer.LastChange = DateTime.Now;
                 CustomerDict[CustomerID] = changedCustomer;
             }
             catch (Exception)
             {
-                //Console.WriteLine("Customer Id not found.");
-                System.Windows.Forms.MessageBox.Show("Customer Id not found. Change not possible.");
+                throw new Exception("Customer Id not found. Change not possible.");
 
             }
         }
@@ -92,44 +112,43 @@ namespace CustomerData
             if (length >0)
             {
                 int k = 0;
+                int[] keyarray = new int[indizes.Length];
                 switch (sortby)
                 {
                     case 1:
+                        // sort by first letter of last name
                         foreach (var custom in CustomerDict)   // create array of first char (int representation) of last name 
                         {
                             chars[k] = custom.Value.LastName.ToLower()[0] - 97;
                             k++;
                         }
-                        break;
-                    default:
-                        foreach (var custom in CustomerDict)
+                        int i = 0;
+                        foreach (var element in CustomerDict)      // iterate over customers
                         {
-                            chars[k] = custom.Value.ID;
-                            k++;
+                            int currentChar = element.Value.LastName.ToLower()[0] - 97;
+                            int count = 0;
+                            for (int j = 0; j < i; j++)     // iterate over already set indizes
+                            {
+                                if (chars[j] > currentChar) indizes[j]++;   // count all higher chars one up
+                                else count++;                               // count current couter one up, for each lower char
+                            }
+                            indizes[i] = count;     // set current index to counter value
+                            i++;
+                        }
+                        //int[] keyarray = new int[indizes.Length];
+                        int count2 = 0;
+                        foreach (var customer in CustomerDict)
+                        {
+                            int place = indizes[count2];
+                            keyarray[place] = customer.Key;
+                            count2++;
                         }
                         break;
-                }
-                int i = 0;
-                foreach (var element in CustomerDict)      // iterate over customers
-                {
-                    int currentChar = element.Value.LastName.ToLower()[0] - 97;
-                    int count = 0;
-                    for (int j = 0; j < i; j++)     // iterate over already set indizes
-                    {
-                        if (chars[j] > currentChar) indizes[j]++;   // count all higher chars one up
-                        else count++;                               // count current couter one up, for each lower char
-                    }
-                    indizes[i] = count;     // set current index to counter value
-                    i++;
-                }
-                //TODO: erstelle dictionary zur ausgabe
-                int[] keyarray = new int[indizes.Length];
-                int count2 = 0;
-                foreach (var customer in CustomerDict)
-                {
-                    int place = indizes[count2];   
-                    keyarray[place]= customer.Key;
-                    count2++;
+                    default:
+                        // sort by index
+                        CustomerDict.Keys.CopyTo(keyarray,0);
+                        Array.Sort(keyarray);
+                        break;
                 }
                 return keyarray;
             }
@@ -142,60 +161,127 @@ namespace CustomerData
         /// <returns>True if correct, fasle if not</returns>
         public bool CheckPassword(string password)
         {
-            if (this.password == password)
+            if (this.Password == password)
                 return true;
             return false;
         }
         /// <summary>
-        /// stores the encrypted Data in a File
+        /// encrypts and serializes an object
         /// </summary>
         public void StoreData()
         {
             if (CustomerDict.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
-                return;
+                //System.Windows.Forms.MessageBox.Show("Empty Database! No Customers found. Storeing data canceled");
+                throw new Exception("Empty Database! No Customers found. Storeing data canceled");
             }
             List<Customer> customer = new List<Customer>();
             foreach (var cust in CustomerDict)
             {
                 customer.Add(cust.Value);
             }
+            // Instances a memory stream object
+            Stream serializedStream = new MemoryStream();
+            //Instantiate a binary formatter object
+            IFormatter formatterEn = new BinaryFormatter();
+            //First serialize our data object to memory stream
+            formatterEn.Serialize(serializedStream, customer);
+            //Reset bach out stream to Position 0. This is due to the serialization process, the stream data positions has reached
+            //the last position. This is important because else we migth face the Exception aso 'Binary strea '0' does not contaimn a valid Ninary Header
+            serializedStream.Seek(0, SeekOrigin.Begin);
 
-            Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\CustomerData.txt");
-            XmlSerializer xmlSer = new XmlSerializer(typeof(List<Customer>));
-
-            xmlSer.Serialize(stream, customer);
-
-            stream.Close();
+            //Instantiate a file stream object 
+            FileStream fsWrite = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Create, FileAccess.Write);
+            //Create a byte array with the length of our serialized stream
+            byte[] byteArray = new byte[serializedStream.Length];
+            //Read the serialized stream and store its byte array value to our byteArray variable
+            serializedStream.Read(byteArray, 0, byteArray.Length);
+            //Instantiate a DES descryptor service provider type object
+            Des = new DESCryptoServiceProvider();
+            Des.Padding = PaddingMode.PKCS7;
+            Des.Mode = CipherMode.CBC;
+            Des.Key = Key;
+            Des.IV = IV;
+            //Create the Encryptor
+            Desencrypt = Des.CreateEncryptor();
+            //Instantiate a crypto stream object, construct with file stream, encryptor. Note that the mode we use is write.
+            CryptoStream cryptStream = new CryptoStream(fsWrite, Desencrypt, CryptoStreamMode.Write);
+            //Write the byteArray to our filestream via crypStream
+            cryptStream.Write(byteArray, 0, byteArray.Length);
+            //flush and close our stream
+            cryptStream.FlushFinalBlock();
+            cryptStream.Close();
+            cryptStream.Flush();
+            cryptStream.Close();
+            fsWrite.Close();
         }
         /// <summary>
-        /// Loades and decrpyt the stored data
+        /// decrypts and deserializes a stored file
         /// </summary>
         public void GetData()
         {
             List<Customer> customer = new List<Customer>();
-            var myDeserializer = new XmlSerializer(typeof(List<Customer>));
             try
             {
-                using (var myFileStream = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open))
+                //Create a file stream to read the encrypted file back
+                using (var fsread = new FileStream(Environment.CurrentDirectory + "\\CustomerData.txt", FileMode.Open, FileAccess.Read))
                 {
-                    customer = (List<Customer>)myDeserializer.Deserialize(myFileStream);
+                    //Create DES crypto service provider object
+                    Des = new DESCryptoServiceProvider();
+                    Des.Padding = PaddingMode.PKCS7;
+                    Des.Mode = CipherMode.CBC;
+                    Des.Key = Key;
+                    Des.IV = IV;
+                    //Create descryptor
+                    Desencrypt = Des.CreateDecryptor();
+                    //Construct the cryptpstream with filestream that we used to store data that we read from file
+                    CryptoStream cryptStream = new CryptoStream(fsread, Desencrypt, CryptoStreamMode.Read);
+                    //Create byte array object with length of our filestream
+                    byte[] byteArray = new byte[fsread.Length];
+                    //Store the byte in cryptStream to our byteArray
+                    cryptStream.Read(byteArray, 0, byteArray.Length);
+                    //Create a new memory stream
+                    MemoryStream memoryStream = new MemoryStream();
+                    //Write the byteArray to memory stream
+                    memoryStream.Write(byteArray, 0, byteArray.Length);
+                    //Create formatter
+                    IFormatter formatter = new BinaryFormatter();
+                    //Reporsition our memory stream tp position 0
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+                    //assign the deserialization object to our customer object
+                    customer = (List<Customer>)formatter.Deserialize(memoryStream);
+                    //Flush and close all stream
+                    cryptStream.Flush();
+                    cryptStream.Close();
+                    fsread.Close();
+                    memoryStream.Flush();
+                    memoryStream.Close();
                 }
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("No stored Data Found");
-                return;
+                //System.Windows.Forms.MessageBox.Show("No stored Data Found");
+                throw new FileNotFoundException("No stored Data Found");
             }
             if (customer.Count==0)
             {
-                System.Windows.Forms.MessageBox.Show("File was empty! No Customer added.");
-                return;
+                //System.Windows.Forms.MessageBox.Show("File was empty! No Customer added.");
+                throw new ArgumentNullException("File was empty! No Customer added.");
             }
+
+            CustomerDict.Clear();
+
             foreach (var cust in customer)
             {
-                AddCustomer(cust);
+                try
+                {
+                    AddCustomer(cust);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                    
             }
 
         }
@@ -218,7 +304,7 @@ namespace CustomerData
         {
             foreach (var customer in CustomerDict)
             {
-                if (eMail == customer.Value.EMail) return false;
+                if (eMail.ToLower() == customer.Value.EMail.ToLower()) return false;
             }
             return true;
         }
