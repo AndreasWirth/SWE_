@@ -194,7 +194,7 @@ namespace CustomerData
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Customer couldn't changed");
+                    //MessageBox.Show("Customer couldn't changed");
                     MessageBox.Show(resxLanguage.GetString("erCustNotChanged"));
                 }
 
@@ -351,8 +351,6 @@ namespace CustomerData
                         {
                             //lbCustomer.Items.Add(CustomerDict[key].ToString());
                             lbCustomer.Items.Add(CustomerDict[key].GetClusteredString());
-                            string s1 = String.Format("{0,15}", "ID");
-                            string s2 = String.Format("{0,15}", CustomerDict[0].LastName);
                         }
                     }
                 }
@@ -368,12 +366,12 @@ namespace CustomerData
         /// Checks if customer first or last name contains the Filter sting
         /// </summary>
         /// <param name="aktCustomer">customer to check</param>
-        /// <param name="Filter">filter tex which has to be inside</param>
+        /// <param name="filter">filter tex which has to be inside</param>
         /// <returns>true if the text maches in First or Last NAme</returns>
-        public bool CheckFilter(Customer aktCustomer, string Filter)
+        public bool CheckFilter(Customer aktCustomer, string filter)
         {
             // ToLower will cost speed, but it is more robust
-            if (aktCustomer.FirstName.ToLower().Contains(Filter.ToLower()) || aktCustomer.LastName.ToLower().Contains(Filter.ToLower()))
+            if (aktCustomer.FirstName.ToLower().Contains(filter.ToLower()) || aktCustomer.LastName.ToLower().Contains(filter.ToLower()))
             {
                 return true;
             }
