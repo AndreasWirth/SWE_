@@ -88,11 +88,20 @@ namespace CustomerData {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Ballance ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Balance ähnelt.
         /// </summary>
         internal static string ballance {
             get {
                 return ResourceManager.GetString("ballance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Generate ID ähnelt.
+        /// </summary>
+        internal static string btnGenerateID {
+            get {
+                return ResourceManager.GetString("btnGenerateID", resourceCulture);
             }
         }
         

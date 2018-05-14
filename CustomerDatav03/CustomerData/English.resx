@@ -127,7 +127,10 @@
     <value>Amount</value>
   </data>
   <data name="ballance" xml:space="preserve">
-    <value>Ballance</value>
+    <value>Balance</value>
+  </data>
+  <data name="btnGenerateID" xml:space="preserve">
+    <value>Generate ID</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancel</value>

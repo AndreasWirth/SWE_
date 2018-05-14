@@ -41,6 +41,7 @@ namespace CustomerData
             labelBallance.Text = resxLanguage.GetString("ballance");
             labelCustomNumber.Text = resxLanguage.GetString("customerNumber");
             labelEMail.Text = resxLanguage.GetString("email");
+            btnGenerateID.Text = resxLanguage.GetString("btnGenerateID");
 
         }
         /// <summary>

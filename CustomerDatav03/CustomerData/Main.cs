@@ -53,13 +53,6 @@ namespace CustomerData
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            /*
-            CultureInfo ci = new CultureInfo("de-DE");
-            
-            //CultureInfo ci = new CultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = ci;
-            Thread.CurrentThread.CurrentUICulture = ci;
-            */
 
             resxFilePrivateSettings = @".\PrivateSettings.resx";
             resxPrivateSettings = new ResXResourceSet(resxFilePrivateSettings);
@@ -76,64 +69,20 @@ namespace CustomerData
             // setting ResousrceSet
             resxLanguage = new ResXResourceSet(resxFileLanguag);
 
+            btOpenAddCustomer.Text = resxLanguage.GetString("addCustomer");
+            btnOpenChangeCustomer.Text = resxLanguage.GetString("changeCustomer");
+            btnOpenBooking.Text = resxLanguage.GetString("makeBooking");
+            btnChangeLanguage.Text = resxLanguage.GetString("changeLanguage");
+            gbSortby.Text = resxLanguage.GetString("sortby");
+            rbName.Text = resxLanguage.GetString("lastName");
+            gBFilterBy.Text = resxLanguage.GetString("filterby");
+            btnSaveData.Text = resxLanguage.GetString("saveData");
+            btnLoadData.Text = resxLanguage.GetString("loadData");
             Text = resxLanguage.GetString("titleMain");
-
-            /*
-            //Nachschlagewerk
-            using (ResXResourceSet resxSet = new ResXResourceSet(resxFileLanguag))
-            {
-                var test = resxSet.GetString("test");
-                var test2 = resxSet.GetString("test2");
-
-            }
-            using (ResXResourceSet resxSet = new ResXResourceSet(resxFileLanguag))
-            {
-                var test = resxSet.GetString("test");
-                var test2 = resxSet.GetString("test2");
-            }
-            using (ResXResourceWriter resxSet = new ResXResourceWriter(resxFileLanguag))
-            {
-                resxSet.AddResource("test", "test");
-            }
-            */
         }
 
         #region GUI Elements / GUI Evetns
-        /*
-        /// <summary>
-        /// if changed in the Group Box, changes Sort algorithem to Last Name
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rbName_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbName.Checked)
-            {
-                Sort = 1;
-                ShowCustomer();
-            }
-        }
-        /// <summary>
-        /// if changed in the Group Box, changes Sort algorithem to ID 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rbID_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbID.Checked)
-            {
-                Sort = 0;
-                ShowCustomer();
-            }
-        }
-        private void tbFilterby_TextChanged(object sender, EventArgs e)
-        {
-            if (this.Text.Length > 2)
-            {
-                ShowCustomer();
-            }
-        }
-        */
+       
         #region Buttons
         /// <summary>
         /// Opens the Widow to add a new Customer

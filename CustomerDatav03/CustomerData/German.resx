@@ -127,7 +127,10 @@
     <value>Betrag</value>
   </data>
   <data name="ballance" xml:space="preserve">
-    <value>Ballance</value>
+    <value>Kontostand</value>
+  </data>
+  <data name="btnGenerateID" xml:space="preserve">
+    <value>Generiere ID</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Abbrechen</value>
