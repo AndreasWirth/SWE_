@@ -252,7 +252,7 @@ namespace CustomerData
                     {
                         //"File was empty! No Customer added."
                         //MessageBox.Show(argfile.Message);
-                        MessageBox.Show(resxLanguage.GetString("emptemptyFileyDatabase"));
+                        MessageBox.Show(resxLanguage.GetString("emptyFileyDatabase"));
                     }
                 }
                 else
